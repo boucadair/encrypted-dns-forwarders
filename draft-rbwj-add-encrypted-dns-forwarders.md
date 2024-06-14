@@ -201,7 +201,7 @@ offerings with local services.
    control, Manufacturer Usage Description (MUD) {{?RFC8520}} to only allow
    intended communications to and from an IoT device, and multicast DNS
    proxy service for the ".local" domain {{?RFC6762}}).
-   
+
    When the CPE behaves as a DNS forwarder, DNS communications can be decomposed into
    two legs to resolve queries:
 
@@ -225,7 +225,7 @@ offerings with local services.
    special-purpose IP addresses {{?RFC6890}}, most notably IPv4 private-use
    {{?RFC1918}}, IPv4 shared address {{?RFC6598}}, or IPv6 Unique-Local
    {{?RFC8190}} address space.
-   
+
    A tempting solution is to use the CPE's WAN
    IP address for DDR and prove possession of that IP address.  However,
    the CPE's WAN IPv4 address will not be a public IPv4 address if the
@@ -260,7 +260,7 @@ offerings with local services.
 # Limitations of Existing Solutions
 
 ## Certificate Issuance Issues
-   
+
   The following lists some limitations for certificate issuance:
 
    *  In case of large scale of CPEs (e.g., millions of devices),

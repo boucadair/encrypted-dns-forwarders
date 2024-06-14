@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-area: INT
-workgroup: ADD
+area: "Internet"
+workgroup: "Adaptive DNS Discovery"
 keyword:
  - DNS
  - deployment

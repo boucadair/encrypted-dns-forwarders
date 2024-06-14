@@ -200,8 +200,9 @@ offerings with local services.
    services within a local network (e.g., malware filtering, parental
    control, Manufacturer Usage Description (MUD) {{?RFC8520}} to only allow
    intended communications to and from an IoT device, and multicast DNS
-   proxy service for the ".local" domain {{?RFC6762}}).  When the CPE
-   behaves as a DNS forwarder, DNS communications can be decomposed into
+   proxy service for the ".local" domain {{?RFC6762}}).
+   
+   When the CPE behaves as a DNS forwarder, DNS communications can be decomposed into
    two legs to resolve queries:
 
    *  The leg between an internal host and the CPE.
@@ -213,7 +214,9 @@ offerings with local services.
    This section discusses some deployment challenges to host an
    encrypted DNS forwarder within a local network.
 
-## DDR/DNR Comparison and Naming Constraints
+## Discovery Mechanisms and Naming Constraints
+
+### DDR
 
    DDR requires proving possession of an IP address, as the DDR
    certificate contains the server's IPv4 and IPv6 addresses and is
@@ -221,7 +224,9 @@ offerings with local services.
    addresses because (WebPKI) certificate authorities will not sign
    special-purpose IP addresses {{?RFC6890}}, most notably IPv4 private-use
    {{?RFC1918}}, IPv4 shared address {{?RFC6598}}, or IPv6 Unique-Local
-   {{?RFC8190}} address space.  A tempting solution is to use the CPE's WAN
+   {{?RFC8190}} address space.
+   
+   A tempting solution is to use the CPE's WAN
    IP address for DDR and prove possession of that IP address.  However,
    the CPE's WAN IPv4 address will not be a public IPv4 address if the
    CPE is behind another layer of NAT (either Carrier Grade NAT (CGN) or
@@ -230,6 +235,8 @@ offerings with local services.
    network suddenly (rather than slow IPv6 renumbering described in
    {{?RFC4192}}) encrypted DNS service will be delayed until that new
    certificate is acquired.
+
+### DNR
 
    DNR requires proving possession of an FQDN as the encrypted
    resolver's certificate contains the FQDN.  The entity (e.g., ISP,
@@ -248,8 +255,13 @@ offerings with local services.
    challenge discussed in ACME {{?RFC8555}}).  However, a CPE's WAN address
    will not be a public IPv4 address if the CPE is behind another layer
    of NAT (either a CGN or another on-premise NAT), reducing the success
-   of this mechanism to a CPE's WAN IPv6 address.  The mechanisms have
-   the following limitations for certificate issuance:
+   of this mechanism to a CPE's WAN IPv6 address.
+
+# Limitations of Existing Solutions
+
+## Certificate Issuance Issues
+   
+  The following lists some limitations for certificate issuance:
 
    *  In case of large scale of CPEs (e.g., millions of devices),
       issuing certificate request for a large number of subdomains could
@@ -268,7 +280,7 @@ offerings with local services.
    The encrypted DNS forwarder is hosted on a CPE and provisioned by a
    service (e.g., ACS) in the operator's network.  Each CPE is assigned
    a unique FQDN (e.g., "cpe-12345.example.com" where 12345 is a unique
-   number).  It is NOT RECOMMENDED that such an FQDN carries any
+   number).  It is not recommended that such an FQDN carries any
    Personally Identifiable Information (PII) or device identification
    details like the customer number or device's serial number.  The CPE
    generates a public and private key-pair, builds a certificate signing
@@ -293,7 +305,7 @@ offerings with local services.
    outage will negatively affect the uptime of the encrypted DNS
    forwarders on CPEs (and the services offered via these CPEs).
 
-# Limitations of Existing Solutions
+## Other Limitations
 
    Alternate solutions and their limitations are discussed below:
 

@@ -255,7 +255,9 @@ offerings with local services.
    challenge discussed in ACME {{?RFC8555}}).  However, a CPE's WAN address
    will not be a public IPv4 address if the CPE is behind another layer
    of NAT (either a CGN or another on-premise NAT), reducing the success
-   of this mechanism to a CPE's WAN IPv6 address.
+   of this mechanism to a CPE's WAN IPv6 address. If the ISP renumbers the subscriber's
+   network, the DNS record will also need to expire and changed to
+   reflect the new IP address.
 
 # Limitations of Existing Solutions
 

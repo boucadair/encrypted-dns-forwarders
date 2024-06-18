@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-16T01:04:58.811148+00:00",
+  "timestamp": "2024-06-18T01:00:40.083131+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -49,6 +49,50 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
-  "pulls": []
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOMJRu5c6MiLZ-",
+      "title": "CA managing certificates",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/issues/1",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "in 5.1, it says:\r\n\r\n> Dependency on the CA to manage a large number of certificates.\r\n\r\nBut the Certificate Authority does not manage the certificates it signs -- it signs the certificate, adds it to a certificate log, and forgets about it. \r\n\r\nI don't know the intent of this sentence, but can it be improved?",
+      "createdAt": "2024-06-17T16:38:12Z",
+      "updatedAt": "2024-06-17T16:38:12Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOMJRu5c5yt8LF",
+      "title": "renumbering also impacts DNR, but differently",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/2",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-06-17T16:50:19Z",
+      "updatedAt": "2024-06-17T16:50:20Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "23870041087b0e00d109e05d1c09b9514c77252f",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "renumbering",
+      "headRefOid": "8ffbd42f7ce8fd4e6343ee65474000af66279061",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }

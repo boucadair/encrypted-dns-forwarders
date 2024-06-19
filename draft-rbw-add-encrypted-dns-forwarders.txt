@@ -5,16 +5,14 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 20 December 2024                                         Orange
+Expires: 21 December 2024                                         Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                                 S. Jain
-                                                                  McAfee
-                                                            18 June 2024
+                                                            19 June 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
-             draft-rbwj-add-encrypted-dns-forwarders-latest
+             draft-rbw-add-encrypted-dns-forwarders-latest
 
 Abstract
 
@@ -62,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 December 2024.
+   This Internet-Draft will expire on 21 December 2024.
 
 Copyright Notice
 
@@ -150,9 +148,6 @@ Table of Contents
 
    Unmanaged CPE:  refers to a CPE that is not managed by an ISP or CPE
       vendor or Security Service Provider.
-
-   Delegated credential:  The certificate issued by the operator as
-      described by [RFC9345].
 
 3.  Proxied DNS In Local Networks
 
@@ -349,17 +344,15 @@ Table of Contents
 
       -  Pro: Avoids changing TLS client and server.
 
-   In summary, Star certificates, name constraints extension, and
-   Delegated credentials suffer from the problem of deploying a new
-   feature to CAs, TLS clients, and servers.
+   In summary, Star certificates and name constraints extension suffer
+   from the problem of deploying a new feature to CAs, TLS clients, and
+   servers.
 
 6.  Security Considerations
 
    DNR-related security considerations are discussed in Section 7 of
    [RFC9463].  Likewise, DDR-related security considerations are
    discussed in Section 7 of [RFC9462].
-
-   TBC.
 
 7.  IANA Considerations
 
@@ -380,11 +373,6 @@ Table of Contents
               (ACME) Profile for Generating Delegated Certificates",
               RFC 9115, DOI 10.17487/RFC9115, September 2021,
               <https://www.rfc-editor.org/rfc/rfc9115>.
-
-   [RFC9345]  Barnes, R., Iyengar, S., Sullivan, N., and E. Rescorla,
-              "Delegated Credentials for TLS and DTLS", RFC 9345,
-              DOI 10.17487/RFC9345, July 2023,
-              <https://www.rfc-editor.org/rfc/rfc9345>.
 
    [RFC9462]  Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
               Jensen, "Discovery of Designated Resolvers", RFC 9462,
@@ -505,8 +493,3 @@ Authors' Addresses
    Dan Wing
    Cloud Software Group Holdings, Inc.
    Email: danwing@gmail.com
-
-
-   Shashank Jain
-   McAfee
-   Email: Shashank_Jain@mcafee.com

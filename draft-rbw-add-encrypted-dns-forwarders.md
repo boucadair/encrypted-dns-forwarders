@@ -183,8 +183,8 @@ offerings with local services.
    DNS. The upstream encrypted DNS can be hosted by the ISP or provided
    by a third party.
 
-   Such a forwarder presence is required for (but not limuted to): 
-   
+   Such a forwarder presence is required for (but not limuted to):
+
    * IPv4 service continuity purposes (e.g., {{Section 3.1 of ?RFC8585}}).
    * Supporting advanced services within a local network such as:
      + malware filtering,
@@ -223,7 +223,7 @@ offerings with local services.
    CPE is behind another layer of NAT (either Carrier Grade NAT (CGN) or
    another on-premise NAT), reducing the success of this mechanism to
    CPE's WAN IPv6 address.
-   
+
    Also, if the ISP renumbers the subscriber's
    network suddenly (rather than slow IPv6 renumbering described in
    {{?RFC4192}}), encrypted DNS service will be delayed until that new

@@ -2,10 +2,10 @@
 
 This is the working area for the individual Internet-Draft, "Hosting Encrypted DNS Forwarders on CPEs".
 
-* [Editor's Copy](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbwj-add-encrypted-dns-forwarders.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-rbwj-add-encrypted-dns-forwarders)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-rbwj-add-encrypted-dns-forwarders)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbwj-add-encrypted-dns-forwarders.diff)
+* [Editor's Copy](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbw-add-encrypted-dns-forwarders.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-rbw-add-encrypted-dns-forwarders)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-rbw-add-encrypted-dns-forwarders)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbw-add-encrypted-dns-forwarders.diff)
 
 
 ## Contributing

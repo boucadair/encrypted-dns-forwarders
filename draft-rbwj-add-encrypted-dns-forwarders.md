@@ -3,7 +3,7 @@ title: "Hosting Encrypted DNS Forwarders on CPEs"
 abbrev: "Encrypted DNS Forwarders on CPEs"
 category: info
 
-docname: draft-rbwj-add-encrypted-dns-forwarders-latest
+docname: draft-rbw-add-encrypted-dns-forwarders-latest
 submissiontype: IETF
 number:
 date:
@@ -37,11 +37,6 @@ author:
     organization: Cloud Software Group Holdings, Inc.
     abbrev: Cloud Software Group
     email: danwing@gmail.com
- -
-    ins: S. Jain
-    name: Shashank Jain
-    organization: McAfee
-    email: Shashank_Jain@mcafee.com
 
 normative:
 
@@ -149,9 +144,6 @@ offerings with local services.
    Unmanaged CPE:
    :  refers to a CPE that is not managed by an ISP or CPE
       vendor or Security Service Provider.
-
-   Delegated credential:
-   :  The certificate issued by the operator as described by {{!RFC9345}}.
 
 # Proxied DNS In Local Networks
 
@@ -349,17 +341,14 @@ offerings with local services.
 
       -  Pro: Avoids changing TLS client and server.
 
-   In summary, Star certificates, name constraints extension, and
-   Delegated credentials suffer from the problem of deploying a new
-   feature to CAs, TLS clients, and servers.
+   In summary, Star certificates and name constraints extension suffer from
+   the problem of deploying a new feature to CAs, TLS clients, and servers.
 
 # Security Considerations
 
    DNR-related security considerations are discussed in
    {{Section 7 of !RFC9463}}.  Likewise, DDR-related security considerations
    are discussed in {{Section 7 of !RFC9462}}.
-
-   TBC.
 
 # IANA Considerations
 

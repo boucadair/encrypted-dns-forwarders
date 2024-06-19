@@ -348,7 +348,7 @@ offerings with local services.
 
    DNR-related security considerations are discussed in
    {{Section 7 of !RFC9463}}.  Likewise, DDR-related security considerations
-   are discussed in {{Section 7 of !RFC9462}}.   
+   are discussed in {{Section 7 of !RFC9462}}.
 
 # IANA Considerations
 

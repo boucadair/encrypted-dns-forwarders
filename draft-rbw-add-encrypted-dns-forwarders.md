@@ -80,8 +80,10 @@ offerings with local services. Solutions are needed to ease operating
 DNS forwarders in CPEs while allowing to make use of encrypted DNS  capabilities.
 
 This document describes the problem and why some existing solutions can't be used for
-these deployments. The document also discusses adaptations to some other other
-existing techniques to accomodate LAN specifics.
+these deployments. For example, Star certificates and name constraints extension suffer from
+the problem of deploying a new feature to CAs, TLS clients, and servers.
+
+The document also discusses adaptations to some other existing techniques to accomodate LAN specifics.
 
 The scope of this document is encrypted DNS servers deployed on managed CPEs.
 
@@ -103,13 +105,12 @@ The scope of this document is encrypted DNS servers deployed on managed CPEs.
    applications on a home router.  Further, DNS providers have optimized
    the encrypted DNS forwarder to run in a container in home routers.
 
-   However, upgrading DNS to use encrypted transports introduces deployment complications as to how to sustain current
+   However, upgrading DNS to use encrypted transports (e.g., DNS over HTTPS (DoH) {{?RFC8484}}, DNS over TLS (DoT) {{?RFC7858}},
+   and DNS over QUIC (DoQ) {{?RFC9250}}) introduces deployment complications as to how to sustain current
 offerings with local services.
 
-   This document describes the problem encountered to host encrypted DNS resolvers,
-   such as DNS over HTTPS (DoH) {{?RFC8484}}, DNS over TLS (DoT) {{?RFC7858}},
-   and DNS over QUIC (DoQ) {{?RFC9250}} in managed CPEs. It also discusses limitations
-   of existing solutions.
+   This document describes the problem encountered to host encrypted DNS resolvers
+   in managed CPEs. It also discusses limitations of existing solutions.
 
 # Conventions and Definitions
 
@@ -134,16 +135,11 @@ offerings with local services.
    Encrypted DNS:
    :  refers to a scheme where DNS exchanges are
       transported over an encrypted channel.  Examples of encrypted DNS
-      are DNS over HTTPS (DoH) {{?RFC8484}}, DNS over TLS (DoT) {{?RFC7858}}, and DNS over QUIC
-      (DoQ) {{?RFC9250}}.
+      are DoH {{?RFC8484}}, DoT {{?RFC7858}}, and DoQ {{?RFC9250}}.
 
    Managed CPE:
    :  refers to a CPE that is managed by an ISP or CPE vendor
       or Security Service Provider.
-
-   Unmanaged CPE:
-   :  refers to a CPE that is not managed by an ISP or CPE
-      vendor or Security Service Provider.
 
 # Proxied DNS In Local Networks
 
@@ -182,17 +178,20 @@ offerings with local services.
    For all the cases shown in {{fig1}}, the CPE advertises itself as the
    default DNS server to the hosts it serves in the LAN.  The CPE relies
    upon DHCP or RA to advertise itself to internal hosts as the default
-   encrypted DNS forwarder.  When receiving a DNS request it cannot
+   encrypted DNS forwarder using DNR. When receiving a DNS request that a CPE cannot
    handle locally, the CPE forwards the request to an upstream encrypted
-   DNS.  The upstream encrypted DNS can be hosted by the ISP or provided
+   DNS. The upstream encrypted DNS can be hosted by the ISP or provided
    by a third party.
 
-   Such a forwarder presence is required for IPv4 service continuity
-   purposes (e.g., {{Section 3.1 of ?RFC8585}}) or for supporting advanced
-   services within a local network (e.g., malware filtering, parental
-   control, Manufacturer Usage Description (MUD) {{?RFC8520}} to only allow
-   intended communications to and from an IoT device, and multicast DNS
-   proxy service for the ".local" domain {{?RFC6762}}).
+   Such a forwarder presence is required for (but not limuted to): 
+   
+   * IPv4 service continuity purposes (e.g., {{Section 3.1 of ?RFC8585}}).
+   * Supporting advanced services within a local network such as:
+     + malware filtering,
+     + parental control,
+     + Manufacturer Usage Description (MUD) {{?RFC8520}} to only allow
+   intended communications to and from an IoT device, and
+     + offer multicast DNS proxy service for the ".local" domain {{?RFC6762}}.
 
    When the CPE behaves as a DNS forwarder, DNS communications can be decomposed into
    two legs to resolve queries:
@@ -208,7 +207,7 @@ offerings with local services.
 
 ## Discovery Mechanisms and Naming Constraints
 
-### DDR
+### Discovery of Designated Resolvers (DDR)
 
    DDR requires proving possession of an IP address, as the DDR
    certificate contains the server's IPv4 and IPv6 addresses and is
@@ -218,33 +217,34 @@ offerings with local services.
    {{?RFC1918}}, IPv4 shared address {{?RFC6598}}, or IPv6 Unique-Local
    {{?RFC8190}} address space.
 
-   A tempting solution is to use the CPE's WAN
+   A tempting solution for enabling an encrypted DNS forwarder with DDR is to use the CPE's WAN
    IP address for DDR and prove possession of that IP address.  However,
    the CPE's WAN IPv4 address will not be a public IPv4 address if the
    CPE is behind another layer of NAT (either Carrier Grade NAT (CGN) or
    another on-premise NAT), reducing the success of this mechanism to
-   CPE's WAN IPv6 address.  If the ISP renumbers the subscriber's
+   CPE's WAN IPv6 address.
+   
+   Also, if the ISP renumbers the subscriber's
    network suddenly (rather than slow IPv6 renumbering described in
-   {{?RFC4192}}) encrypted DNS service will be delayed until that new
+   {{?RFC4192}}), encrypted DNS service will be delayed until that new
    certificate is acquired.
 
-### DNR
+###  Discovery of Network-designated Resolvers (DNR)
 
-   DNR requires proving possession of an FQDN as the encrypted
-   resolver's certificate contains the FQDN.  The entity (e.g., ISP,
+   DNR requires proving possession of a domain name as the encrypted
+   resolver's certificate contains the FQDN. For example, the entity (e.g., ISP or
    network administrator) managing the CPE would assign a unique FQDN to
-   the CPE.  There are two mechanisms for the CPE to obtain the
+   the CPE. There are two mechanisms for the CPE to obtain the
    certificate for the FQDN: using one of its WAN IP addresses or
    requesting its signed certificate from an Internet-facing server used
    for remote CPE management (e.g., the Auto Configuration Server (ACS)
    in the CPE WAN Management Protocol {{TR-069}}).
 
-   If using a CPE's WAN
-   IP address, the CPE needs a public IPv4 or a global unicast IPv6
+   If the CPE's WAN IP address is used, the CPE needs a public IPv4 or a global unicast IPv6
    address together with DNS A or AAAA records pointing to that CPE's
-   WAN address to prove possession of the DNS name to obtain a WebPKI
-   CA-signed certificate (that is, the CPE fulfills the DNS or HTTP
-   challenge discussed in ACME {{?RFC8555}}).  However, a CPE's WAN address
+   WAN address to prove possession of the DNS name to obtain a (WebPKI)
+   CA-signed certificate. That is, the CPE fulfills the DNS or HTTP
+   challenge discussed in Automatic Certificate Management Environment (ACME) {{?RFC8555}}.  However, a CPE's WAN address
    will not be a public IPv4 address if the CPE is behind another layer
    of NAT (either a CGN or another on-premise NAT), reducing the success
    of this mechanism to a CPE's WAN IPv6 address. If the ISP renumbers the subscriber's
@@ -262,26 +262,28 @@ offerings with local services.
       be treated as an attack by the certificate authorities to
       overwhelm it.
 
-   *  Dependency on the CA to manage a large number of certificates.
+   *  Dependency on the CA to issue a large number of certificates.
 
    *  If the CPE uses one of its WAN IP addresses to obtain the
-      certificate for the FQDN, the internet-facing HTTP server or a DNS
+      certificate for the FQDN, the Internet-facing HTTP server or a DNS
       authoritative server on the CPE to complete the HTTP or DNS
       challenge can be subjected to DDoS attacks.
 
 ## Delegated Certificate Issuance
 
-   The encrypted DNS forwarder is hosted on a CPE and provisioned by a
-   service (e.g., ACS) in the operator's network.  Each CPE is assigned
+   Let's consider that the encrypted DNS forwarder is hosted on a CPE and provisioned by a
+   service (e.g., ACS) in the operator's network. Also, let's assume that each CPE is assigned
    a unique FQDN (e.g., "cpe-12345.example.com" where 12345 is a unique
-   number).  It is not recommended that such an FQDN carries any
+   number).
+
+   > It is not recommended that such an FQDN carries any
    Personally Identifiable Information (PII) or device identification
-   details like the customer number or device's serial number.  The CPE
-   generates a public and private key-pair, builds a certificate signing
+   details like the customer number or device's serial number.
+
+   The CPE generates a public and private key-pair, builds a certificate signing
    request (CSR), and sends the CSR to a service in the operator
    managing the CPE.  Upon receipt of the CSR, the operator's service
-   can utilize Automatic Certificate Management Environment (ACME)
-   {{?RFC8555}} to automate certificate management functions such as domain
+   can utilize ACME {{?RFC8555}} to automate certificate management functions such as domain
    validation procedure, certificate issuance, and certificate
    revocation.
 
@@ -299,38 +301,40 @@ offerings with local services.
    outage will negatively affect the uptime of the encrypted DNS
    forwarders on CPEs (and the services offered via these CPEs).
 
-## Other Limitations
+## Limitations of Name Constraints Extension
 
-   Alternate solutions and their limitations are discussed below:
-
-   *  A service managing the CPEs could get a CA certificate with name
+A service managing the CPEs could get a CA certificate with name
       constraints extension ({{Section 4.2.1.10 of !RFC5280}}) and the
-      service would in-turn act as an ACME server to provision end-
-      entity certificates on CPEs.
+      service would in-turn act as an ACME server to provision end-entity certificates on CPEs.
 
-      -  Con: Name constraints extension is not yet supported by CAs,
+* Con:
+  + Name constraints extension is not yet supported by CAs,
          although {{!RFC5280}} was standardized way back in 2008.
 
-      -  Pro: Avoids changing TLS client and server (e.g., stunnel or
-         openssl).
+* Pro:
+  + Avoids changing TLS client and server (e.g., stunnel or openssl).
 
-   *  {{!RFC9115}} defines a profile of the ACME protocol for generating
+## Limitations of Star certificates
+
+{{!RFC9115}} defines a profile of the ACME protocol for generating
       Delegated certificates.  It allows the CPEs to request from a
       service managing the CPEs, acting as a profiled ACME server, a
       certificate for a delegated identity, i.e., one belonging to the
       service.  The service then uses the ACME protocol (with the
       extensions described in {{?RFC8739}}) to request issuance of a
-       short-term, Automatically Renewed (STAR) certificate for the same
+      short-term, Automatically Renewed (STAR) certificate for the same
       delegated identity.  The generated short-term certificate is
-      automatically renewed by the ACME CA, is periodically fetched by
-      the CPEs, and is used to act as encrypted DNS forwarders.  The
-      service can end the delegation at any time by instructing the CA
+      automatically renewed by the ACME CA, periodically fetched by
+      the CPEs, and used to act as encrypted DNS forwarders.
+
+      The service can end the delegation at any time by instructing the CA
       to stop the automatic renewal and letting the certificate expire
       shortly thereafter.  Star certificates requires support by CAs but
       does not require changes to the deployed TLS ecosystem.
 
-      -  Con: Star certificates require support by CAs.
-      -  Con: A primary use case of Star certificates is that of a
+* Cons:
+  + Star certificates require support by CAs.
+  + A primary use case of Star certificates is that of a
          Content Delivery Network (CDN), the third party, terminating
          TLS sessions on behalf of a content provider (the holder of a
          domain name).  The number of star certificates required for a
@@ -339,10 +343,8 @@ offerings with local services.
          agree to support star certificates at a scale of millions of
          CPEs.
 
-      -  Pro: Avoids changing TLS client and server.
-
-   In summary, Star certificates and name constraints extension suffer from
-   the problem of deploying a new feature to CAs, TLS clients, and servers.
+* Pro:
+  + Avoids changing TLS client and server.
 
 # Security Considerations
 
@@ -353,7 +355,6 @@ offerings with local services.
 # IANA Considerations
 
 This document has no IANA actions.
-
 
 --- back
 

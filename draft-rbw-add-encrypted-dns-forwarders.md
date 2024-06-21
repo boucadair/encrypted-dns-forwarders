@@ -304,7 +304,7 @@ offerings with local services.
    It offers the additional advantage of improving the security of
    Browser and CPE interactions. This ensures that HTTPS access to
    the CPE is possible, allowing the device administrator to securely
-   communicate with and configure the CPE.
+   communicate with and manage the CPE.
 
 ## Limitations of Name Constraints Extension
 

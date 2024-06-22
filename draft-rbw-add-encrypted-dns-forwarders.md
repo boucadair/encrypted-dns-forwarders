@@ -301,7 +301,7 @@ offerings with local services.
    outage will negatively affect the uptime of the encrypted DNS
    forwarders on CPEs (and the services offered via these CPEs).
 
-   To address these challenges, it is recommended to use protocols like
+   These challenges can be addressed by using protocols like
    ACME to automate the certificate renewal process, ensuring certificates
    are renewed well before expiration. Additionally, incorporating another
    CA as a backup can provide redundancy and further mitigate the risk of

@@ -297,9 +297,9 @@ Table of Contents
    The CPE generates a public and private key-pair, builds a certificate
    signing request (CSR), and sends the CSR to a service in the operator
    managing the CPE.  Upon receipt of the CSR, the operator's service
-   can utilize ACME [RFC8555] to automate certificate management
-   functions such as domain validation procedure, certificate issuance,
-   and certificate revocation.
+   can utilize certificate management protocols like ACME [RFC8555] to
+   automate certificate management functions such as domain validation
+   procedure, certificate issuance, and certificate revocation.
 
    The challenge with this technique is that the service will have to
    communicate with the CA to issue certificates for millions of CPEs.
@@ -314,6 +314,15 @@ Table of Contents
    window to renew a certificate and, therefore, a higher risk that a CA
    outage will negatively affect the uptime of the encrypted DNS
    forwarders on CPEs (and the services offered via these CPEs).
+
+   These challenges can be addressed by using protocols like ACME to
+   automate the certificate renewal process, ensuring certificates are
+   renewed well before expiration.  Additionally, incorporating another
+   CA as a backup can provide redundancy and further mitigate the risk
+   of outages.  By having a secondary CA, the service can switch to the
+   backup CA in case the primary CA is unavailable, thus maintaining
+   continuous service availability and reducing the risk of service
+   disruption.
 
    It offers the additional advantage of improving the security of
    Browser and CPE interactions.  This ensures that HTTPS access to the

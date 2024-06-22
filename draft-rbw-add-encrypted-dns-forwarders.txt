@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 22 December 2024                                         Orange
+Expires: 24 December 2024                                         Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                            20 June 2024
+                                                            22 June 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -63,7 +63,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 December 2024.
+   This Internet-Draft will expire on 24 December 2024.
 
 Copyright Notice
 
@@ -314,6 +314,11 @@ Table of Contents
    window to renew a certificate and, therefore, a higher risk that a CA
    outage will negatively affect the uptime of the encrypted DNS
    forwarders on CPEs (and the services offered via these CPEs).
+
+   It offers the additional advantage of improving the security of
+   Browser and CPE interactions.  This ensures that HTTPS access to the
+   CPE is possible, allowing the device administrator to securely
+   communicate with and manage the CPE.
 
 5.3.  Limitations of Name Constraints Extension
 

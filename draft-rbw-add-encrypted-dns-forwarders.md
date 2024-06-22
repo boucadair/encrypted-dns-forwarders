@@ -301,6 +301,11 @@ offerings with local services.
    outage will negatively affect the uptime of the encrypted DNS
    forwarders on CPEs (and the services offered via these CPEs).
 
+   It offers the additional advantage of improving the security of
+   Browser and CPE interactions. This ensures that HTTPS access to
+   the CPE is possible, allowing the device administrator to securely
+   communicate with and manage the CPE.
+
 ## Limitations of Name Constraints Extension
 
 A service managing the CPEs could get a CA certificate with name

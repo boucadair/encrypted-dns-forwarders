@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-20T00:59:08.530870+00:00",
+  "timestamp": "2024-06-23T01:04:11.788464+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -157,24 +157,26 @@
       "id": "PR_kwDOMJRu5c5y-ZtZ",
       "title": "clean-up + restructure",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-06-19T14:54:49Z",
-      "updatedAt": "2024-06-19T16:05:09Z",
+      "updatedAt": "2024-06-20T06:04:01Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "877960718e2b66df863318ef9c44451f1f5bd02f",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "cleanup+restructure",
       "headRefOid": "4a2627b073de39228047714a91425422aa69d2d4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-06-20T06:04:01Z",
+      "mergedAt": "2024-06-20T06:04:01Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "d4f53d345a1979db4cab0ab03a3fd434eaefa539"
+      },
       "comments": [],
       "reviews": [
         {
@@ -189,6 +191,123 @@
           "createdAt": "2024-06-19T16:05:09Z",
           "updatedAt": "2024-06-19T16:05:09Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOMJRu5c5zLT5o",
+      "title": "Add advantage of the proposed mechanism",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/5",
+      "state": "MERGED",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-06-21T11:53:23Z",
+      "updatedAt": "2024-06-22T03:41:53Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "d4f53d345a1979db4cab0ab03a3fd434eaefa539",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "tireddy2-patch-2",
+      "headRefOid": "74fa3b989bce1abeb9aadf18723ac3bfc4dc0553",
+      "closedAt": "2024-06-22T03:41:52Z",
+      "mergedAt": "2024-06-22T03:41:52Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "4a412197d378865b833501138cbae26697442b2f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c5_G1-J",
+          "commit": {
+            "abbreviatedOid": "821c93c"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-21T12:00:48Z",
+          "updatedAt": "2024-06-21T12:00:49Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n   communicate with and manage the CPE.\r\n```",
+              "createdAt": "2024-06-21T12:00:48Z",
+              "updatedAt": "2024-06-21T12:00:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c5_G28-",
+          "commit": {
+            "abbreviatedOid": "74fa3b9"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-21T12:03:21Z",
+          "updatedAt": "2024-06-21T12:03:21Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOMJRu5c5zPc9P",
+      "title": "Update to Delegated Certificate Issuance Section",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/6",
+      "state": "MERGED",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-06-22T07:11:56Z",
+      "updatedAt": "2024-06-22T11:05:59Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "4a412197d378865b833501138cbae26697442b2f",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "tireddy2-patch-3",
+      "headRefOid": "bb7707938b44b5c97b90ed98fb90b82905cbd248",
+      "closedAt": "2024-06-22T11:05:58Z",
+      "mergedAt": "2024-06-22T11:05:58Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "1a965f3b2001895333c27473fb037195b3e02e75"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c5_LP7L",
+          "commit": {
+            "abbreviatedOid": "de6a40b"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-06-22T07:58:10Z",
+          "updatedAt": "2024-06-22T07:58:55Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\n   These challenges can be addressed by using protocols like\r\n```",
+              "createdAt": "2024-06-22T07:58:10Z",
+              "updatedAt": "2024-06-22T07:58:55Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "avoid giving recos",
+              "createdAt": "2024-06-22T07:58:40Z",
+              "updatedAt": "2024-06-22T07:58:55Z"
+            }
+          ]
         }
       ]
     }

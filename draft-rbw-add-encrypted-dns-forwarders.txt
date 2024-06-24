@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 24 December 2024                                         Orange
+Expires: 26 December 2024                                         Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                            22 June 2024
+                                                            24 June 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -63,7 +63,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 December 2024.
+   This Internet-Draft will expire on 26 December 2024.
 
 Copyright Notice
 
@@ -290,9 +290,9 @@ Table of Contents
    Also, let's assume that each CPE is assigned a unique FQDN (e.g.,
    "cpe-12345.example.com" where 12345 is a unique number).
 
-      It is not recommended that such an FQDN carries any Personally
-      Identifiable Information (PII) or device identification details
-      like the customer number or device's serial number.
+      It is best to ensure that such an FQDN does not carry any
+      Personally Identifiable Information (PII) or device identification
+      details like the customer number or device's serial number.
 
    The CPE generates a public and private key-pair, builds a certificate
    signing request (CSR), and sends the CSR to a service in the operator

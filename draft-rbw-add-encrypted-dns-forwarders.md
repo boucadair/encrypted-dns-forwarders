@@ -276,7 +276,7 @@ offerings with local services.
    a unique FQDN (e.g., "cpe-12345.example.com" where 12345 is a unique
    number).
 
-   > It is not recommended that such an FQDN carries any
+   > It is best to ensure that such an FQDN does not carry any
    Personally Identifiable Information (PII) or device identification
    details like the customer number or device's serial number.
 

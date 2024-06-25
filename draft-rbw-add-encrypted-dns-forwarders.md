@@ -87,6 +87,9 @@ The document also discusses adaptations to some other existing techniques to acc
 
 The scope of this document is encrypted DNS servers deployed on managed CPEs.
 
+The document does not focus on generic considerations related to deploying DNS proxies. The reader may
+refer to {{?RFC5625}} for such matters.
+
 --- middle
 
 # Introduction
@@ -340,7 +343,7 @@ A service managing the CPEs could get a CA certificate with name
       automatically renewed by the ACME CA, periodically fetched by
       the CPEs, and used to act as encrypted DNS forwarders.
 
-      The service can end the delegation at any time by instructing the CA
+The service can end the delegation at any time by instructing the CA
       to stop the automatic renewal and letting the certificate expire
       shortly thereafter.  Star certificates requires support by CAs but
       does not require changes to the deployed TLS ecosystem.
@@ -374,5 +377,10 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-   Thanks to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz
+This draft is triggered by the discussion that occured at IETF#119 (Brisbane)
+about the need to frame the problem to be solved. Thanks to all the
+participants to that discussion.
+
+   Acknowledgements from {{?I-D.reddy-add-delegated-credentials}}:
+   : Thanks to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz,
    and Michael Richardson for the discussion and comments.

@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 26 December 2024                                         Orange
+Expires: 27 December 2024                                         Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                            24 June 2024
+                                                            25 June 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -37,6 +37,10 @@ Abstract
    The scope of this document is encrypted DNS servers deployed on
    managed CPEs.
 
+   The document does not focus on generic considerations related to
+   deploying DNS proxies.  The reader may refer to [RFC5625] for such
+   matters.
+
 Discussion Venues
 
    This note is to be removed before publishing as an RFC.
@@ -63,7 +67,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 December 2024.
+   This Internet-Draft will expire on 27 December 2024.
 
 Copyright Notice
 
@@ -359,10 +363,10 @@ Table of Contents
    periodically fetched by the CPEs, and used to act as encrypted DNS
    forwarders.
 
-    The service can end the delegation at any time by instructing the CA
-    to stop the automatic renewal and letting the certificate expire
-    shortly thereafter.  Star certificates requires support by CAs but
-    does not require changes to the deployed TLS ecosystem.
+   The service can end the delegation at any time by instructing the CA
+   to stop the automatic renewal and letting the certificate expire
+   shortly thereafter.  Star certificates requires support by CAs but
+   does not require changes to the deployed TLS ecosystem.
 
    *  Cons:
 
@@ -420,6 +424,14 @@ Table of Contents
 
 8.2.  Informative References
 
+   [I-D.reddy-add-delegated-credentials]
+              Reddy.K, T., Boucadair, M., Wing, D., and S. Jain,
+              "Delegated Credentials to Host Encrypted DNS Forwarders on
+              CPEs", Work in Progress, Internet-Draft, draft-reddy-add-
+              delegated-credentials-03, 1 December 2023,
+              <https://datatracker.ietf.org/doc/html/draft-reddy-add-
+              delegated-credentials-03>.
+
    [openwrt]  OpenWrt, "OpenWrt Project", n.d., <https://openwrt.org/>.
 
    [prpl]     Prpl Foundation, "Prpl Foundation", n.d.,
@@ -437,6 +449,10 @@ Table of Contents
               Renumbering an IPv6 Network without a Flag Day", RFC 4192,
               DOI 10.17487/RFC4192, September 2005,
               <https://www.rfc-editor.org/rfc/rfc4192>.
+
+   [RFC5625]  Bellis, R., "DNS Proxy Implementation Guidelines",
+              BCP 152, RFC 5625, DOI 10.17487/RFC5625, August 2009,
+              <https://www.rfc-editor.org/rfc/rfc5625>.
 
    [RFC6598]  Weil, J., Kuarsingh, V., Donley, C., Liljenstolpe, C., and
               M. Azinger, "IANA-Reserved IPv4 Prefix for Shared Address
@@ -503,8 +519,13 @@ Table of Contents
 
 Acknowledgments
 
-   Thanks to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz
-   and Michael Richardson for the discussion and comments.
+   This draft is triggered by the discussion that occured at IETF#119
+   (Brisbane) about the need to frame the problem to be solved.  Thanks
+   to all the participants to that discussion.
+
+   Acknowledgements from [I-D.reddy-add-delegated-credentials]:  Thanks
+      to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz, and
+      Michael Richardson for the discussion and comments.
 
 Authors' Addresses
 

@@ -83,12 +83,7 @@ This document describes the problem and why some existing solutions can't be use
 these deployments. For example, Star certificates and name constraints extension suffer from
 the problem of deploying a new feature to CAs, TLS clients, and servers.
 
-The document also discusses adaptations to some other existing techniques to accomodate LAN specifics.
-
 The scope of this document is encrypted DNS servers deployed on managed CPEs.
-
-The document does not focus on generic considerations related to deploying DNS proxies. The reader may
-refer to {{?RFC5625}} for such matters.
 
 --- middle
 
@@ -114,6 +109,9 @@ offerings with local services.
 
    This document describes the problem encountered to host encrypted DNS resolvers
    in managed CPEs. It also discusses limitations of existing solutions.
+
+The document does not focus on generic considerations related to deploying DNS proxies. The reader may
+refer to {{?RFC5625}} for such matters.
 
 # Conventions and Definitions
 

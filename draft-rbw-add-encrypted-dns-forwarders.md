@@ -381,6 +381,6 @@ This draft is triggered by the discussion that occured at IETF#119 (Brisbane)
 about the need to frame the problem to be solved. Thanks to all the
 participants to that discussion.
 
-   Acknowledgements from {{I-D.reddy-add-delegated-credentials}}:
+   Acknowledgements from {{?I-D.reddy-add-delegated-credentials}}:
    : Thanks to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz,
    and Michael Richardson for the discussion and comments.

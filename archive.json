@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-25T01:00:19.354720+00:00",
+  "timestamp": "2024-06-27T01:00:41.032742+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -338,6 +338,48 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOMJRu5c5zccz6",
+      "title": "RFC 5625 is not the focus",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/8",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-06-25T05:24:26Z",
+      "updatedAt": "2024-06-25T05:46:48Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "03754934b3dcebee4eea8c4e6139b5b36853793f",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "92c7c5bfebfaa8f910c2712ef2cbc9c4f0d8df85",
+      "closedAt": "2024-06-25T05:46:48Z",
+      "mergedAt": "2024-06-25T05:46:48Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "705cd1badb64b6f41588a9c1c67aae5e46792c5b"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c5_ZeIN",
+          "commit": {
+            "abbreviatedOid": "92c7c5b"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-25T05:44:27Z",
+          "updatedAt": "2024-06-25T05:44:27Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

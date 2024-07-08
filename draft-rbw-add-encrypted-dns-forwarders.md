@@ -367,7 +367,7 @@ The service can end the delegation at any time by instructing the CA
    are discussed in {{Section 7 of !RFC9462}}.
 
 
-   The communication between the CPE and endpoints is encrypted using WPA2/3,
+   The communication between the CPE and endpoints is encrypted using mechanisms such as WPA2/3,
    and any communication with the DNS server co-located on the CPE is also protected.
    However, the client does not know whether the DNS server is co-located on the CPE or not.
    If the client uses clear text DNS, it will assume the DNS messages are susceptible to

@@ -372,7 +372,7 @@ The service can end the delegation at any time by instructing the CA
    However, the client does not know whether the DNS server is co-located on the CPE or not.
    If the client uses clear text DNS (i.e., Do53), it will assume that the DNS messages are susceptible to
    pervasive monitoring. For instance, in an Enterprise deployment, multiple network devices
-   could exist between the endpoint and the CPE, and hosting an encrypted DNS server on
+   could exist between an endpoint and the CPE;  hosting an encrypted DNS server on
    the CPE minimizes the impact of a breach, which is an essential zero trust principle. Furthermore,
    the client and user would be able to identify the entity hosting the encrypted DNS server
    using the ADN assigned to it.

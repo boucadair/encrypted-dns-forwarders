@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 8 January 2025                                           Orange
+Expires: 9 January 2025                                           Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                             7 July 2024
+                                                             8 July 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2025.
+   This Internet-Draft will expire on 9 January 2025.
 
 Copyright Notice
 
@@ -389,14 +389,14 @@ Table of Contents
    discussed in Section 7 of [RFC9462].
 
    The communication between the CPE and endpoints is encrypted using
-   WPA2/3, and any communication with the DNS server co-located on the
-   CPE is also protected.  However, the client does not know whether the
-   DNS server is co-located on the CPE or not.  If the client uses clear
-   text DNS, it will assume the DNS messages are susceptible to
-   pervasive monitoring.  For instance, in an Enterprise deployment,
-   multiple network devices could exist between the endpoint and the
-   CPE, and hosting an encrypted DNS server on the CPE minimizes the
-   impact of a breach, which is an essential zero trust principle.
+   mechanisms such as WPA2/3, and any communication with the DNS server
+   co-located on the CPE is also protected.  However, the client does
+   not know whether the DNS server is co-located on the CPE or not.  If
+   the client uses clear text DNS, it will assume the DNS messages are
+   susceptible to pervasive monitoring.  For instance, in an Enterprise
+   deployment, multiple network devices could exist between the endpoint
+   and the CPE, and hosting an encrypted DNS server on the CPE minimizes
+   the impact of a breach, which is an essential zero trust principle.
    Furthermore, the client and user would be able to identify the entity
    hosting the encrypted DNS server using the ADN assigned to it.
 

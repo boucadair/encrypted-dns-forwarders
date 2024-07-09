@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T01:06:15.392799+00:00",
+  "timestamp": "2024-07-09T01:01:57.506115+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -377,6 +377,93 @@
           "body": "",
           "createdAt": "2024-06-25T05:44:27Z",
           "updatedAt": "2024-06-25T05:44:27Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOMJRu5c50m5Fp",
+      "title": "Address comments from Ben",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/9",
+      "state": "MERGED",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-07T08:13:24Z",
+      "updatedAt": "2024-07-08T13:09:54Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "295636aa1e8d2c680ab9a32ec8d1c1da26fd0537",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "tireddy2-patch-5",
+      "headRefOid": "8cd19fa2cc4d60a9eea1682c03bf1644bb494595",
+      "closedAt": "2024-07-08T13:09:54Z",
+      "mergedAt": "2024-07-08T13:09:54Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "282374caa1d6146ce58e001c916b0be97ad951f5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6A5OLD",
+          "commit": {
+            "abbreviatedOid": "6774b31"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-07-08T07:25:28Z",
+          "updatedAt": "2024-07-08T07:27:16Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n   The communication between the CPE and endpoints is encrypted using mechanisms such as WPA2/3,\r\n```",
+              "createdAt": "2024-07-08T07:25:29Z",
+              "updatedAt": "2024-07-08T07:27:16Z"
+            },
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\n   If the client uses clear text DNS (i.e., Do53), it will assume that the DNS messages are susceptible to\r\n```",
+              "createdAt": "2024-07-08T07:25:57Z",
+              "updatedAt": "2024-07-08T07:27:16Z"
+            },
+            {
+              "originalPosition": 10,
+              "body": "```suggestion\r\n   could exist between an endpoint and the CPE;  hosting an encrypted DNS server on\r\n```",
+              "createdAt": "2024-07-08T07:26:57Z",
+              "updatedAt": "2024-07-08T07:27:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6A8JqT",
+          "commit": {
+            "abbreviatedOid": "8cd19fa"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-08T13:05:03Z",
+          "updatedAt": "2024-07-08T13:05:03Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6A8Mcn",
+          "commit": {
+            "abbreviatedOid": "8cd19fa"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-08T13:09:49Z",
+          "updatedAt": "2024-07-08T13:09:49Z",
           "comments": []
         }
       ]

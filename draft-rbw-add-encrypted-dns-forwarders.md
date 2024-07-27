@@ -147,32 +147,33 @@ refer to {{?RFC5625}} for such matters.
    {{fig1}} shows various network setups where the CPE embeds a caching
    encrypted DNS forwarder.
 
-~~~~
-   (a)
 
-                         ,--,--,--.             ,--,--,--.
-                      ,-'          `-.       ,-'   ISP    `-.
-              Host---(      LAN      CPE----(    DNS Resolver)
-                |     `-.          ,-'|      `-.          ,-'
-                |        `--'--'--'   |       | `--'--'--'
-                |                     |<=DNR=>|     |
-                |<========DNR========>|       |     |
-                |                     |             |
-                |<=====Encrypted=====>|<=Encrypted=>|
-                |         DNS         |     DNS     |
+~~~~aasvg
+   (a)
+                  .--------------.         .-------------.
+                 |                |       |      ISP      |
+          Host---|      LAN      CPE------|  DNS Resolver |
+            |    |                |       |'-------------'
+            |     '--------------'|       |         |
+            |                     |       |         |
+            |                     |<=DNR=>|         |
+            |<========DNR========>|       |         |
+            |                     |                 |
+            |<===Encrypted DNS===>|<=Encrypted DNS=>|
+            |                     |                 |
 
    (b)
-
-                   ,--,--,--.             ,--,--,--.
-                ,-'          `-.       ,-'   ISP    `-.      3rd Party
-        Host---(      LAN      CPE----(                )--- DNS Resolver
-          |     `-.          ,-'|      `-.          ,-'        |
-          |        `--'--'--'   |       | `--'--'--'           |
-          |                     |<=DNR=>|                      |
-          |<========DNR========>|       |                      |
-          |                     |                              |
-          |<=====Encrypted=====>|<=========Encrypted DNS======>|
-          |         DNS         |                              |
+              .--------------.         .------------.
+             |                |       |              |      3rd Party
+      Host---|      LAN      CPE------|      ISP     |------DNS Resolver
+        |    |                |       |              |        |
+        |     '--------------'|       |'------------'         |
+        |                     |       |                       |
+        |                     |<=DNR=>|                       |
+        |<========DNR========>|       |                       |
+        |                     |                               |
+        |<===Encrypted DNS===>|<========Encrypted DNS========>|
+        |                     |                               |
 ~~~~
 {: #fig1 title="Proxied Encrypted DNS Sessions"}
 

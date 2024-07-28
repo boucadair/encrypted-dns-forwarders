@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-25T01:02:44.245734+00:00",
+  "timestamp": "2024-07-28T01:07:26.590295+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -467,6 +467,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOMJRu5c52poan",
+      "title": "convert diagram to AASVG",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/10",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-27T19:03:32Z",
+      "updatedAt": "2024-07-27T19:03:33Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "282374caa1d6146ce58e001c916b0be97ad951f5",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "aasvg",
+      "headRefOid": "fccbd5d544cd91d57588c919c026022a6d9ba9f2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }

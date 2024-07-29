@@ -87,7 +87,7 @@ Table of Contents
      6.1.  Normal Certificates
      6.2.  Delegated Credentials
      6.3.  Name Constraints
-     6.4.  Short-Term Automatically Renewed (STAR) Certificates
+     6.4.  ACME Delegated Certificates
      6.5.  Raw Public Keys
      6.6.  Wildcard Certificate
      6.7.  Local CA: Certificate Authority Built Into CPE
@@ -222,29 +222,30 @@ Table of Contents
 
 4.  Requirements
 
-   R-REDUCE-CA: Reduce the use of a Certificate Authority for each CPE,
-   compared to obtaining and renewing one certificate for each CPE from
-   a public Certificate Authority.
+   R-REDUCE-CA:  Reduce the use of a Certificate Authority for each CPE,
+      compared to obtaining and renewing one certificate for each CPE
+      from a public Certificate Authority.
 
-   R-ELIMINATE-CA: Eliminate using Certificate Authorities for each CPE.
+   R-ELIMINATE-CA:  Eliminate using Certificate Authorities for each
+      CPE.
 
-   R-SUPPORT-CA: Existing support by Certificate Authorities.
+   R-SUPPORT-CA:  Existing support by Certificate Authorities.
 
-   R-SUPPORT-CLIENT: Existing support client libraries or client
-   programs
+   R-SUPPORT-CLIENT:  Existing support client libraries or client
+      programs
 
 5.  Non-Requirements
 
-   NR-REVOKE: Provide mechanism to revoke certificate.  End users are
-   extremely unlikely to contact the device vendor or their ISP if a CPE
-   device is replaced (stolen, upgraded).  Rather, the user will replace
-   the CPE and configure their client devices (laptops, smartphones, IoT
-   devices) to authorize the new CPE.  As part of that configuration,
-   the client device might refuse to authorize the previous CPE.  While
-   this does leave the client devices open to attack by the previous
-   (stolen) CPE, the attacker would also need to have access to the
-   victim's physical network or broadcast a strong enough Wi-Fi signal
-   to the victim's clients.
+   NR-REVOKE:  Provide mechanism to revoke certificate.  End users are
+      extremely unlikely to contact the device vendor or their ISP if a
+      CPE device is replaced (stolen, upgraded).  Rather, the user will
+      replace the CPE and configure their client devices (laptops,
+      smartphones, IoT devices) to authorize the new CPE.  As part of
+      that configuration, the client device might refuse to authorize
+      the previous CPE.  While this does leave the client devices open
+      to attack by the previous (stolen) CPE, the attacker would also
+      need to have access to the victim's physical network or broadcast
+      a strong enough Wi-Fi signal to the victim's clients.
 
 6.  Analysis of Solutions to Requirements
 
@@ -266,7 +267,8 @@ Table of Contents
    |         Name |   Yes    |     No    |     No     |       No       |
    |  constraints |          |           |            |                |
    +--------------+----------+-----------+------------+----------------+
-   |         STAR |    No    |     No    |    Yes     |      Yes       |
+   |         ACME |    No    |     No    |    Yes     |      Yes       |
+   |    delegated |          |           |            |                |
    | certificates |          |           |            |                |
    +--------------+----------+-----------+------------+----------------+
    |   Raw Public |   Yes    |    Yes    |    n/a     |     Some,      |
@@ -305,10 +307,10 @@ Table of Contents
 6.2.  Delegated Credentials
 
    Delegated credentials [RFC9345] allows the entity operating the CPE
-   (e.g., vendor, ISP) to sign their own certificates to each of the
-   CPE, rather than relying on a public CA to sign those certificates.
-   The frequency of CA interactions remains the same as with normal
-   certificates Section 6.1
+   (e.g., vendor, ISP) to sign a 7 day validity for the CPE's public
+   key.  The frequency of CA interactions remains the same as with
+   normal certificates Section 6.1, but the interactions are with the
+   vendor's CA rather than the public CA.
 
    R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
    vendor- or ISP-operated CA.
@@ -320,7 +322,7 @@ Table of Contents
 
    R-SUPPORT-CA: no
 
-   R-SUPPORT-CLIENT: no, only Firefox
+   R-SUPPORT-CLIENT: no, only supported by Firefox
 
 6.3.  Name Constraints
 
@@ -343,27 +345,19 @@ Table of Contents
 
    R-SUPPORT-CLIENT: no
 
-6.4.  Short-Term Automatically Renewed (STAR) Certificates
+6.4.  ACME Delegated Certificates
 
-      Note: STAR by itself does not seem to be a solution.  Perhaps
-      remove this section??
-
-   Short-Term Automatically Renewed Certificates [RFC8739] have a short
-   lifetime (e.g., 30 or 90 days) so that a stolen private key can only
-   be utilized during that lifetime.  This reduces need for a
-   certificate revocation list (CRL), OCSP, or OCSP stapling Section 8
-   of [RFC6066] (which has a nearly-identical effect as STAR
-   certificates).
+   ACME Delegated Certificates [RFC9115] allows the CPE to use a vendor-
+   operated service to obtain a CA-signed ACME delegated certificate.
 
    R-REDUCE-CA: No
 
    R-ELIMINATE-CA: No
 
-   STAR certificates have very good support by CAs via the [ACME] API
-   and perfect support on clients that already perform certificate
-   validation.
+   ACME delegated certificates do not require changes to client
+   authentication libraries or operation.
 
-   R-SUPPORT-CA: yes
+   R-SUPPORT-CA: Unknown
 
    R-SUPPORT-CLIENT: yes
 
@@ -657,11 +651,6 @@ Table of Contents
 
 11.2.  Informative References
 
-   [ACME]     Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
-              Kasten, "Automatic Certificate Management Environment
-              (ACME)", RFC 8555, DOI 10.17487/RFC8555, March 2019,
-              <https://www.rfc-editor.org/rfc/rfc8555>.
-
    [https-local-dom]
               Thomson, M., "HTTPS for Local Domains", April 2021,
               <https://docs.google.com/document/
@@ -701,11 +690,6 @@ Table of Contents
    [RFC5625]  Bellis, R., "DNS Proxy Implementation Guidelines",
               BCP 152, RFC 5625, DOI 10.17487/RFC5625, August 2009,
               <https://www.rfc-editor.org/rfc/rfc5625>.
-
-   [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
-              Extensions: Extension Definitions", RFC 6066,
-              DOI 10.17487/RFC6066, January 2011,
-              <https://www.rfc-editor.org/rfc/rfc6066>.
 
    [RFC6598]  Weil, J., Kuarsingh, V., Donley, C., Liljenstolpe, C., and
               M. Azinger, "IANA-Reserved IPv4 Prefix for Shared Address

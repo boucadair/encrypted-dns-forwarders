@@ -201,6 +201,81 @@ refer to {{?RFC5625}} for such matters.
 
    *  The leg between the CPE and an upstream DNS resolver.
 
+# Requirements
+
+R-REDUCE-CA: Reduce the use of a Certificate Authority for each CPE,
+compared to obtaining and renewing one certificate for each CPE from a public
+Certificate Authority.
+
+R-ELIMINATE-CA: Eliminate using Certificate Authorities for each CPE.
+
+R-SUPPORT-CA: already supported by Certificate Authorities
+
+R-SUPPORT-CLIENT: already supported by clients
+
+## R-REDUCE-CA: Reduce use of Certificate Authority
+
+discuss...
+
+## R-ELIMINATE-CA: Eliminate CA
+
+discuss...
+
+
+# Non-Requirements
+
+NR-REVOKE: Provide mechanism to revoke certificate
+
+... any other non-requirements? ...
+
+## NR-REVOKE: Not a Requirement: Revoke Certificate
+
+The end user would have to contact the device vendor and/or their ISP when their device is
+lost, stolen, or replaced (upgraded). This is an unreasonable expectation for the end user
+to perform. It is also unlikely the vendor or ISP would provide this service to their
+end users.
+
+
+# Analysis of Solutions to Requirements
+
+|     solution            | Reduce CA | Eliminate CA | CA support | client support |
+|:-----------------------:|:---------:|:------------:|:----------:|:--------------:|
+| delegated credentials   |  Yes      |   No         |  no        |   no           |
+| name constraints        |  Yes      |   No         |  no        |   no           |
+| STAR certificates       |  No       |   No         |  yes       |   yes          |
+| OOB public key          |  Yes      |   Yes        |  n/a       |   no?          |
+{: #table1 title="Summary of Solution Analysis"}
+
+## Delegated Credentials
+
+{{?RFC9345}}
+
+R-REDUCE-CA: yes
+
+R-ELIMINATE-CA: no
+
+## Name Constraints
+
+{{Section 4.2.1.10 of ?RFC5280}}
+
+R-REDUCE-CA: yes
+
+R-ELIMINATE-CA: no
+
+## Short-Term Automatically Renewed Certificates (STAR)
+
+{{?RFC8739}}
+
+## Out of band public keys (OOB)
+
+{{?RFC7250}}
+
+R-REDUCE-CA: yes
+
+R-ELIMINATE-CA: yes
+
+
+
 # Hosting Encrypted DNS Forwarder in Local Networks
 
    This section discusses some deployment challenges to host an

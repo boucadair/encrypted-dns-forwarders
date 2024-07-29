@@ -171,10 +171,8 @@ Table of Contents
           Host---|      LAN      CPE------|  DNS Resolver |
             |    |                |       |'-------------'
             |     '--------------'|       |         |
-            |                     |       |         |
             |                     |<=DNR=>|         |
             |<========DNR========>|       |         |
-            |                     |                 |
             |<===Encrypted DNS===>|<=Encrypted DNS=>|
             |                     |                 |
 
@@ -184,10 +182,8 @@ Table of Contents
       Host---|      LAN      CPE------|      ISP     |------DNS Resolver
         |    |                |       |              |        |
         |     '--------------'|       |'------------'         |
-        |                     |       |                       |
         |                     |<=DNR=>|                       |
         |<========DNR========>|       |                       |
-        |                     |                               |
         |<===Encrypted DNS===>|<========Encrypted DNS========>|
         |                     |                               |
 

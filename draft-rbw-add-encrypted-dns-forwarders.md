@@ -168,10 +168,8 @@ refer to {{?RFC5625}} for such matters.
           Host---|      LAN      CPE------|  DNS Resolver |
             |    |                |       |'-------------'
             |     '--------------'|       |         |
-            |                     |       |         |
             |                     |<=DNR=>|         |
             |<========DNR========>|       |         |
-            |                     |                 |
             |<===Encrypted DNS===>|<=Encrypted DNS=>|
             |                     |                 |
 
@@ -181,10 +179,8 @@ refer to {{?RFC5625}} for such matters.
       Host---|      LAN      CPE------|      ISP     |------DNS Resolver
         |    |                |       |              |        |
         |     '--------------'|       |'------------'         |
-        |                     |       |                       |
         |                     |<=DNR=>|                       |
         |<========DNR========>|       |                       |
-        |                     |                               |
         |<===Encrypted DNS===>|<========Encrypted DNS========>|
         |                     |                               |
 ~~~~

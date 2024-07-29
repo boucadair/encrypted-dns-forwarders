@@ -69,6 +69,19 @@ informative:
         date: December 2018
      target: https://www.broadband-forum.org/technical/download/TR-069.pdf
 
+  plex-https:
+     title: "How Plex Is Doing HTTPS for all its Users"
+     date: June 2015
+     target: https://words.filippo.io/how-plex-is-doing-https-for-all-its-users
+
+  https-local-dom:
+     title: "HTTPS for Local Domains"
+     author:
+       org: Mozilla
+       name: Martin Thomson
+     date: April 2021
+     target: https://docs.google.com/document/d/170rFC91jqvpFrKIqG4K8Vox8AL4LeQXzfikBQXYPmzU
+
 --- abstract
 
 Typical connectivity service offerings based upon on Customer Premise Equipment (CPEs)
@@ -209,70 +222,186 @@ Certificate Authority.
 
 R-ELIMINATE-CA: Eliminate using Certificate Authorities for each CPE.
 
-R-SUPPORT-CA: already supported by Certificate Authorities
+R-SUPPORT-CA: Existing support by Certificate Authorities.
 
-R-SUPPORT-CLIENT: already supported by clients
-
-## R-REDUCE-CA: Reduce use of Certificate Authority
-
-discuss...
-
-## R-ELIMINATE-CA: Eliminate CA
-
-discuss...
+R-SUPPORT-CLIENT: Existing support client libraries or client programs
 
 
 # Non-Requirements
 
-NR-REVOKE: Provide mechanism to revoke certificate
+NR-REVOKE: Provide mechanism to revoke certificate. End users are
+extremely unlikely to contact the device vendor or their ISP if a CPE
+device is replaced (stolen, upgraded).  Rather, the user will replace
+the CPE and configure their client devices (laptops, smartphones, IoT
+devices) to authorize the new CPE.  As part of that configuration, the
+client device might refuse to authorize the previous CPE.  While this
+does leave the client devices open to attack by the previous (stolen)
+CPE, the attacker would also need to have access to the victim's
+physical network or broadcast a strong enough Wi-Fi signal to the
+victim's clients.
 
-... any other non-requirements? ...
-
-## NR-REVOKE: Not a Requirement: Revoke Certificate
-
-The end user would have to contact the device vendor and/or their ISP when their device is
-lost, stolen, or replaced (upgraded). This is an unreasonable expectation for the end user
-to perform. It is also unlikely the vendor or ISP would provide this service to their
-end users.
 
 
 # Analysis of Solutions to Requirements
 
-|     solution            | Reduce CA | Eliminate CA | CA support | client support |
-|:-----------------------:|:---------:|:------------:|:----------:|:--------------:|
-| delegated credentials   |  Yes      |   No         |  no        |   no           |
-| name constraints        |  Yes      |   No         |  no        |   no           |
-| STAR certificates       |  No       |   No         |  yes       |   yes          |
-| OOB public key          |  Yes      |   Yes        |  n/a       |   no?          |
+
+This section describes several solutions which can meet some of the requirements.  This is first summarized in the table and
+detailed in subsections.
+
+
+|    solution                 | Reduce CA             | Eliminate CA     | existing CA support | existing client support |
+|----------------------------:|:---------------------:|:----------------:|:-------------------:|:-----------------------:|
+| Normal certificates         | No                    |  No              |   Yes               |   Yes                   |
+| Delegated credentials       | Yes, somewhat         |  No              |   No                |   No, (*)               |
+| Name constraints            | Yes                   |  No              |   No                |   No                    |
+| STAR certificates           | No                    |  No              |   Yes               |   Yes                   |
+| Raw Public Keys             | Yes                   |  Yes             |   n/a               |   Some, (*)             |
+| Wildcard certificate        | No                    |  No              |   Yes               |   Yes                   |
+| Local Certificate Authority | No                    |  No              |   Yes               |   Yes                   |
 {: #table1 title="Summary of Solution Analysis"}
 
-## Delegated Credentials
 
-{{?RFC9345}}
 
-R-REDUCE-CA: yes
+## Normal Certificates {#normal-certificates}
+
+This solution has the CPE request a cloud server obtain a certificate
+for the CPE from a public CA. This solution is deployed in production
+by Mozilla {{https-local-dom}}, McAfee, and Cujo.  Today, this is best
+practice.  However, it suffers from the dependency on both the public
+certificate authority and the vendor's service, which are necessary
+for both initial deployment and for certificate renewal.
+
+R-REDUCE-CA: no
 
 R-ELIMINATE-CA: no
 
-## Name Constraints
+Both CAs and clients already support the normal mode of operation.
 
-{{Section 4.2.1.10 of ?RFC5280}}
+R-SUPPORT-CA: yes
 
-R-REDUCE-CA: yes
+R-SUPPORT-CLIENT: yes
+
+## Delegated Credentials {#delegated}
+
+Delegated credentials {{?RFC9345}} allows the entity operating the CPE (e.g., vendor, ISP) to sign their
+own certificates to each of the CPE, rather than relying on a public CA to sign those certificates. The frequency
+of CA interactions remains the same as with normal certificates {{normal-certificates}}
+
+R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a vendor- or ISP-operated CA.
 
 R-ELIMINATE-CA: no
 
-## Short-Term Automatically Renewed Certificates (STAR)
+Delegated credentials have no existing support by CAs.  The only client supporting delegated
+credentials is Firefox.
 
-{{?RFC8739}}
+R-SUPPORT-CA: no
 
-## Out of band public keys (OOB)
+R-SUPPORT-CLIENT: no, only Firefox
 
-{{?RFC7250}}
+
+## Name Constraints {#name-constraints}
+
+Name constraints {{Section 4.2.1.10 of ?RFC5280}} allows the entity
+operating the CPE (e.g., vendor, ISP) to obtain a certificate from a
+public Certificate Authority for a subdomain (dNSName) which is then
+used to sign certificates for each CPE.  For example, the network "example.net"
+could obtain a name constrained certificate for ".cpe.example.net" and then
+issue its own certificates such as "customer-123.cpe.example.net".
+
+R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's certificate authority.
+
+R-ELIMINATE-CA: no
+
+Name constraints have no existing support by CAs or by clients.
+
+R-SUPPORT-CA: no
+
+R-SUPPORT-CLIENT: no
+
+## Short-Term Automatically Renewed (STAR) Certificates
+
+> Note: STAR by itself does not seem to be a solution.  Perhaps remove this section??
+
+Short-Term Automatically Renewed Certificates {{?RFC8739}} have a
+short lifetime (e.g., 30 or 90 days) so that a stolen private key can
+only be utilized during that lifetime.  This reduces need for a
+certificate revocation list (CRL), OCSP, or OCSP stapling {{Section 8
+of ?RFC6066}} (which has a nearly-identical effect as STAR certificates).
+
+R-REDUCE-CA: No
+
+R-ELIMINATE-CA: No
+
+STAR certificates have very good support by CAs via the {{?ACME=RFC8555}} API and perfect support on clients that already perform certificate validation.
+
+R-SUPPORT-CA: yes
+
+R-SUPPORT-CLIENT: yes
+
+## Raw Public Keys
+
+Raw public keys (RPK) {{?RFC7250}} can be authenticated out-of-band or using trust on first use (TOFU).
+For a small network, this can be more appealing than a local or remote Certificate Authority signing
+keys and dealing with certificate renewal.
 
 R-REDUCE-CA: yes
 
 R-ELIMINATE-CA: yes
+
+Raw public keys have been supported by OpenSSL and wolfSSL since 2023
+and by GnuTLS since 2019. However, raw public keys are not supported
+by browsers or by curl.
+
+R-SUPPORT-CA: n/a, this system does not use Certificate Authorities at all.
+
+R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK
+
+
+## Wildcard Certificate {#wildcard}
+
+A wildcard certificate can be issued to the vendor, who then signs each of the CPE certificates. This
+removes the public CA from signing the certificates of each CPE; instead, the vendor's CA performs
+this signing. Evil twin attacks are prevented by a unique, per-network string in the certificate's
+Subject Alt Name (SAN).  This is deployed in production by Plex {{plex-https}}.
+
+R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's certificate authority.
+
+R-ELIMINATE-CA: no
+
+This operates similar to {#name-constraints} but has advantage of working with existing CAs and
+existing clients.
+
+R-SUPPORT-CA: yes
+
+R-SUPPORT-CLIENT: yes
+
+## Local CA: Certificate Authority Built Into CPE
+
+The CPE would be a Certificate Authority capable of signing certificates for other in-home
+devices. The CA in the CPE would be limitied to signing only certificates belonging to
+that home network (using {{wildcard}}, {delegated}, {{name-constraints}}, or {{wildcard}}).
+This allows the CPE to sign certificates for other devices within the network such as
+printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
+on the local network.
+
+This functionality is beyond the scope of the ADD working group but is
+mentioned because it was suggested during an ADD meeting.
+
+R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's certificate authority for the
+CPE itself.  For other devices within the home network (e.g., printers), it
+eliminates interaction with the vendor's CA.
+
+R-ELIMINATE-CA: no
+
+While technically the industry could build such a system, building such a system
+across the ecosystem of client operating systems would be a daunting task.
+
+R-SUPPORT-CA: yes
+
+R-SUPPORT-CLIENT: yes
 
 
 

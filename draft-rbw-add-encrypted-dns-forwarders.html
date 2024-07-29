@@ -1162,60 +1162,92 @@ the problem of deploying a new feature to CAs, TLS clients, and servers.<a href=
             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-proxied-dns-in-local-networ" class="internal xref">Proxied DNS In Local Networks</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-hosting-encrypted-dns-forwa" class="internal xref">Hosting Encrypted DNS Forwarder in Local Networks</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-discovery-mechanisms-and-na" class="internal xref">Discovery Mechanisms and Naming Constraints</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
-                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-discovery-of-designated-res" class="internal xref">Discovery of Designated Resolvers (DDR)</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-requirements" class="internal xref">Requirements</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
-                    <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-discovery-of-network-design" class="internal xref">Discovery of Network-designated Resolvers (DNR)</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-non-requirements" class="internal xref">Non-Requirements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-analysis-of-solutions-to-re" class="internal xref">Analysis of Solutions to Requirements</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normal-certificates" class="internal xref">Normal Certificates</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-delegated-credentials" class="internal xref">Delegated Credentials</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-name-constraints" class="internal xref">Name Constraints</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-short-term-automatically-re" class="internal xref">Short-Term Automatically Renewed (STAR) Certificates</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-raw-public-keys" class="internal xref">Raw Public Keys</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
+                <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-wildcard-certificate" class="internal xref">Wildcard Certificate</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
+                <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="auto internal xref">6.7</a>.  <a href="#name-local-ca-certificate-author" class="internal xref">Local CA: Certificate Authority Built Into CPE</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-hosting-encrypted-dns-forwa" class="internal xref">Hosting Encrypted DNS Forwarder in Local Networks</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-discovery-mechanisms-and-na" class="internal xref">Discovery Mechanisms and Naming Constraints</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.1">
+                    <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="auto internal xref">7.1.1</a>.  <a href="#name-discovery-of-designated-res" class="internal xref">Discovery of Designated Resolvers (DDR)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.2">
+                    <p id="section-toc.1-1.7.2.1.2.2.1"><a href="#section-7.1.2" class="auto internal xref">7.1.2</a>.  <a href="#name-discovery-of-network-design" class="internal xref">Discovery of Network-designated Resolvers (DNR)</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-limitations-of-existing-sol" class="internal xref">Limitations of Existing Solutions</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-certificate-issuance-issues" class="internal xref">Certificate Issuance Issues</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-delegated-certificate-issua" class="internal xref">Delegated Certificate Issuance</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-limitations-of-name-constra" class="internal xref">Limitations of Name Constraints Extension</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-limitations-of-star-certifi" class="internal xref">Limitations of Star certificates</a></p>
-</li>
-            </ul>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-limitations-of-existing-sol" class="internal xref">Limitations of Existing Solutions</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-certificate-issuance-issues" class="internal xref">Certificate Issuance Issues</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-delegated-certificate-issua" class="internal xref">Delegated Certificate Issuance</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-limitations-of-name-constra" class="internal xref">Limitations of Name Constraints Extension</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+                <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-limitations-of-star-certifi" class="internal xref">Limitations of Star certificates</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1457,56 +1489,296 @@ or Security Service Provider.<a href="#section-2-3.12.1" class="pilcrow">¶</a><
       </ul>
 </section>
 </div>
-<div id="hosting-encrypted-dns-forwarder-in-local-networks">
+<div id="requirements">
 <section id="section-4">
-      <h2 id="name-hosting-encrypted-dns-forwa">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-hosting-encrypted-dns-forwa" class="section-name selfRef">Hosting Encrypted DNS Forwarder in Local Networks</a>
+      <h2 id="name-requirements">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
-<p id="section-4-1">This section discusses some deployment challenges to host an
-   encrypted DNS forwarder within a local network.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">R-REDUCE-CA: Reduce the use of a Certificate Authority for each CPE,
+compared to obtaining and renewing one certificate for each CPE from a public
+Certificate Authority.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">R-ELIMINATE-CA: Eliminate using Certificate Authorities for each CPE.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">R-SUPPORT-CA: Existing support by Certificate Authorities.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">R-SUPPORT-CLIENT: Existing support client libraries or client programs<a href="#section-4-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="non-requirements">
+<section id="section-5">
+      <h2 id="name-non-requirements">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-non-requirements" class="section-name selfRef">Non-Requirements</a>
+      </h2>
+<p id="section-5-1">NR-REVOKE: Provide mechanism to revoke certificate. End users are
+extremely unlikely to contact the device vendor or their ISP if a CPE
+device is replaced (stolen, upgraded).  Rather, the user will replace
+the CPE and configure their client devices (laptops, smartphones, IoT
+devices) to authorize the new CPE.  As part of that configuration, the
+client device might refuse to authorize the previous CPE.  While this
+does leave the client devices open to attack by the previous (stolen)
+CPE, the attacker would also need to have access to the victim's
+physical network or broadcast a strong enough Wi-Fi signal to the
+victim's clients.<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="analysis-of-solutions-to-requirements">
+<section id="section-6">
+      <h2 id="name-analysis-of-solutions-to-re">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-analysis-of-solutions-to-re" class="section-name selfRef">Analysis of Solutions to Requirements</a>
+      </h2>
+<p id="section-6-1">This section describes several solutions which can meet some of the requirements.  This is first summarized in the table and
+detailed in subsections.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<span id="name-summary-of-solution-analysi"></span><div id="table1">
+<table class="center" id="table-1">
+        <caption>
+<a href="#table-1" class="selfRef">Table 1</a>:
+<a href="#name-summary-of-solution-analysi" class="selfRef">Summary of Solution Analysis</a>
+        </caption>
+<thead>
+          <tr>
+            <th class="text-right" rowspan="1" colspan="1">solution</th>
+            <th class="text-center" rowspan="1" colspan="1">Reduce CA</th>
+            <th class="text-center" rowspan="1" colspan="1">Eliminate CA</th>
+            <th class="text-center" rowspan="1" colspan="1">existing CA support</th>
+            <th class="text-center" rowspan="1" colspan="1">existing client support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">Normal certificates</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+          </tr>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">Delegated credentials</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes, somewhat</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No, (*)</td>
+          </tr>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">Name constraints</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+          </tr>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">STAR certificates</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+          </tr>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">Raw Public Keys</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">n/a</td>
+            <td class="text-center" rowspan="1" colspan="1">Some, (*)</td>
+          </tr>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">Wildcard certificate</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+          </tr>
+          <tr>
+            <td class="text-right" rowspan="1" colspan="1">Local Certificate Authority</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">No</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+            <td class="text-center" rowspan="1" colspan="1">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<div id="normal-certificates">
+<section id="section-6.1">
+        <h3 id="name-normal-certificates">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normal-certificates" class="section-name selfRef">Normal Certificates</a>
+        </h3>
+<p id="section-6.1-1">This solution has the CPE request a cloud server obtain a certificate
+for the CPE from a public CA. This solution is deployed in production
+by Mozilla <span>[<a href="#https-local-dom" class="cite xref">https-local-dom</a>]</span>, McAfee, and Cujo.  Today, this is best
+practice.  However, it suffers from the dependency on both the public
+certificate authority and the vendor's service, which are necessary
+for both initial deployment and for certificate renewal.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">R-REDUCE-CA: no<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">R-ELIMINATE-CA: no<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.1-4">Both CAs and clients already support the normal mode of operation.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.1-5">R-SUPPORT-CA: yes<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+<p id="section-6.1-6">R-SUPPORT-CLIENT: yes<a href="#section-6.1-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="delegated">
+<section id="section-6.2">
+        <h3 id="name-delegated-credentials">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-delegated-credentials" class="section-name selfRef">Delegated Credentials</a>
+        </h3>
+<p id="section-6.2-1">Delegated credentials <span>[<a href="#RFC9345" class="cite xref">RFC9345</a>]</span> allows the entity operating the CPE (e.g., vendor, ISP) to sign their
+own certificates to each of the CPE, rather than relying on a public CA to sign those certificates. The frequency
+of CA interactions remains the same as with normal certificates <a href="#normal-certificates" class="auto internal xref">Section 6.1</a><a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a vendor- or ISP-operated CA.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-3">R-ELIMINATE-CA: no<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-4">Delegated credentials have no existing support by CAs.  The only client supporting delegated
+credentials is Firefox.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
+<p id="section-6.2-5">R-SUPPORT-CA: no<a href="#section-6.2-5" class="pilcrow">¶</a></p>
+<p id="section-6.2-6">R-SUPPORT-CLIENT: no, only Firefox<a href="#section-6.2-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="name-constraints">
+<section id="section-6.3">
+        <h3 id="name-name-constraints">
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-name-constraints" class="section-name selfRef">Name Constraints</a>
+        </h3>
+<p id="section-6.3-1">Name constraints <span><a href="https://rfc-editor.org/rfc/rfc5280#section-4.2.1.10" class="relref">Section 4.2.1.10</a> of [<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> allows the entity
+operating the CPE (e.g., vendor, ISP) to obtain a certificate from a
+public Certificate Authority for a subdomain (dNSName) which is then
+used to sign certificates for each CPE.  For example, the network "example.net"
+could obtain a name constrained certificate for ".cpe.example.net" and then
+issue its own certificates such as "customer-123.cpe.example.net".<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's certificate authority.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.3-3">R-ELIMINATE-CA: no<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+<p id="section-6.3-4">Name constraints have no existing support by CAs or by clients.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
+<p id="section-6.3-5">R-SUPPORT-CA: no<a href="#section-6.3-5" class="pilcrow">¶</a></p>
+<p id="section-6.3-6">R-SUPPORT-CLIENT: no<a href="#section-6.3-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="short-term-automatically-renewed-star-certificates">
+<section id="section-6.4">
+        <h3 id="name-short-term-automatically-re">
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-short-term-automatically-re" class="section-name selfRef">Short-Term Automatically Renewed (STAR) Certificates</a>
+        </h3>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-6.4-1.1">
+            <p id="section-6.4-1.1.1">Note: STAR by itself does not seem to be a solution.  Perhaps remove this section??<a href="#section-6.4-1.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-6.4-2">Short-Term Automatically Renewed Certificates <span>[<a href="#RFC8739" class="cite xref">RFC8739</a>]</span> have a
+short lifetime (e.g., 30 or 90 days) so that a stolen private key can
+only be utilized during that lifetime.  This reduces need for a
+certificate revocation list (CRL), OCSP, or OCSP stapling <span><a href="https://rfc-editor.org/rfc/rfc6066#section-8" class="relref">Section 8</a> of [<a href="#RFC6066" class="cite xref">RFC6066</a>]</span> (which has a nearly-identical effect as STAR certificates).<a href="#section-6.4-2" class="pilcrow">¶</a></p>
+<p id="section-6.4-3">R-REDUCE-CA: No<a href="#section-6.4-3" class="pilcrow">¶</a></p>
+<p id="section-6.4-4">R-ELIMINATE-CA: No<a href="#section-6.4-4" class="pilcrow">¶</a></p>
+<p id="section-6.4-5">STAR certificates have very good support by CAs via the <span>[<a href="#ACME" class="cite xref">ACME</a>]</span> API and perfect support on clients that already perform certificate validation.<a href="#section-6.4-5" class="pilcrow">¶</a></p>
+<p id="section-6.4-6">R-SUPPORT-CA: yes<a href="#section-6.4-6" class="pilcrow">¶</a></p>
+<p id="section-6.4-7">R-SUPPORT-CLIENT: yes<a href="#section-6.4-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="raw-public-keys">
+<section id="section-6.5">
+        <h3 id="name-raw-public-keys">
+<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-raw-public-keys" class="section-name selfRef">Raw Public Keys</a>
+        </h3>
+<p id="section-6.5-1">Raw public keys (RPK) <span>[<a href="#RFC7250" class="cite xref">RFC7250</a>]</span> can be authenticated out-of-band or using trust on first use (TOFU).
+For a small network, this can be more appealing than a local or remote Certificate Authority signing
+keys and dealing with certificate renewal.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.5-2">R-REDUCE-CA: yes<a href="#section-6.5-2" class="pilcrow">¶</a></p>
+<p id="section-6.5-3">R-ELIMINATE-CA: yes<a href="#section-6.5-3" class="pilcrow">¶</a></p>
+<p id="section-6.5-4">Raw public keys have been supported by OpenSSL and wolfSSL since 2023
+and by GnuTLS since 2019. However, raw public keys are not supported
+by browsers or by curl.<a href="#section-6.5-4" class="pilcrow">¶</a></p>
+<p id="section-6.5-5">R-SUPPORT-CA: n/a, this system does not use Certificate Authorities at all.<a href="#section-6.5-5" class="pilcrow">¶</a></p>
+<p id="section-6.5-6">R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK<a href="#section-6.5-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="wildcard">
+<section id="section-6.6">
+        <h3 id="name-wildcard-certificate">
+<a href="#section-6.6" class="section-number selfRef">6.6. </a><a href="#name-wildcard-certificate" class="section-name selfRef">Wildcard Certificate</a>
+        </h3>
+<p id="section-6.6-1">A wildcard certificate can be issued to the vendor, who then signs each of the CPE certificates. This
+removes the public CA from signing the certificates of each CPE; instead, the vendor's CA performs
+this signing. Evil twin attacks are prevented by a unique, per-network string in the certificate's
+Subject Alt Name (SAN).  This is deployed in production by Plex <span>[<a href="#plex-https" class="cite xref">plex-https</a>]</span>.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+<p id="section-6.6-2">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's certificate authority.<a href="#section-6.6-2" class="pilcrow">¶</a></p>
+<p id="section-6.6-3">R-ELIMINATE-CA: no<a href="#section-6.6-3" class="pilcrow">¶</a></p>
+<p id="section-6.6-4">This operates similar to {#name-constraints} but has advantage of working with existing CAs and
+existing clients.<a href="#section-6.6-4" class="pilcrow">¶</a></p>
+<p id="section-6.6-5">R-SUPPORT-CA: yes<a href="#section-6.6-5" class="pilcrow">¶</a></p>
+<p id="section-6.6-6">R-SUPPORT-CLIENT: yes<a href="#section-6.6-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="local-ca-certificate-authority-built-into-cpe">
+<section id="section-6.7">
+        <h3 id="name-local-ca-certificate-author">
+<a href="#section-6.7" class="section-number selfRef">6.7. </a><a href="#name-local-ca-certificate-author" class="section-name selfRef">Local CA: Certificate Authority Built Into CPE</a>
+        </h3>
+<p id="section-6.7-1">The CPE would be a Certificate Authority capable of signing certificates for other in-home
+devices. The CA in the CPE would be limitied to signing only certificates belonging to
+that home network (using <a href="#wildcard" class="auto internal xref">Section 6.6</a>, {delegated}, <a href="#name-constraints" class="auto internal xref">Section 6.3</a>, or <a href="#wildcard" class="auto internal xref">Section 6.6</a>).
+This allows the CPE to sign certificates for other devices within the network such as
+printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
+on the local network.<a href="#section-6.7-1" class="pilcrow">¶</a></p>
+<p id="section-6.7-2">This functionality is beyond the scope of the ADD working group but is
+mentioned because it was suggested during an ADD meeting.<a href="#section-6.7-2" class="pilcrow">¶</a></p>
+<p id="section-6.7-3">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's certificate authority for the
+CPE itself.  For other devices within the home network (e.g., printers), it
+eliminates interaction with the vendor's CA.<a href="#section-6.7-3" class="pilcrow">¶</a></p>
+<p id="section-6.7-4">R-ELIMINATE-CA: no<a href="#section-6.7-4" class="pilcrow">¶</a></p>
+<p id="section-6.7-5">While technically the industry could build such a system, building such a system
+across the ecosystem of client operating systems would be a daunting task.<a href="#section-6.7-5" class="pilcrow">¶</a></p>
+<p id="section-6.7-6">R-SUPPORT-CA: yes<a href="#section-6.7-6" class="pilcrow">¶</a></p>
+<p id="section-6.7-7">R-SUPPORT-CLIENT: yes<a href="#section-6.7-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="hosting-encrypted-dns-forwarder-in-local-networks">
+<section id="section-7">
+      <h2 id="name-hosting-encrypted-dns-forwa">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-hosting-encrypted-dns-forwa" class="section-name selfRef">Hosting Encrypted DNS Forwarder in Local Networks</a>
+      </h2>
+<p id="section-7-1">This section discusses some deployment challenges to host an
+   encrypted DNS forwarder within a local network.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <div id="discovery-mechanisms-and-naming-constraints">
-<section id="section-4.1">
+<section id="section-7.1">
         <h3 id="name-discovery-mechanisms-and-na">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-discovery-mechanisms-and-na" class="section-name selfRef">Discovery Mechanisms and Naming Constraints</a>
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-discovery-mechanisms-and-na" class="section-name selfRef">Discovery Mechanisms and Naming Constraints</a>
         </h3>
 <div id="discovery-of-designated-resolvers-ddr">
-<section id="section-4.1.1">
+<section id="section-7.1.1">
           <h4 id="name-discovery-of-designated-res">
-<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-discovery-of-designated-res" class="section-name selfRef">Discovery of Designated Resolvers (DDR)</a>
+<a href="#section-7.1.1" class="section-number selfRef">7.1.1. </a><a href="#name-discovery-of-designated-res" class="section-name selfRef">Discovery of Designated Resolvers (DDR)</a>
           </h4>
-<p id="section-4.1.1-1">DDR requires proving possession of an IP address, as the DDR
+<p id="section-7.1.1-1">DDR requires proving possession of an IP address, as the DDR
    certificate contains the server's IPv4 and IPv6 addresses and is
    signed by a certificate authority.  DDR is constrained to public IP
    addresses because (WebPKI) certificate authorities will not sign
    special-purpose IP addresses <span>[<a href="#RFC6890" class="cite xref">RFC6890</a>]</span>, most notably IPv4 private-use
    <span>[<a href="#RFC1918" class="cite xref">RFC1918</a>]</span>, IPv4 shared address <span>[<a href="#RFC6598" class="cite xref">RFC6598</a>]</span>, or IPv6 Unique-Local
-   <span>[<a href="#RFC8190" class="cite xref">RFC8190</a>]</span> address space.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.1-2">A tempting solution for enabling an encrypted DNS forwarder with DDR is to use the CPE's WAN
+   <span>[<a href="#RFC8190" class="cite xref">RFC8190</a>]</span> address space.<a href="#section-7.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1.1-2">A tempting solution for enabling an encrypted DNS forwarder with DDR is to use the CPE's WAN
    IP address for DDR and prove possession of that IP address.  However,
    the CPE's WAN IPv4 address will not be a public IPv4 address if the
    CPE is behind another layer of NAT (either Carrier Grade NAT (CGN) or
    another on-premise NAT), reducing the success of this mechanism to
-   CPE's WAN IPv6 address.<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.1-3">Also, if the ISP renumbers the subscriber's
+   CPE's WAN IPv6 address.<a href="#section-7.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.1.1-3">Also, if the ISP renumbers the subscriber's
    network suddenly (rather than slow IPv6 renumbering described in
    <span>[<a href="#RFC4192" class="cite xref">RFC4192</a>]</span>), encrypted DNS service will be delayed until that new
-   certificate is acquired.<a href="#section-4.1.1-3" class="pilcrow">¶</a></p>
+   certificate is acquired.<a href="#section-7.1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="discovery-of-network-designated-resolvers-dnr">
-<section id="section-4.1.2">
+<section id="section-7.1.2">
           <h4 id="name-discovery-of-network-design">
-<a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-discovery-of-network-design" class="section-name selfRef">Discovery of Network-designated Resolvers (DNR)</a>
+<a href="#section-7.1.2" class="section-number selfRef">7.1.2. </a><a href="#name-discovery-of-network-design" class="section-name selfRef">Discovery of Network-designated Resolvers (DNR)</a>
           </h4>
-<p id="section-4.1.2-1">DNR requires proving possession of a domain name as the encrypted
+<p id="section-7.1.2-1">DNR requires proving possession of a domain name as the encrypted
    resolver's certificate contains the FQDN. For example, the entity (e.g., ISP or
    network administrator) managing the CPE would assign a unique FQDN to
    the CPE. There are two mechanisms for the CPE to obtain the
    certificate for the FQDN: using one of its WAN IP addresses or
    requesting its signed certificate from an Internet-facing server used
    for remote CPE management (e.g., the Auto Configuration Server (ACS)
-   in the CPE WAN Management Protocol <span>[<a href="#TR-069" class="cite xref">TR-069</a>]</span>).<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.2-2">If the CPE's WAN IP address is used, the CPE needs a public IPv4 or a global unicast IPv6
+   in the CPE WAN Management Protocol <span>[<a href="#TR-069" class="cite xref">TR-069</a>]</span>).<a href="#section-7.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.1.2-2">If the CPE's WAN IP address is used, the CPE needs a public IPv4 or a global unicast IPv6
    address together with DNS A or AAAA records pointing to that CPE's
    WAN address to prove possession of the DNS name to obtain a (WebPKI)
    CA-signed certificate. That is, the CPE fulfills the DNS or HTTP
@@ -1515,7 +1787,7 @@ or Security Service Provider.<a href="#section-2-3.12.1" class="pilcrow">¶</a><
    of NAT (either a CGN or another on-premise NAT), reducing the success
    of this mechanism to a CPE's WAN IPv6 address. If the ISP renumbers the subscriber's
    network, the DNS record will also need to expire and changed to
-   reflect the new IP address.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
+   reflect the new IP address.<a href="#section-7.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1523,58 +1795,58 @@ or Security Service Provider.<a href="#section-2-3.12.1" class="pilcrow">¶</a><
 </section>
 </div>
 <div id="limitations-of-existing-solutions">
-<section id="section-5">
+<section id="section-8">
       <h2 id="name-limitations-of-existing-sol">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-limitations-of-existing-sol" class="section-name selfRef">Limitations of Existing Solutions</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-limitations-of-existing-sol" class="section-name selfRef">Limitations of Existing Solutions</a>
       </h2>
 <div id="certificate-issuance-issues">
-<section id="section-5.1">
+<section id="section-8.1">
         <h3 id="name-certificate-issuance-issues">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-certificate-issuance-issues" class="section-name selfRef">Certificate Issuance Issues</a>
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-certificate-issuance-issues" class="section-name selfRef">Certificate Issuance Issues</a>
         </h3>
-<p id="section-5.1-1">The following lists some limitations for certificate issuance:<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">The following lists some limitations for certificate issuance:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.1-2.1">
-            <p id="section-5.1-2.1.1">In case of large scale of CPEs (e.g., millions of devices),
+<li class="normal" id="section-8.1-2.1">
+            <p id="section-8.1-2.1.1">In case of large scale of CPEs (e.g., millions of devices),
 issuing certificate request for a large number of subdomains could
 be treated as an attack by the certificate authorities to
-overwhelm it.<a href="#section-5.1-2.1.1" class="pilcrow">¶</a></p>
+overwhelm it.<a href="#section-8.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-2.2">
-            <p id="section-5.1-2.2.1">Dependency on the CA to issue a large number of certificates.<a href="#section-5.1-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-8.1-2.2">
+            <p id="section-8.1-2.2.1">Dependency on the CA to issue a large number of certificates.<a href="#section-8.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-2.3">
-            <p id="section-5.1-2.3.1">If the CPE uses one of its WAN IP addresses to obtain the
+          <li class="normal" id="section-8.1-2.3">
+            <p id="section-8.1-2.3.1">If the CPE uses one of its WAN IP addresses to obtain the
 certificate for the FQDN, the Internet-facing HTTP server or a DNS
 authoritative server on the CPE to complete the HTTP or DNS
-challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="pilcrow">¶</a></p>
+challenge can be subjected to DDoS attacks.<a href="#section-8.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
 </div>
 <div id="delegated-certificate-issuance">
-<section id="section-5.2">
+<section id="section-8.2">
         <h3 id="name-delegated-certificate-issua">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-delegated-certificate-issua" class="section-name selfRef">Delegated Certificate Issuance</a>
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-delegated-certificate-issua" class="section-name selfRef">Delegated Certificate Issuance</a>
         </h3>
-<p id="section-5.2-1">Let's consider that the encrypted DNS forwarder is hosted on a CPE and provisioned by a
+<p id="section-8.2-1">Let's consider that the encrypted DNS forwarder is hosted on a CPE and provisioned by a
    service (e.g., ACS) in the operator's network. Also, let's assume that each CPE is assigned
    a unique FQDN (e.g., "cpe-12345.example.com" where 12345 is a unique
-   number).<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+   number).<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.2-2.1">
-            <p id="section-5.2-2.1.1">It is best to ensure that such an FQDN does not carry any
+<li class="normal ulEmpty" id="section-8.2-2.1">
+            <p id="section-8.2-2.1.1">It is best to ensure that such an FQDN does not carry any
    Personally Identifiable Information (PII) or device identification
-   details like the customer number or device's serial number.<a href="#section-5.2-2.1.1" class="pilcrow">¶</a></p>
+   details like the customer number or device's serial number.<a href="#section-8.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.2-3">The CPE generates a public and private key-pair, builds a certificate signing
+<p id="section-8.2-3">The CPE generates a public and private key-pair, builds a certificate signing
    request (CSR), and sends the CSR to a service in the operator
    managing the CPE.  Upon receipt of the CSR, the operator's service
    can utilize certificate management protocols like ACME <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span> to automate
    certificate management functions such as domain validation procedure,
-   certificate issuance, and certificate revocation.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2-4">The challenge with this technique is that the service will have to
+   certificate issuance, and certificate revocation.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+<p id="section-8.2-4">The challenge with this technique is that the service will have to
    communicate with the CA to issue certificates for millions of CPEs.
    If an external CA is unable to issue a certificate in time or replace
    an expired certificate, the service would no longer be able to
@@ -1586,43 +1858,43 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
    frequently.  With short-lived certificates, there is a smaller time
    window to renew a certificate and, therefore, a higher risk that a CA
    outage will negatively affect the uptime of the encrypted DNS
-   forwarders on CPEs (and the services offered via these CPEs).<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">These challenges can be addressed by using protocols like
+   forwarders on CPEs (and the services offered via these CPEs).<a href="#section-8.2-4" class="pilcrow">¶</a></p>
+<p id="section-8.2-5">These challenges can be addressed by using protocols like
    ACME to automate the certificate renewal process, ensuring certificates
    are renewed well before expiration. Additionally, incorporating another
    CA as a backup can provide redundancy and further mitigate the risk of
    outages. By having a secondary CA, the service can switch to the backup
    CA in case the primary CA is unavailable, thus maintaining continuous
-   service availability and reducing the risk of service disruption.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
-<p id="section-5.2-6">It offers the additional advantage of improving the security of
+   service availability and reducing the risk of service disruption.<a href="#section-8.2-5" class="pilcrow">¶</a></p>
+<p id="section-8.2-6">It offers the additional advantage of improving the security of
    Browser and CPE interactions. This ensures that HTTPS access to
    the CPE is possible, allowing the device administrator to securely
-   communicate with and manage the CPE.<a href="#section-5.2-6" class="pilcrow">¶</a></p>
+   communicate with and manage the CPE.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="limitations-of-name-constraints-extension">
-<section id="section-5.3">
+<section id="section-8.3">
         <h3 id="name-limitations-of-name-constra">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-limitations-of-name-constra" class="section-name selfRef">Limitations of Name Constraints Extension</a>
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-limitations-of-name-constra" class="section-name selfRef">Limitations of Name Constraints Extension</a>
         </h3>
-<p id="section-5.3-1">A service managing the CPEs could get a CA certificate with name
+<p id="section-8.3-1">A service managing the CPEs could get a CA certificate with name
       constraints extension (<span><a href="https://rfc-editor.org/rfc/rfc5280#section-4.2.1.10" class="relref">Section 4.2.1.10</a> of [<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>) and the
-      service would in-turn act as an ACME server to provision end-entity certificates on CPEs.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+      service would in-turn act as an ACME server to provision end-entity certificates on CPEs.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.3-2.1">
-            <p id="section-5.3-2.1.1">Con:<a href="#section-5.3-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.3-2.1">
+            <p id="section-8.3-2.1.1">Con:<a href="#section-8.3-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.3-2.1.2.1">
-                <p id="section-5.3-2.1.2.1.1">Name constraints extension is not yet supported by CAs,
-     although <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> was standardized way back in 2008.<a href="#section-5.3-2.1.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.3-2.1.2.1">
+                <p id="section-8.3-2.1.2.1.1">Name constraints extension is not yet supported by CAs,
+     although <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> was standardized way back in 2008.<a href="#section-8.3-2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="normal" id="section-5.3-2.2">
-            <p id="section-5.3-2.2.1">Pro:<a href="#section-5.3-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-8.3-2.2">
+            <p id="section-8.3-2.2.1">Pro:<a href="#section-8.3-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.3-2.2.2.1">
-                <p id="section-5.3-2.2.2.1.1">Avoids changing TLS client and server (e.g., stunnel or openssl).<a href="#section-5.3-2.2.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.3-2.2.2.1">
+                <p id="section-8.3-2.2.2.1.1">Avoids changing TLS client and server (e.g., stunnel or openssl).<a href="#section-8.3-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -1630,11 +1902,11 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
 </section>
 </div>
 <div id="limitations-of-star-certificates">
-<section id="section-5.4">
+<section id="section-8.4">
         <h3 id="name-limitations-of-star-certifi">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-limitations-of-star-certifi" class="section-name selfRef">Limitations of Star certificates</a>
+<a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-limitations-of-star-certifi" class="section-name selfRef">Limitations of Star certificates</a>
         </h3>
-<p id="section-5.4-1"><span>[<a href="#RFC9115" class="cite xref">RFC9115</a>]</span> defines a profile of the ACME protocol for generating
+<p id="section-8.4-1"><span>[<a href="#RFC9115" class="cite xref">RFC9115</a>]</span> defines a profile of the ACME protocol for generating
       Delegated certificates.  It allows the CPEs to request from a
       service managing the CPEs, acting as a profiled ACME server, a
       certificate for a delegated identity, i.e., one belonging to the
@@ -1643,35 +1915,35 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
       short-term, Automatically Renewed (STAR) certificate for the same
       delegated identity.  The generated short-term certificate is
       automatically renewed by the ACME CA, periodically fetched by
-      the CPEs, and used to act as encrypted DNS forwarders.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
-<p id="section-5.4-2">The service can end the delegation at any time by instructing the CA
+      the CPEs, and used to act as encrypted DNS forwarders.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-2">The service can end the delegation at any time by instructing the CA
       to stop the automatic renewal and letting the certificate expire
       shortly thereafter.  Star certificates requires support by CAs but
-      does not require changes to the deployed TLS ecosystem.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
+      does not require changes to the deployed TLS ecosystem.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.4-3.1">
-            <p id="section-5.4-3.1.1">Cons:<a href="#section-5.4-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.4-3.1">
+            <p id="section-8.4-3.1.1">Cons:<a href="#section-8.4-3.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.4-3.1.2.1">
-                <p id="section-5.4-3.1.2.1.1">Star certificates require support by CAs.<a href="#section-5.4-3.1.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.4-3.1.2.1">
+                <p id="section-8.4-3.1.2.1.1">Star certificates require support by CAs.<a href="#section-8.4-3.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-5.4-3.1.2.2">
-                <p id="section-5.4-3.1.2.2.1">A primary use case of Star certificates is that of a
+              <li class="normal" id="section-8.4-3.1.2.2">
+                <p id="section-8.4-3.1.2.2.1">A primary use case of Star certificates is that of a
      Content Delivery Network (CDN), the third party, terminating
      TLS sessions on behalf of a content provider (the holder of a
      domain name).  The number of star certificates required for a
      CDN use case will be very much lower than the use case
      discussed in this draft.  It is yet to be seen if CAs will
      agree to support star certificates at a scale of millions of
-     CPEs.<a href="#section-5.4-3.1.2.2.1" class="pilcrow">¶</a></p>
+     CPEs.<a href="#section-8.4-3.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="normal" id="section-5.4-3.2">
-            <p id="section-5.4-3.2.1">Pro:<a href="#section-5.4-3.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-8.4-3.2">
+            <p id="section-8.4-3.2.1">Pro:<a href="#section-8.4-3.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.4-3.2.2.1">
-                <p id="section-5.4-3.2.2.1.1">Avoids changing TLS client and server.<a href="#section-5.4-3.2.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-8.4-3.2.2.1">
+                <p id="section-8.4-3.2.2.1.1">Avoids changing TLS client and server.<a href="#section-8.4-3.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -1681,14 +1953,14 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-6">
+<section id="section-9">
       <h2 id="name-security-considerations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">DNR-related security considerations are discussed in
+<p id="section-9-1">DNR-related security considerations are discussed in
    <span><a href="https://rfc-editor.org/rfc/rfc9463#section-7" class="relref">Section 7</a> of [<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>.  Likewise, DDR-related security considerations
-   are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9462#section-7" class="relref">Section 7</a> of [<a href="#RFC9462" class="cite xref">RFC9462</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">The communication between the CPE and endpoints is encrypted using mechanisms such as WPA2/3,
+   are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9462#section-7" class="relref">Section 7</a> of [<a href="#RFC9462" class="cite xref">RFC9462</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-9-2">The communication between the CPE and endpoints is encrypted using mechanisms such as WPA2/3,
    and any communication with the DNS server co-located on the CPE is also protected.
    However, the client does not know whether the DNS server is co-located on the CPE or not.
    If the client uses clear text DNS (i.e., Do53), it will assume that the DNS messages are susceptible to
@@ -1696,26 +1968,26 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
    could exist between an endpoint and the CPE;  hosting an encrypted DNS server on
    the CPE minimizes the impact of a breach, which is an essential zero trust principle. Furthermore,
    the client and user would be able to identify the entity hosting the encrypted DNS server
-   using the ADN assigned to it.<a href="#section-6-2" class="pilcrow">¶</a></p>
+   using the ADN assigned to it.<a href="#section-9-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-7">
+<section id="section-10">
       <h2 id="name-iana-considerations">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-7-1">This document has no IANA actions.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">This document has no IANA actions.<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-8">
+<section id="section-11">
       <h2 id="name-references">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-8.1">
+<section id="section-11.1">
         <h3 id="name-normative-references">
-<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC5280">[RFC5280]</dt>
@@ -1738,11 +2010,19 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-8.2">
+<section id="section-11.2">
         <h3 id="name-informative-references">
-<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="ACME">[ACME]</dt>
+        <dd>
+<span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Hoffman-Andrews, J.</span>, <span class="refAuthor">McCarney, D.</span>, and <span class="refAuthor">J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8555">https://www.rfc-editor.org/rfc/rfc8555</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="https-local-dom">[https-local-dom]</dt>
+        <dd>
+<span class="refAuthor">Thomson, M.</span>, <span class="refTitle">"HTTPS for Local Domains"</span>, <time datetime="2021-04" class="refDate">April 2021</time>, <span>&lt;<a href="https://docs.google.com/document/d/170rFC91jqvpFrKIqG4K8Vox8AL4LeQXzfikBQXYPmzU">https://docs.google.com/document/d/170rFC91jqvpFrKIqG4K8Vox8AL4LeQXzfikBQXYPmzU</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.reddy-add-delegated-credentials">[I-D.reddy-add-delegated-credentials]</dt>
         <dd>
 <span class="refAuthor">Reddy.K, T.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Wing, D.</span>, and <span class="refAuthor">S. Jain</span>, <span class="refTitle">"Delegated Credentials to Host Encrypted DNS Forwarders on CPEs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-reddy-add-delegated-credentials-03</span>, <time datetime="2023-12-01" class="refDate">1 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-reddy-add-delegated-credentials-03">https://datatracker.ietf.org/doc/html/draft-reddy-add-delegated-credentials-03</a>&gt;</span>. </dd>
@@ -1750,6 +2030,10 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
 <dt id="openwrt">[openwrt]</dt>
         <dd>
 <span class="refAuthor">OpenWrt</span>, <span class="refTitle">"OpenWrt Project"</span>, <span>n.d.</span>, <span>&lt;<a href="https://openwrt.org/">https://openwrt.org/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="plex-https">[plex-https]</dt>
+        <dd>
+<span class="refTitle">"How Plex Is Doing HTTPS for all its Users"</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://words.filippo.io/how-plex-is-doing-https-for-all-its-users">https://words.filippo.io/how-plex-is-doing-https-for-all-its-users</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="prpl">[prpl]</dt>
         <dd>
@@ -1771,6 +2055,10 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
         <dd>
 <span class="refAuthor">Bellis, R.</span>, <span class="refTitle">"DNS Proxy Implementation Guidelines"</span>, <span class="seriesInfo">BCP 152</span>, <span class="seriesInfo">RFC 5625</span>, <span class="seriesInfo">DOI 10.17487/RFC5625</span>, <time datetime="2009-08" class="refDate">August 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5625">https://www.rfc-editor.org/rfc/rfc5625</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC6066">[RFC6066]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"Transport Layer Security (TLS) Extensions: Extension Definitions"</span>, <span class="seriesInfo">RFC 6066</span>, <span class="seriesInfo">DOI 10.17487/RFC6066</span>, <time datetime="2011-01" class="refDate">January 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6066">https://www.rfc-editor.org/rfc/rfc6066</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC6598">[RFC6598]</dt>
         <dd>
 <span class="refAuthor">Weil, J.</span>, <span class="refAuthor">Kuarsingh, V.</span>, <span class="refAuthor">Donley, C.</span>, <span class="refAuthor">Liljenstolpe, C.</span>, and <span class="refAuthor">M. Azinger</span>, <span class="refTitle">"IANA-Reserved IPv4 Prefix for Shared Address Space"</span>, <span class="seriesInfo">BCP 153</span>, <span class="seriesInfo">RFC 6598</span>, <span class="seriesInfo">DOI 10.17487/RFC6598</span>, <time datetime="2012-04" class="refDate">April 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6598">https://www.rfc-editor.org/rfc/rfc6598</a>&gt;</span>. </dd>
@@ -1782,6 +2070,10 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
 <dt id="RFC6890">[RFC6890]</dt>
         <dd>
 <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Vegoda, L.</span>, <span class="refAuthor">Bonica, R., Ed.</span>, and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Special-Purpose IP Address Registries"</span>, <span class="seriesInfo">BCP 153</span>, <span class="seriesInfo">RFC 6890</span>, <span class="seriesInfo">DOI 10.17487/RFC6890</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6890">https://www.rfc-editor.org/rfc/rfc6890</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7250">[RFC7250]</dt>
+        <dd>
+<span class="refAuthor">Wouters, P., Ed.</span>, <span class="refAuthor">Tschofenig, H., Ed.</span>, <span class="refAuthor">Gilmore, J.</span>, <span class="refAuthor">Weiler, S.</span>, and <span class="refAuthor">T. Kivinen</span>, <span class="refTitle">"Using Raw Public Keys in Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">RFC 7250</span>, <span class="seriesInfo">DOI 10.17487/RFC7250</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7250">https://www.rfc-editor.org/rfc/rfc7250</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7858">[RFC7858]</dt>
         <dd>
@@ -1814,6 +2106,10 @@ challenge can be subjected to DDoS attacks.<a href="#section-5.1-2.3.1" class="p
 <dt id="RFC9250">[RFC9250]</dt>
         <dd>
 <span class="refAuthor">Huitema, C.</span>, <span class="refAuthor">Dickinson, S.</span>, and <span class="refAuthor">A. Mankin</span>, <span class="refTitle">"DNS over Dedicated QUIC Connections"</span>, <span class="seriesInfo">RFC 9250</span>, <span class="seriesInfo">DOI 10.17487/RFC9250</span>, <time datetime="2022-05" class="refDate">May 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9250">https://www.rfc-editor.org/rfc/rfc9250</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9345">[RFC9345]</dt>
+        <dd>
+<span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Iyengar, S.</span>, <span class="refAuthor">Sullivan, N.</span>, and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"Delegated Credentials for TLS and DTLS"</span>, <span class="seriesInfo">RFC 9345</span>, <span class="seriesInfo">DOI 10.17487/RFC9345</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9345">https://www.rfc-editor.org/rfc/rfc9345</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9499">[RFC9499]</dt>
         <dd>

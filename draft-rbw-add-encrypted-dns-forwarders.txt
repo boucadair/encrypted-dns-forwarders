@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 9 January 2025                                           Orange
+Expires: 30 January 2025                                          Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                             8 July 2024
+                                                            29 July 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 30 January 2025.
 
 Copyright Notice
 
@@ -156,30 +156,30 @@ Table of Contents
    encrypted DNS forwarder.
 
    (a)
-
-                         ,--,--,--.             ,--,--,--.
-                      ,-'          `-.       ,-'   ISP    `-.
-              Host---(      LAN      CPE----(    DNS Resolver)
-                |     `-.          ,-'|      `-.          ,-'
-                |        `--'--'--'   |       | `--'--'--'
-                |                     |<=DNR=>|     |
-                |<========DNR========>|       |     |
-                |                     |             |
-                |<=====Encrypted=====>|<=Encrypted=>|
-                |         DNS         |     DNS     |
+                  .--------------.         .-------------.
+                 |                |       |      ISP      |
+          Host---|      LAN      CPE------|  DNS Resolver |
+            |    |                |       |'-------------'
+            |     '--------------'|       |         |
+            |                     |       |         |
+            |                     |<=DNR=>|         |
+            |<========DNR========>|       |         |
+            |                     |                 |
+            |<===Encrypted DNS===>|<=Encrypted DNS=>|
+            |                     |                 |
 
    (b)
-
-                   ,--,--,--.             ,--,--,--.
-                ,-'          `-.       ,-'   ISP    `-.      3rd Party
-        Host---(      LAN      CPE----(                )--- DNS Resolver
-          |     `-.          ,-'|      `-.          ,-'        |
-          |        `--'--'--'   |       | `--'--'--'           |
-          |                     |<=DNR=>|                      |
-          |<========DNR========>|       |                      |
-          |                     |                              |
-          |<=====Encrypted=====>|<=========Encrypted DNS======>|
-          |         DNS         |                              |
+              .--------------.         .------------.
+             |                |       |              |      3rd Party
+      Host---|      LAN      CPE------|      ISP     |------DNS Resolver
+        |    |                |       |              |        |
+        |     '--------------'|       |'------------'         |
+        |                     |       |                       |
+        |                     |<=DNR=>|                       |
+        |<========DNR========>|       |                       |
+        |                     |                               |
+        |<===Encrypted DNS===>|<========Encrypted DNS========>|
+        |                     |                               |
 
                Figure 1: Proxied Encrypted DNS Sessions
 

@@ -213,20 +213,25 @@ refer to {{?RFC5625}} for such matters.
 
 # Requirements
 
-R-REDUCE-CA: Reduce the use of a Certificate Authority for each CPE,
-compared to obtaining and renewing one certificate for each CPE from a public
+   R-REDUCE-CA:
+   : Reduce the use of a Certificate Authority for each CPE, compared
+to obtaining and renewing one certificate for each CPE from a public
 Certificate Authority.
 
-R-ELIMINATE-CA: Eliminate using Certificate Authorities for each CPE.
+   R-ELIMINATE-CA:
+   : Eliminate using Certificate Authorities for each CPE.
 
-R-SUPPORT-CA: Existing support by Certificate Authorities.
+   R-SUPPORT-CA:
+   : Existing support by Certificate Authorities.
 
-R-SUPPORT-CLIENT: Existing support client libraries or client programs
+   R-SUPPORT-CLIENT:
+   : Existing support client libraries or client programs
 
 
 # Non-Requirements
 
-NR-REVOKE: Provide mechanism to revoke certificate. End users are
+NR-REVOKE:
+: Provide mechanism to revoke certificate. End users are
 extremely unlikely to contact the device vendor or their ISP if a CPE
 device is replaced (stolen, upgraded).  Rather, the user will replace
 the CPE and configure their client devices (laptops, smartphones, IoT
@@ -251,7 +256,7 @@ detailed in subsections.
 | Normal certificates         | No                    |  No              |   Yes               |   Yes                   |
 | Delegated credentials       | Yes, somewhat         |  No              |   No                |   No, (*)               |
 | Name constraints            | Yes                   |  No              |   No                |   No                    |
-| STAR certificates           | No                    |  No              |   Yes               |   Yes                   |
+| ACME delegated certificates | No                    |  No              |   Yes               |   Yes                   |
 | Raw Public Keys             | Yes                   |  Yes             |   n/a               |   Some, (*)             |
 | Wildcard certificate        | No                    |  No              |   Yes               |   Yes                   |
 | Local Certificate Authority | No                    |  No              |   Yes               |   Yes                   |
@@ -280,11 +285,14 @@ R-SUPPORT-CLIENT: yes
 
 ## Delegated Credentials {#delegated}
 
-Delegated credentials {{?RFC9345}} allows the entity operating the CPE (e.g., vendor, ISP) to sign their
-own certificates to each of the CPE, rather than relying on a public CA to sign those certificates. The frequency
-of CA interactions remains the same as with normal certificates {{normal-certificates}}
+Delegated credentials {{?RFC9345}} allows the entity operating the CPE
+(e.g., vendor, ISP) to sign a 7 day validity for the CPE's public key.
+The frequency of CA interactions remains the same as with normal
+certificates {{normal-certificates}}, but the interactions are with
+the vendor's CA rather than the public CA.
 
-R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a vendor- or ISP-operated CA.
+R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
+vendor- or ISP-operated CA.
 
 R-ELIMINATE-CA: no
 
@@ -293,7 +301,7 @@ credentials is Firefox.
 
 R-SUPPORT-CA: no
 
-R-SUPPORT-CLIENT: no, only Firefox
+R-SUPPORT-CLIENT: no, only supported by Firefox
 
 
 ## Name Constraints {#name-constraints}
@@ -316,23 +324,18 @@ R-SUPPORT-CA: no
 
 R-SUPPORT-CLIENT: no
 
-## Short-Term Automatically Renewed (STAR) Certificates
+## ACME Delegated Certificates
 
-> Note: STAR by itself does not seem to be a solution.  Perhaps remove this section??
-
-Short-Term Automatically Renewed Certificates {{?RFC8739}} have a
-short lifetime (e.g., 30 or 90 days) so that a stolen private key can
-only be utilized during that lifetime.  This reduces need for a
-certificate revocation list (CRL), OCSP, or OCSP stapling {{Section 8
-of ?RFC6066}} (which has a nearly-identical effect as STAR certificates).
+ACME Delegated Certificates {{?RFC9115}} allows the CPE to use a vendor-
+operated service to obtain a CA-signed ACME delegated certificate.
 
 R-REDUCE-CA: No
 
 R-ELIMINATE-CA: No
 
-STAR certificates have very good support by CAs via the {{?ACME=RFC8555}} API and perfect support on clients that already perform certificate validation.
+ACME delegated certificates do not require changes to client authentication libraries or operation.
 
-R-SUPPORT-CA: yes
+R-SUPPORT-CA: Unknown
 
 R-SUPPORT-CLIENT: yes
 

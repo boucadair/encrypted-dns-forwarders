@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-28T01:07:26.590295+00:00",
+  "timestamp": "2024-07-30T01:02:50.097378+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -473,24 +473,139 @@
       "id": "PR_kwDOMJRu5c52poan",
       "title": "convert diagram to AASVG",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/10",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-07-27T19:03:32Z",
-      "updatedAt": "2024-07-27T19:03:33Z",
+      "updatedAt": "2024-07-29T05:55:45Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "282374caa1d6146ce58e001c916b0be97ad951f5",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "aasvg",
       "headRefOid": "fccbd5d544cd91d57588c919c026022a6d9ba9f2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-07-29T05:55:45Z",
+      "mergedAt": "2024-07-29T05:55:45Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "265ceeb3797771c18d4a552527bda79313561bed"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6DXjRq",
+          "commit": {
+            "abbreviatedOid": "fccbd5d"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-29T05:55:40Z",
+          "updatedAt": "2024-07-29T05:55:40Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOMJRu5c52r9Tz",
+      "title": "requirements and analysis",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/11",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-29T02:24:50Z",
+      "updatedAt": "2024-07-29T19:24:12Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "282374caa1d6146ce58e001c916b0be97ad951f5",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "requirements",
+      "headRefOid": "7649f7bb9f32fddb0849e8007db86aec122e6c6d",
+      "closedAt": "2024-07-29T19:24:12Z",
+      "mergedAt": "2024-07-29T19:24:12Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "7a7e71b022ae9b559bf6784e23612328079cfb38"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "This is a good start.\r\n\r\nWhen initially reading the requirement on clients, I had a doubt whether the text reasons about requiring changes to client vs this is already supported. As we have a summary table, and readers my not read the narrative text, I tend to suggest having both dimensions listed.",
+          "createdAt": "2024-07-29T06:15:13Z",
+          "updatedAt": "2024-07-29T06:15:13Z"
+        },
+        {
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yes, that\u2019s my intent. I just stopped half finished because it was time to eat cookies!On Jul 28, 2024, at 11:15\u202fPM, Med ***@***.***> wrote:\ufeff\r\nThis is a good start.\r\nWhen initially reading the requirement on clients, I had a doubt whether the text reasons about requiring changes to client vs this is already supported. As we have a summary table, and readers my not read the narrative text, I tend to suggest having both dimensions listed.\r\n\r\n\u2014Reply to this email directly, view it on GitHub, or unsubscribe.You are receiving this because you authored the thread.Message ID: ***@***.***>",
+          "createdAt": "2024-07-29T13:15:04Z",
+          "updatedAt": "2024-07-29T13:15:04Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 12,
+      "id": "PR_kwDOMJRu5c52yYvE",
+      "title": "shorten diagram to take less page space",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/12",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-29T19:26:30Z",
+      "updatedAt": "2024-07-29T19:27:05Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "7a7e71b022ae9b559bf6784e23612328079cfb38",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "smaller_diagram",
+      "headRefOid": "ba0e205387869c8597304a4bd3bcd86e0b0d5c1d",
+      "closedAt": "2024-07-29T19:27:05Z",
+      "mergedAt": "2024-07-29T19:27:05Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "65a5cab5de6d7429cb7c8c4e89796395643cd572"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOMJRu5c52zokH",
+      "title": "change to ACME delegated certificates rather than STAR (I got distracted with STAR), and some cleanup with R-* formatting",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/13",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-29T22:46:59Z",
+      "updatedAt": "2024-07-29T22:47:32Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "65a5cab5de6d7429cb7c8c4e89796395643cd572",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "acme_deleg",
+      "headRefOid": "19640ee187af27915dfdb0858e3cbe7c7e896861",
+      "closedAt": "2024-07-29T22:47:32Z",
+      "mergedAt": "2024-07-29T22:47:32Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "5eb01d8a555ae278b63cec5b155e02112fcc8851"
+      },
       "comments": [],
       "reviews": []
     }

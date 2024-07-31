@@ -67,7 +67,7 @@ informative:
      author:
         org: The Broadband Forum
         date: December 2018
-     target: https://www.broadband-forum.org/technical/download/TR-069.pdf  
+     target: https://www.broadband-forum.org/technical/download/TR-069.pdf
 
   https-local-dom:
      title: "HTTPS for Local Domains"
@@ -364,11 +364,11 @@ R-SUPPORT-CA: no
 
 R-SUPPORT-CLIENT: no, only supported by Firefox
 
-The endpoints across networks will authenticate the same delegation certificate issued to the 
-entity operating the CPE and cannot identify whether the delegated credential is 
-issued to the intended CPE or an "evil-twin" CPE. This drawback can possibly be mitigated 
-by enhancing delegated credentials to include a name that uniquely identifies the 
-delegated credentials to the endpoints. It also requires updates to DNR to signal 
+The endpoints across networks will authenticate the same delegation certificate issued to the
+entity operating the CPE and cannot identify whether the delegated credential is
+issued to the intended CPE or an "evil-twin" CPE. This drawback can possibly be mitigated
+by enhancing delegated credentials to include a name that uniquely identifies the
+delegated credentials to the endpoints. It also requires updates to DNR to signal
 the delegated credential to the endpoints.
 
 ## Name Constraints {#name-constraints}
@@ -394,13 +394,13 @@ R-SUPPORT-CLIENT: no
 ## ACME Delegated Certificates
 
 ACME Delegated Certificates {{?RFC9115}} allows the CPE to use a vendor-
-operated service to obtain a CA-signed ACME delegated certificate. It allows 
-the CPE to request from a service managing the CPE, acting as a 
-profiled ACME server, a certificate for a delegated identity, 
+operated service to obtain a CA-signed ACME delegated certificate. It allows
+the CPE to request from a service managing the CPE, acting as a
+profiled ACME server, a certificate for a delegated identity,
 i.e., one belonging to the CPE. The CPE then uses the ACME protocol (with the
 extensions described in {{?RFC8739}}) to request issuance of a short-
-term, Automatically Renewed (STAR) certificate for the same delegated identity.  
-The generated short-term certificate is automatically renewed by the public CA, 
+term, Automatically Renewed (STAR) certificate for the same delegated identity.
+The generated short-term certificate is automatically renewed by the public CA,
 is periodically fetched by the CPE.
 
 R-REDUCE-CA: No

@@ -432,13 +432,13 @@ by browsers or by curl.
 R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.
 
 R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
-Further, raw public keys cannot be used with DNR and DDR in verified discovery mode.
+Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.
 
 ## Local CA: Certification Authority Built Into CPE
 
 The CPE would be a CA capable of signing certificates for other in-home
 devices. The CA in the CPE would be limitied to signing only certificates belonging to
-that home network (using Sections {{<delegated}}, or {{<name-constraints}}).
+that home network (using Sections {{<delegated}} or {{<name-constraints}}).
 This allows the CPE to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
 on the local network.

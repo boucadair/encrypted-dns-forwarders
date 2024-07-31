@@ -220,7 +220,7 @@ refer to {{?RFC5625}} for such matters.
 
    DDR requires proving possession of an IP address, as the DDR
    certificate contains the server's IPv4 and IPv6 addresses and is
-   signed by a Certification Authority.  DDR is constrained to public IP
+   signed by a Certification Authority (CA).  DDR is constrained to public IP
    addresses because (WebPKI) CAs will not sign
    special-purpose IP addresses {{?RFC6890}}, most notably IPv4 private-use
    {{?RFC1918}}, IPv4 shared address {{?RFC6598}}, or IPv6 Unique-Local
@@ -279,7 +279,7 @@ refer to {{?RFC5625}} for such matters.
 # Requirements
 
    R-REDUCE-CA:
-   : Reduce the use of a Certification Authority (CA) for each CPE, compared
+   : Reduce the use of a Certification Authority for each CPE, compared
 to obtaining and renewing one certificate for each CPE from a (public)
 Certification Authority.
 
@@ -470,9 +470,30 @@ R-SUPPORT-CA: yes
 
 R-SUPPORT-CLIENT: yes
 
-# Limitations of Existing Solutions
+# Security Considerations
 
-## Delegated Certificate Issuance
+   DNR-related security considerations are discussed in
+   {{Section 7 of !RFC9463}}.  Likewise, DDR-related security considerations
+   are discussed in {{Section 7 of !RFC9462}}.
+
+
+   The communication between the CPE and endpoints is encrypted using mechanisms such as WPA2/3,
+   and any communication with the DNS server co-located on the CPE is also protected.
+   However, the client does not know whether the DNS server is co-located on the CPE or not.
+   If the client uses clear text DNS (i.e., Do53), it will assume that the DNS messages are susceptible to
+   pervasive monitoring. For instance, in an Enterprise deployment, multiple network devices
+   could exist between an endpoint and the CPE;  hosting an encrypted DNS server on
+   the CPE minimizes the impact of a breach, which is an essential zero trust principle. Furthermore,
+   the client and user would be able to identify the entity hosting the encrypted DNS server
+   using the ADN assigned to it.
+
+# IANA Considerations
+
+This document has no IANA actions.
+
+--- back
+
+## Example of Delegated Certificate Issuance
 
    Let's consider that the encrypted DNS forwarder is hosted on a CPE and provisioned by a
    service (e.g., ACS) in the operator's network. Also, let's assume that each CPE is assigned
@@ -516,74 +537,6 @@ R-SUPPORT-CLIENT: yes
    Browser and CPE interactions. This ensures that HTTPS access to
    the CPE is possible, allowing the device administrator to securely
    communicate with and manage the CPE.
-
-## Limitations of Name Constraints Extension
-
-A service managing the CPEs could get a CA certificate with name
-      constraints extension ({{Section 4.2.1.10 of !RFC5280}}) and the
-      service would in-turn act as an ACME server to provision end-entity certificates on CPEs.
-
-* Con:
-  + Name constraints extension is not yet supported by CAs,
-         although {{!RFC5280}} was standardized way back in 2008.
-
-* Pro:
-  + Avoids changing TLS client and server (e.g., stunnel or openssl).
-
-## Limitations of Star certificates
-
-{{!RFC9115}} defines a profile of the ACME protocol for generating
-      Delegated certificates.  It allows the CPEs to request from a
-      service managing the CPEs, acting as a profiled ACME server, a
-      certificate for a delegated identity, i.e., one belonging to the
-      service.  The service then uses the ACME protocol (with the
-      extensions described in {{?RFC8739}}) to request issuance of a
-      short-term, Automatically Renewed (STAR) certificate for the same
-      delegated identity.  The generated short-term certificate is
-      automatically renewed by the ACME CA, periodically fetched by
-      the CPEs, and used to act as encrypted DNS forwarders.
-
-The service can end the delegation at any time by instructing the CA
-      to stop the automatic renewal and letting the certificate expire
-      shortly thereafter.  Star certificates requires support by CAs but
-      does not require changes to the deployed TLS ecosystem.
-
-* Cons:
-  + Star certificates require support by CAs.
-  + A primary use case of Star certificates is that of a
-         Content Delivery Network (CDN), the third party, terminating
-         TLS sessions on behalf of a content provider (the holder of a
-         domain name).  The number of star certificates required for a
-         CDN use case will be very much lower than the use case
-         discussed in this draft.  It is yet to be seen if CAs will
-         agree to support star certificates at a scale of millions of
-         CPEs.
-
-* Pro:
-  + Avoids changing TLS client and server.
-
-# Security Considerations
-
-   DNR-related security considerations are discussed in
-   {{Section 7 of !RFC9463}}.  Likewise, DDR-related security considerations
-   are discussed in {{Section 7 of !RFC9462}}.
-
-
-   The communication between the CPE and endpoints is encrypted using mechanisms such as WPA2/3,
-   and any communication with the DNS server co-located on the CPE is also protected.
-   However, the client does not know whether the DNS server is co-located on the CPE or not.
-   If the client uses clear text DNS (i.e., Do53), it will assume that the DNS messages are susceptible to
-   pervasive monitoring. For instance, in an Enterprise deployment, multiple network devices
-   could exist between an endpoint and the CPE;  hosting an encrypted DNS server on
-   the CPE minimizes the impact of a breach, which is an essential zero trust principle. Furthermore,
-   the client and user would be able to identify the entity hosting the encrypted DNS server
-   using the ADN assigned to it.
-
-# IANA Considerations
-
-This document has no IANA actions.
-
---- back
 
 # Acknowledgments
 {:numbered="false"}

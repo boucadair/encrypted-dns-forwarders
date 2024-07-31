@@ -67,12 +67,7 @@ informative:
      author:
         org: The Broadband Forum
         date: December 2018
-     target: https://www.broadband-forum.org/technical/download/TR-069.pdf
-
-  plex-https:
-     title: "How Plex Is Doing HTTPS for all its Users"
-     date: June 2015
-     target: https://words.filippo.io/how-plex-is-doing-https-for-all-its-users
+     target: https://www.broadband-forum.org/technical/download/TR-069.pdf  
 
   https-local-dom:
      title: "HTTPS for Local Domains"
@@ -325,7 +320,6 @@ detailed in subsections.
 | Name constraints            | Yes                   |  No              |   No                |   No                    |
 | ACME delegated certificates | No                    |  No              |   Yes               |   Yes                   |
 | Raw Public Keys             | Yes                   |  Yes             |   n/a               |   Some, (*)             |
-| Wildcard certificate        | No                    |  No              |   Yes               |   Yes                   |
 | Local Certificate Authority | No                    |  No              |   Yes               |   Yes                   |
 {: #table1 title="Summary of Solution Analysis"}
 
@@ -356,10 +350,10 @@ Delegated credentials {{?RFC9345}} allows the entity operating the CPE
 (e.g., vendor or ISP) to sign a 7-day validity for the CPE's public key.
 The frequency of CA interactions remains the same as with normal
 certificates ({{normal-certificates}}), but the interactions are with
-the vendor's CA rather than the public CA.
+the vendor's service rather than the public CA.
 
 R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
-vendor- or ISP-operated CA.
+vendor- or ISP-operated service.
 
 R-ELIMINATE-CA: no
 
@@ -370,6 +364,12 @@ R-SUPPORT-CA: no
 
 R-SUPPORT-CLIENT: no, only supported by Firefox
 
+The endpoints across networks will authenticate the same delegation certificate issued to the 
+entity operating the CPE and cannot identify whether the delegated credential is 
+issued to the intended CPE or an "evil-twin" CPE. This drawback can possibly be mitigated 
+by enhancing delegated credentials to include a name that uniquely identifies the 
+delegated credentials to the endpoints. It also requires updates to DNR to signal 
+the delegated credential to the endpoints.
 
 ## Name Constraints {#name-constraints}
 
@@ -394,7 +394,14 @@ R-SUPPORT-CLIENT: no
 ## ACME Delegated Certificates
 
 ACME Delegated Certificates {{?RFC9115}} allows the CPE to use a vendor-
-operated service to obtain a CA-signed ACME delegated certificate.
+operated service to obtain a CA-signed ACME delegated certificate. It allows 
+the CPE to request from a service managing the CPE, acting as a 
+profiled ACME server, a certificate for a delegated identity, 
+i.e., one belonging to the CPE. The CPE then uses the ACME protocol (with the
+extensions described in {{?RFC8739}}) to request issuance of a short-
+term, Automatically Renewed (STAR) certificate for the same delegated identity.  
+The generated short-term certificate is automatically renewed by the public CA, 
+is periodically fetched by the CPE.
 
 R-REDUCE-CA: No
 
@@ -423,32 +430,13 @@ by browsers or by curl.
 R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.
 
 R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
-
-
-## Wildcard Certificate {#wildcard}
-
-A wildcard certificate can be issued to the vendor, who then signs each of the CPE certificates. This
-removes the public CA from signing the certificates of each CPE; instead, the vendor's CA performs
-this signing. Evil twin attacks are prevented by a unique, per-network string in the certificate's
-Subject Alt Name (SAN).  This is deployed in production by Plex {{plex-https}}.
-
-R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-number of interactions with the CPE operator's CA.
-
-R-ELIMINATE-CA: no
-
-This operates similar to {#name-constraints} but has advantage of working with existing CAs and
-existing clients.
-
-R-SUPPORT-CA: yes
-
-R-SUPPORT-CLIENT: yes
+Further, raw public keys cannot be used with DNR and DDR in verified discovery mode.
 
 ## Local CA: Certification Authority Built Into CPE
 
 The CPE would be a CA capable of signing certificates for other in-home
 devices. The CA in the CPE would be limitied to signing only certificates belonging to
-that home network (using Sections {{<delegated}}, {{<name-constraints}}, or {{<wildcard}}).
+that home network (using Sections {{<delegated}}, or {{<name-constraints}}).
 This allows the CPE to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
 on the local network.

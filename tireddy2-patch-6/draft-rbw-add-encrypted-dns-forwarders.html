@@ -1713,19 +1713,19 @@ for both initial deployment and for certificate renewal.<a href="#section-7.1-1"
 The frequency of CA interactions remains the same as with normal
 certificates (<a href="#normal-certificates" class="auto internal xref">Section 7.1</a>), but the interactions are with
 the vendor's service rather than the public CA.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.2-2">R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
-vendor- or ISP-operated service.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
-<p id="section-7.2-3">R-ELIMINATE-CA: no<a href="#section-7.2-3" class="pilcrow">¶</a></p>
-<p id="section-7.2-4">Delegated credentials have no existing support by CAs.  The only client supporting delegated
-credentials is Firefox.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
-<p id="section-7.2-5">R-SUPPORT-CA: no<a href="#section-7.2-5" class="pilcrow">¶</a></p>
-<p id="section-7.2-6">R-SUPPORT-CLIENT: no, only supported by Firefox<a href="#section-7.2-6" class="pilcrow">¶</a></p>
-<p id="section-7.2-7">The endpoints across networks will authenticate the same delegation certificate issued to the
-entity operating the CPE and cannot identify whether the delegated credential is
-issued to the intended CPE or an "evil-twin" CPE. This drawback can possibly be mitigated
-by enhancing delegated credentials to include a name that uniquely identifies the
-delegated credentials to the endpoints. It also requires updates to DNR to signal
-the delegated credential to the endpoints.<a href="#section-7.2-7" class="pilcrow">¶</a></p>
+<p id="section-7.2-2">As currently specified in <span>[<a href="#RFC9345" class="cite xref">RFC9345</a>]</span>, the same name would be issued to all CPE
+making it impossible to identify whether the delegated credential is
+issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
+by enhancing <span>[<a href="#RFC9345" class="cite xref">RFC9345</a>]</span> to include a string that uniquely identifies the
+delegated credential (e.g., including hash of customer id or other unique identifier
+in the FQDN to result in "HASH.cpe.example.com").<a href="#section-7.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.2-3">R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
+vendor- or ISP-operated service.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+<p id="section-7.2-4">R-ELIMINATE-CA: no<a href="#section-7.2-4" class="pilcrow">¶</a></p>
+<p id="section-7.2-5">Delegated credentials have no existing support by CAs.  The only client supporting delegated
+credentials is Firefox.<a href="#section-7.2-5" class="pilcrow">¶</a></p>
+<p id="section-7.2-6">R-SUPPORT-CA: no<a href="#section-7.2-6" class="pilcrow">¶</a></p>
+<p id="section-7.2-7">R-SUPPORT-CLIENT: no, only supported by Firefox<a href="#section-7.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="name-constraints">

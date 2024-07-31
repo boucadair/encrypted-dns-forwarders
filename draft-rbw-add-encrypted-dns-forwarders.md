@@ -352,6 +352,14 @@ The frequency of CA interactions remains the same as with normal
 certificates ({{normal-certificates}}), but the interactions are with
 the vendor's service rather than the public CA.
 
+As currently specified in {{?RFC9345}}, the same name would be issued to all CPE
+making it impossible to identify whether the delegated credential is
+issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
+by enhancing {{?RFC9345}} to include a string that uniquely identifies the
+delegated credential (e.g., including hash of customer id or other unique identifier
+in the FQDN to result in "HASH.cpe.example.com").
+
+
 R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
 vendor- or ISP-operated service.
 
@@ -364,12 +372,6 @@ R-SUPPORT-CA: no
 
 R-SUPPORT-CLIENT: no, only supported by Firefox
 
-The endpoints across networks will authenticate the same delegation certificate issued to the
-entity operating the CPE and cannot identify whether the delegated credential is
-issued to the intended CPE or an "evil-twin" CPE. This drawback can possibly be mitigated
-by enhancing delegated credentials to include a name that uniquely identifies the
-delegated credentials to the endpoints. It also requires updates to DNR to signal
-the delegated credential to the endpoints.
 
 ## Name Constraints {#name-constraints}
 

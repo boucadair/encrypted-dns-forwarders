@@ -1783,7 +1783,7 @@ and by GnuTLS since 2019. However, RPKs are not supported
 by browsers or by curl.<a href="#section-7.5-4" class="pilcrow">¶</a></p>
 <p id="section-7.5-5">R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.<a href="#section-7.5-5" class="pilcrow">¶</a></p>
 <p id="section-7.5-6">R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
-Further, raw public keys cannot be used with DNR and DDR in verified discovery mode.<a href="#section-7.5-6" class="pilcrow">¶</a></p>
+Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.<a href="#section-7.5-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="local-ca-certification-authority-built-into-cpe">
@@ -1793,7 +1793,7 @@ Further, raw public keys cannot be used with DNR and DDR in verified discovery m
         </h3>
 <p id="section-7.6-1">The CPE would be a CA capable of signing certificates for other in-home
 devices. The CA in the CPE would be limitied to signing only certificates belonging to
-that home network (using Sections <a href="#delegated" class="auto internal xref">7.2</a>, or <a href="#name-constraints" class="auto internal xref">7.3</a>).
+that home network (using Sections <a href="#delegated" class="auto internal xref">7.2</a> or <a href="#name-constraints" class="auto internal xref">7.3</a>).
 This allows the CPE to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
 on the local network.<a href="#section-7.6-1" class="pilcrow">¶</a></p>

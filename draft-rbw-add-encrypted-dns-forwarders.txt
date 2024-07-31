@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 31 January 2025                                          Orange
+Expires: 1 February 2025                                          Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                            30 July 2024
+                                                            31 July 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 January 2025.
+   This Internet-Draft will expire on 1 February 2025.
 
 Copyright Notice
 
@@ -95,15 +95,12 @@ Table of Contents
      7.5.  Raw Public Keys
      7.6.  Wildcard Certificate
      7.7.  Local CA: Certification Authority Built Into CPE
-   8.  Limitations of Existing Solutions
-     8.1.  Delegated Certificate Issuance
-     8.2.  Limitations of Name Constraints Extension
-     8.3.  Limitations of Star certificates
-   9.  Security Considerations
-   10. IANA Considerations
-   11. References
-     11.1.  Normative References
-     11.2.  Informative References
+   8.  Security Considerations
+   9.  IANA Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
+   Appendix A.  Example of Delegated Certificate Issuance
    Acknowledgments
    Authors' Addresses
 
@@ -228,11 +225,11 @@ Table of Contents
 
    DDR requires proving possession of an IP address, as the DDR
    certificate contains the server's IPv4 and IPv6 addresses and is
-   signed by a Certification Authority.  DDR is constrained to public IP
-   addresses because (WebPKI) CAs will not sign special-purpose IP
-   addresses [RFC6890], most notably IPv4 private-use [RFC1918], IPv4
-   shared address [RFC6598], or IPv6 Unique-Local [RFC8190] address
-   space.
+   signed by a Certification Authority (CA).  DDR is constrained to
+   public IP addresses because (WebPKI) CAs will not sign special-
+   purpose IP addresses [RFC6890], most notably IPv4 private-use
+   [RFC1918], IPv4 shared address [RFC6598], or IPv6 Unique-Local
+   [RFC8190] address space.
 
    A tempting solution for enabling an encrypted DNS forwarder with DDR
    is to use the CPE's WAN IP address for DDR and prove possession of
@@ -287,9 +284,9 @@ Table of Contents
 
 5.  Requirements
 
-   R-REDUCE-CA:  Reduce the use of a Certification Authority (CA) for
-      each CPE, compared to obtaining and renewing one certificate for
-      each CPE from a (public) Certification Authority.
+   R-REDUCE-CA:  Reduce the use of a Certification Authority for each
+      CPE, compared to obtaining and renewing one certificate for each
+      CPE from a (public) Certification Authority.
 
    R-ELIMINATE-CA:  Eliminate using Certification Authorities for each
       CPE.
@@ -499,107 +496,7 @@ Table of Contents
 
    R-SUPPORT-CLIENT: yes
 
-8.  Limitations of Existing Solutions
-
-8.1.  Delegated Certificate Issuance
-
-   Let's consider that the encrypted DNS forwarder is hosted on a CPE
-   and provisioned by a service (e.g., ACS) in the operator's network.
-   Also, let's assume that each CPE is assigned a unique FQDN (e.g.,
-   "cpe-12345.example.com" where 12345 is a unique number).
-
-      It is best to ensure that such an FQDN does not carry any
-      Personally Identifiable Information (PII) or device identification
-      details like the customer number or device's serial number.
-
-   The CPE generates a public and private key-pair, builds a certificate
-   signing request (CSR), and sends the CSR to a service in the operator
-   managing the CPE.  Upon receipt of the CSR, the operator's service
-   can utilize certificate management protocols like ACME [RFC8555] to
-   automate certificate management functions such as domain validation
-   procedure, certificate issuance, and certificate revocation.
-
-   The challenge with this technique is that the service will have to
-   communicate with the CA to issue certificates for millions of CPEs.
-   If an external CA is unable to issue a certificate in time or replace
-   an expired certificate, the service would no longer be able to
-   present a valid certificate to a CPE.  When the service requests
-   certificate issuance for a large number of subdomains (e.g., millions
-   of CPEs), it may be treated as an attacker by the CA to overwhelm it.
-   Furthermore, the short-lived certificates (e.g., certificates that
-   expire after 90 days) issued by the CA will have to be renewed
-   frequently.  With short-lived certificates, there is a smaller time
-   window to renew a certificate and, therefore, a higher risk that a CA
-   outage will negatively affect the uptime of the encrypted DNS
-   forwarders on CPEs (and the services offered via these CPEs).
-
-   These challenges can be addressed by using protocols like ACME to
-   automate the certificate renewal process, ensuring certificates are
-   renewed well before expiration.  Additionally, incorporating another
-   CA as a backup can provide redundancy and further mitigate the risk
-   of outages.  By having a secondary CA, the service can switch to the
-   backup CA in case the primary CA is unavailable, thus maintaining
-   continuous service availability and reducing the risk of service
-   disruption.
-
-   It offers the additional advantage of improving the security of
-   Browser and CPE interactions.  This ensures that HTTPS access to the
-   CPE is possible, allowing the device administrator to securely
-   communicate with and manage the CPE.
-
-8.2.  Limitations of Name Constraints Extension
-
-   A service managing the CPEs could get a CA certificate with name
-   constraints extension (Section 4.2.1.10 of [RFC5280]) and the service
-   would in-turn act as an ACME server to provision end-entity
-   certificates on CPEs.
-
-   *  Con:
-
-      -  Name constraints extension is not yet supported by CAs,
-         although [RFC5280] was standardized way back in 2008.
-
-   *  Pro:
-
-      -  Avoids changing TLS client and server (e.g., stunnel or
-         openssl).
-
-8.3.  Limitations of Star certificates
-
-   [RFC9115] defines a profile of the ACME protocol for generating
-   Delegated certificates.  It allows the CPEs to request from a service
-   managing the CPEs, acting as a profiled ACME server, a certificate
-   for a delegated identity, i.e., one belonging to the service.  The
-   service then uses the ACME protocol (with the extensions described in
-   [RFC8739]) to request issuance of a short-term, Automatically Renewed
-   (STAR) certificate for the same delegated identity.  The generated
-   short-term certificate is automatically renewed by the ACME CA,
-   periodically fetched by the CPEs, and used to act as encrypted DNS
-   forwarders.
-
-   The service can end the delegation at any time by instructing the CA
-   to stop the automatic renewal and letting the certificate expire
-   shortly thereafter.  Star certificates requires support by CAs but
-   does not require changes to the deployed TLS ecosystem.
-
-   *  Cons:
-
-      -  Star certificates require support by CAs.
-
-      -  A primary use case of Star certificates is that of a Content
-         Delivery Network (CDN), the third party, terminating TLS
-         sessions on behalf of a content provider (the holder of a
-         domain name).  The number of star certificates required for a
-         CDN use case will be very much lower than the use case
-         discussed in this draft.  It is yet to be seen if CAs will
-         agree to support star certificates at a scale of millions of
-         CPEs.
-
-   *  Pro:
-
-      -  Avoids changing TLS client and server.
-
-9.  Security Considerations
+8.  Security Considerations
 
    DNR-related security considerations are discussed in Section 7 of
    [RFC9463].  Likewise, DDR-related security considerations are
@@ -618,25 +515,13 @@ Table of Contents
    identify the entity hosting the encrypted DNS server using the ADN
    assigned to it.
 
-10.  IANA Considerations
+9.  IANA Considerations
 
    This document has no IANA actions.
 
-11.  References
+10.  References
 
-11.1.  Normative References
-
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <https://www.rfc-editor.org/rfc/rfc5280>.
-
-   [RFC9115]  Sheffer, Y., López, D., Pastor Perales, A., and T.
-              Fossati, "An Automatic Certificate Management Environment
-              (ACME) Profile for Generating Delegated Certificates",
-              RFC 9115, DOI 10.17487/RFC9115, September 2021,
-              <https://www.rfc-editor.org/rfc/rfc9115>.
+10.1.  Normative References
 
    [RFC9462]  Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
               Jensen, "Discovery of Designated Resolvers", RFC 9462,
@@ -649,7 +534,7 @@ Table of Contents
               RFC 9463, DOI 10.17487/RFC9463, November 2023,
               <https://www.rfc-editor.org/rfc/rfc9463>.
 
-11.2.  Informative References
+10.2.  Informative References
 
    [https-local-dom]
               Thomson, M., "HTTPS for Local Domains", April 2021,
@@ -686,6 +571,12 @@ Table of Contents
               Renumbering an IPv6 Network without a Flag Day", RFC 4192,
               DOI 10.17487/RFC4192, September 2005,
               <https://www.rfc-editor.org/rfc/rfc4192>.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5280>.
 
    [RFC5625]  Bellis, R., "DNS Proxy Implementation Guidelines",
               BCP 152, RFC 5625, DOI 10.17487/RFC5625, August 2009,
@@ -740,12 +631,11 @@ Table of Contents
               IPv4-as-a-Service", RFC 8585, DOI 10.17487/RFC8585, May
               2019, <https://www.rfc-editor.org/rfc/rfc8585>.
 
-   [RFC8739]  Sheffer, Y., Lopez, D., Gonzalez de Dios, O., Pastor
-              Perales, A., and T. Fossati, "Support for Short-Term,
-              Automatically Renewed (STAR) Certificates in the Automated
-              Certificate Management Environment (ACME)", RFC 8739,
-              DOI 10.17487/RFC8739, March 2020,
-              <https://www.rfc-editor.org/rfc/rfc8739>.
+   [RFC9115]  Sheffer, Y., López, D., Pastor Perales, A., and T.
+              Fossati, "An Automatic Certificate Management Environment
+              (ACME) Profile for Generating Delegated Certificates",
+              RFC 9115, DOI 10.17487/RFC9115, September 2021,
+              <https://www.rfc-editor.org/rfc/rfc9115>.
 
    [RFC9250]  Huitema, C., Dickinson, S., and A. Mankin, "DNS over
               Dedicated QUIC Connections", RFC 9250,
@@ -764,6 +654,52 @@ Table of Contents
    [TR-069]   The Broadband Forum, "CPE WAN Management Protocol", n.d.,
               <https://www.broadband-forum.org/technical/download/TR-
               069.pdf>.
+
+Appendix A.  Example of Delegated Certificate Issuance
+
+   Let's consider that the encrypted DNS forwarder is hosted on a CPE
+   and provisioned by a service (e.g., ACS) in the operator's network.
+   Also, let's assume that each CPE is assigned a unique FQDN (e.g.,
+   "cpe-12345.example.com" where 12345 is a unique number).
+
+      It is best to ensure that such an FQDN does not carry any
+      Personally Identifiable Information (PII) or device identification
+      details like the customer number or device's serial number.
+
+   The CPE generates a public and private key-pair, builds a certificate
+   signing request (CSR), and sends the CSR to a service in the operator
+   managing the CPE.  Upon receipt of the CSR, the operator's service
+   can utilize certificate management protocols like ACME [RFC8555] to
+   automate certificate management functions such as domain validation
+   procedure, certificate issuance, and certificate revocation.
+
+   The challenge with this technique is that the service will have to
+   communicate with the CA to issue certificates for millions of CPEs.
+   If an external CA is unable to issue a certificate in time or replace
+   an expired certificate, the service would no longer be able to
+   present a valid certificate to a CPE.  When the service requests
+   certificate issuance for a large number of subdomains (e.g., millions
+   of CPEs), it may be treated as an attacker by the CA to overwhelm it.
+   Furthermore, the short-lived certificates (e.g., certificates that
+   expire after 90 days) issued by the CA will have to be renewed
+   frequently.  With short-lived certificates, there is a smaller time
+   window to renew a certificate and, therefore, a higher risk that a CA
+   outage will negatively affect the uptime of the encrypted DNS
+   forwarders on CPEs (and the services offered via these CPEs).
+
+   These challenges can be addressed by using protocols like ACME to
+   automate the certificate renewal process, ensuring certificates are
+   renewed well before expiration.  Additionally, incorporating another
+   CA as a backup can provide redundancy and further mitigate the risk
+   of outages.  By having a secondary CA, the service can switch to the
+   backup CA in case the primary CA is unavailable, thus maintaining
+   continuous service availability and reducing the risk of service
+   disruption.
+
+   It offers the additional advantage of improving the security of
+   Browser and CPE interactions.  This ensures that HTTPS access to the
+   CPE is possible, allowing the device administrator to securely
+   communicate with and manage the CPE.
 
 Acknowledgments
 

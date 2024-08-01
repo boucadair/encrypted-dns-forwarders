@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-30T01:02:50.097378+00:00",
+  "timestamp": "2024-08-01T01:08:20.958891+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -608,6 +608,130 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOMJRu5c522BuI",
+      "title": "Review to Dan's New text + restructure the text",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/14",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Will need to move \"Limitations of Existing Solutions\" text to each of the new sub-section under analysis.",
+      "createdAt": "2024-07-30T08:27:21Z",
+      "updatedAt": "2024-07-30T16:46:13Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "5eb01d8a555ae278b63cec5b155e02112fcc8851",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "5c11d73571fb76a932bba51bb3fa137100b08125",
+      "closedAt": "2024-07-30T16:46:13Z",
+      "mergedAt": "2024-07-30T16:46:13Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "16fe321a5892f8d5cd067989e92d021ee289bdbd"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6DnnMp",
+          "commit": {
+            "abbreviatedOid": "5c11d73"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-30T16:46:08Z",
+          "updatedAt": "2024-07-30T16:46:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOMJRu5c52-Djw",
+      "title": "remove redundant text to better focus on the new analysis section",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/15",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-31T09:28:26Z",
+      "updatedAt": "2024-07-31T11:00:47Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "16fe321a5892f8d5cd067989e92d021ee289bdbd",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "7f379c1d57c3afce31e3455ca9407b7f016953da",
+      "closedAt": "2024-07-31T11:00:47Z",
+      "mergedAt": "2024-07-31T11:00:47Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "2dd13eedf541919c5cda98f15c98dd9aec0347aa"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6Dt5P_",
+          "commit": {
+            "abbreviatedOid": "7f379c1"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-31T11:00:40Z",
+          "updatedAt": "2024-07-31T11:00:40Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOMJRu5c52_gdE",
+      "title": "Updates to draft to address comments",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/16",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-31T12:55:17Z",
+      "updatedAt": "2024-07-31T17:53:11Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "2dd13eedf541919c5cda98f15c98dd9aec0347aa",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "tireddy2-patch-6",
+      "headRefOid": "b96e346b8839a599a48bd670dd9b264b5571c071",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6DxgiB",
+          "commit": {
+            "abbreviatedOid": "b96e346"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-31T17:53:11Z",
+          "updatedAt": "2024-07-31T17:53:11Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

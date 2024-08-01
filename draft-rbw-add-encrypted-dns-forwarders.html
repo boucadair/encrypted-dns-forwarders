@@ -1038,11 +1038,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Encrypted DNS Forwarders on CPEs</td>
-<td class="right">July 2024</td>
+<td class="right">August 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Reddy, et al.</td>
-<td class="center">Expires 1 February 2025</td>
+<td class="center">Expires 2 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1055,12 +1055,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-rbw-add-encrypted-dns-forwarders-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-31" class="published">31 July 2024</time>
+<time datetime="2024-08-01" class="published">1 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-02-01">1 February 2025</time></dd>
+<dd class="expires"><time datetime="2025-02-02">2 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1123,7 +1123,7 @@ the problem of deploying a new feature to CAs, TLS clients, and servers.<a href=
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1200,10 +1200,7 @@ the problem of deploying a new feature to CAs, TLS clients, and servers.<a href=
                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-raw-public-keys" class="internal xref">Raw Public Keys</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.6">
-                <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-wildcard-certificate" class="internal xref">Wildcard Certificate</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7">
-                <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="auto internal xref">7.7</a>.  <a href="#name-local-ca-certification-auth" class="internal xref">Local CA: Certification Authority Built Into CPE</a></p>
+                <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-local-ca-certification-auth" class="internal xref">Local CA: Certification Authority Built Into CPE</a></p>
 </li>
             </ul>
 </li>
@@ -1679,13 +1676,6 @@ detailed in subsections.<a href="#section-7-1" class="pilcrow">¶</a></p>
             <td class="text-center" rowspan="1" colspan="1">Some, (*)</td>
           </tr>
           <tr>
-            <td class="text-right" rowspan="1" colspan="1">Wildcard certificate</td>
-            <td class="text-center" rowspan="1" colspan="1">No</td>
-            <td class="text-center" rowspan="1" colspan="1">No</td>
-            <td class="text-center" rowspan="1" colspan="1">Yes</td>
-            <td class="text-center" rowspan="1" colspan="1">Yes</td>
-          </tr>
-          <tr>
             <td class="text-right" rowspan="1" colspan="1">Local Certificate Authority</td>
             <td class="text-center" rowspan="1" colspan="1">No</td>
             <td class="text-center" rowspan="1" colspan="1">No</td>
@@ -1722,14 +1712,20 @@ for both initial deployment and for certificate renewal.<a href="#section-7.1-1"
 (e.g., vendor or ISP) to sign a 7-day validity for the CPE's public key.
 The frequency of CA interactions remains the same as with normal
 certificates (<a href="#normal-certificates" class="auto internal xref">Section 7.1</a>), but the interactions are with
-the vendor's CA rather than the public CA.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.2-2">R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
-vendor- or ISP-operated CA.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
-<p id="section-7.2-3">R-ELIMINATE-CA: no<a href="#section-7.2-3" class="pilcrow">¶</a></p>
-<p id="section-7.2-4">Delegated credentials have no existing support by CAs.  The only client supporting delegated
-credentials is Firefox.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
-<p id="section-7.2-5">R-SUPPORT-CA: no<a href="#section-7.2-5" class="pilcrow">¶</a></p>
-<p id="section-7.2-6">R-SUPPORT-CLIENT: no, only supported by Firefox<a href="#section-7.2-6" class="pilcrow">¶</a></p>
+the vendor's service rather than the public CA.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-2">As currently specified in <span>[<a href="#RFC9345" class="cite xref">RFC9345</a>]</span>, the same name would be issued to all CPE
+making it impossible to identify whether the delegated credential is
+issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
+by enhancing <span>[<a href="#RFC9345" class="cite xref">RFC9345</a>]</span> to include a string that uniquely identifies the
+delegated credential (e.g., including hash of customer id or other unique identifier
+in the FQDN to result in "HASH.cpe.example.com").<a href="#section-7.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.2-3">R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
+vendor- or ISP-operated service.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+<p id="section-7.2-4">R-ELIMINATE-CA: no<a href="#section-7.2-4" class="pilcrow">¶</a></p>
+<p id="section-7.2-5">Delegated credentials have no existing support by CAs.  The only client supporting delegated
+credentials is Firefox.<a href="#section-7.2-5" class="pilcrow">¶</a></p>
+<p id="section-7.2-6">R-SUPPORT-CA: no<a href="#section-7.2-6" class="pilcrow">¶</a></p>
+<p id="section-7.2-7">R-SUPPORT-CLIENT: no, only supported by Firefox<a href="#section-7.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="name-constraints">
@@ -1757,7 +1753,14 @@ number of interactions with the CPE operator's CA.<a href="#section-7.3-2" class
 <a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-acme-delegated-certificates" class="section-name selfRef">ACME Delegated Certificates</a>
         </h3>
 <p id="section-7.4-1">ACME Delegated Certificates <span>[<a href="#RFC9115" class="cite xref">RFC9115</a>]</span> allows the CPE to use a vendor-
-operated service to obtain a CA-signed ACME delegated certificate.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+operated service to obtain a CA-signed ACME delegated certificate. It allows
+the CPE to request from a service managing the CPE, acting as a
+profiled ACME server, a certificate for a delegated identity,
+i.e., one belonging to the CPE. The CPE then uses the ACME protocol (with the
+extensions described in <span>[<a href="#RFC8739" class="cite xref">RFC8739</a>]</span>) to request issuance of a short-
+term, Automatically Renewed (STAR) certificate for the same delegated identity.
+The generated short-term certificate is automatically renewed by the public CA,
+is periodically fetched by the CPE.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
 <p id="section-7.4-2">R-REDUCE-CA: No<a href="#section-7.4-2" class="pilcrow">¶</a></p>
 <p id="section-7.4-3">R-ELIMINATE-CA: No<a href="#section-7.4-3" class="pilcrow">¶</a></p>
 <p id="section-7.4-4">ACME delegated certificates do not require changes to client authentication libraries or operation.<a href="#section-7.4-4" class="pilcrow">¶</a></p>
@@ -1779,53 +1782,36 @@ keys and dealing with certificate renewal.<a href="#section-7.5-1" class="pilcro
 and by GnuTLS since 2019. However, RPKs are not supported
 by browsers or by curl.<a href="#section-7.5-4" class="pilcrow">¶</a></p>
 <p id="section-7.5-5">R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.<a href="#section-7.5-5" class="pilcrow">¶</a></p>
-<p id="section-7.5-6">R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.<a href="#section-7.5-6" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="wildcard">
-<section id="section-7.6">
-        <h3 id="name-wildcard-certificate">
-<a href="#section-7.6" class="section-number selfRef">7.6. </a><a href="#name-wildcard-certificate" class="section-name selfRef">Wildcard Certificate</a>
-        </h3>
-<p id="section-7.6-1">A wildcard certificate can be issued to the vendor, who then signs each of the CPE certificates. This
-removes the public CA from signing the certificates of each CPE; instead, the vendor's CA performs
-this signing. Evil twin attacks are prevented by a unique, per-network string in the certificate's
-Subject Alt Name (SAN).  This is deployed in production by Plex <span>[<a href="#plex-https" class="cite xref">plex-https</a>]</span>.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
-<p id="section-7.6-2">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-number of interactions with the CPE operator's CA.<a href="#section-7.6-2" class="pilcrow">¶</a></p>
-<p id="section-7.6-3">R-ELIMINATE-CA: no<a href="#section-7.6-3" class="pilcrow">¶</a></p>
-<p id="section-7.6-4">This operates similar to {#name-constraints} but has advantage of working with existing CAs and
-existing clients.<a href="#section-7.6-4" class="pilcrow">¶</a></p>
-<p id="section-7.6-5">R-SUPPORT-CA: yes<a href="#section-7.6-5" class="pilcrow">¶</a></p>
-<p id="section-7.6-6">R-SUPPORT-CLIENT: yes<a href="#section-7.6-6" class="pilcrow">¶</a></p>
+<p id="section-7.5-6">R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
+Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.<a href="#section-7.5-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="local-ca-certification-authority-built-into-cpe">
-<section id="section-7.7">
+<section id="section-7.6">
         <h3 id="name-local-ca-certification-auth">
-<a href="#section-7.7" class="section-number selfRef">7.7. </a><a href="#name-local-ca-certification-auth" class="section-name selfRef">Local CA: Certification Authority Built Into CPE</a>
+<a href="#section-7.6" class="section-number selfRef">7.6. </a><a href="#name-local-ca-certification-auth" class="section-name selfRef">Local CA: Certification Authority Built Into CPE</a>
         </h3>
-<p id="section-7.7-1">The CPE would be a CA capable of signing certificates for other in-home
+<p id="section-7.6-1">The CPE would be a CA capable of signing certificates for other in-home
 devices. The CA in the CPE would be limitied to signing only certificates belonging to
-that home network (using Sections <a href="#delegated" class="auto internal xref">7.2</a>, <a href="#name-constraints" class="auto internal xref">7.3</a>, or <a href="#wildcard" class="auto internal xref">7.6</a>).
+that home network (using Sections <a href="#delegated" class="auto internal xref">7.2</a> or <a href="#name-constraints" class="auto internal xref">7.3</a>).
 This allows the CPE to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
-on the local network.<a href="#section-7.7-1" class="pilcrow">¶</a></p>
+on the local network.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-7.7-2.1">
-            <p id="section-7.7-2.1.1">This feature is beyond the scope of the ADD working group but is
-mentioned because it was suggested during an ADD meeting.<a href="#section-7.7-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-7.6-2.1">
+            <p id="section-7.6-2.1.1">This feature is beyond the scope of the ADD working group but is
+mentioned because it was suggested during an ADD meeting.<a href="#section-7.6-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-7.7-3">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+<p id="section-7.6-3">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
 number of interactions with the CPE operator's CA for the
 CPE itself.  For other devices within the home network (e.g., printers), it
-eliminates interaction with the vendor's CA.<a href="#section-7.7-3" class="pilcrow">¶</a></p>
-<p id="section-7.7-4">R-ELIMINATE-CA: no<a href="#section-7.7-4" class="pilcrow">¶</a></p>
-<p id="section-7.7-5">While technically the industry could build such a system, building such a system
-across the ecosystem of client operating systems would be a daunting task.<a href="#section-7.7-5" class="pilcrow">¶</a></p>
-<p id="section-7.7-6">R-SUPPORT-CA: yes<a href="#section-7.7-6" class="pilcrow">¶</a></p>
-<p id="section-7.7-7">R-SUPPORT-CLIENT: yes<a href="#section-7.7-7" class="pilcrow">¶</a></p>
+eliminates interaction with the vendor's CA.<a href="#section-7.6-3" class="pilcrow">¶</a></p>
+<p id="section-7.6-4">R-ELIMINATE-CA: no<a href="#section-7.6-4" class="pilcrow">¶</a></p>
+<p id="section-7.6-5">While technically the industry could build such a system, building such a system
+across the ecosystem of client operating systems would be a daunting task.<a href="#section-7.6-5" class="pilcrow">¶</a></p>
+<p id="section-7.6-6">R-SUPPORT-CA: yes<a href="#section-7.6-6" class="pilcrow">¶</a></p>
+<p id="section-7.6-7">R-SUPPORT-CLIENT: yes<a href="#section-7.6-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1897,10 +1883,6 @@ across the ecosystem of client operating systems would be a daunting task.<a hre
         <dd>
 <span class="refAuthor">OpenWrt</span>, <span class="refTitle">"OpenWrt Project"</span>, <span>n.d.</span>, <span>&lt;<a href="https://openwrt.org/">https://openwrt.org/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="plex-https">[plex-https]</dt>
-        <dd>
-<span class="refTitle">"How Plex Is Doing HTTPS for all its Users"</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://words.filippo.io/how-plex-is-doing-https-for-all-its-users">https://words.filippo.io/how-plex-is-doing-https-for-all-its-users</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="prpl">[prpl]</dt>
         <dd>
 <span class="refAuthor">Prpl Foundation</span>, <span class="refTitle">"Prpl Foundation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://prplfoundation.org/">https://prplfoundation.org/</a>&gt;</span>. </dd>
@@ -1964,6 +1946,10 @@ across the ecosystem of client operating systems would be a daunting task.<a hre
 <dt id="RFC8585">[RFC8585]</dt>
         <dd>
 <span class="refAuthor">Palet Martinez, J.</span>, <span class="refAuthor">Liu, H. M.-H.</span>, and <span class="refAuthor">M. Kawashima</span>, <span class="refTitle">"Requirements for IPv6 Customer Edge Routers to Support IPv4-as-a-Service"</span>, <span class="seriesInfo">RFC 8585</span>, <span class="seriesInfo">DOI 10.17487/RFC8585</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8585">https://www.rfc-editor.org/rfc/rfc8585</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8739">[RFC8739]</dt>
+        <dd>
+<span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Gonzalez de Dios, O.</span>, <span class="refAuthor">Pastor Perales, A.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Support for Short-Term, Automatically Renewed (STAR) Certificates in the Automated Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8739</span>, <span class="seriesInfo">DOI 10.17487/RFC8739</span>, <time datetime="2020-03" class="refDate">March 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8739">https://www.rfc-editor.org/rfc/rfc8739</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9115">[RFC9115]</dt>
         <dd>

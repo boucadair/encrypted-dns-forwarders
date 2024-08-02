@@ -87,11 +87,9 @@ encrypted transports introduces deployment complications as to how to sustain cu
 offerings with local services. Solutions are needed to ease operating
 DNS forwarders in CPEs while allowing to make use of encrypted DNS  capabilities.
 
-This document describes the problem and why some existing solutions can't be used for
+This document describes the problem and to what extent existing solutions can or can't be used for
 these deployments. For example, Star certificates and name constraints extension suffer from
 the problem of deploying a new feature to CAs, TLS clients, and servers.
-
-The scope of this document is encrypted DNS servers deployed on managed CPEs.
 
 --- middle
 
@@ -116,7 +114,10 @@ The scope of this document is encrypted DNS servers deployed on managed CPEs.
 offerings with local services.
 
    This document describes the problem encountered to host encrypted DNS resolvers
-   in managed CPEs. It also discusses limitations of existing solutions.
+   in managed CPEs. It also identifies a set of requirements and discusses to what extent existing solutions
+   can (or can't) meet these requirements.
+
+The scope of this document is encrypted DNS servers deployed on managed CPEs.
 
 The document does not focus on generic considerations related to deploying DNS proxies. The reader may
 refer to {{?RFC5625}} for such matters.
@@ -309,8 +310,8 @@ victim's clients.
 # Analysis of Solutions to Requirements
 
 
-This section describes several solutions which can meet some of the requirements.  This is first summarized in the table and
-detailed in subsections.
+This section describes several solutions which can meet some of the requirements.  This is first summarized in {{table1}} and
+detailed in the following subsections.
 
 
 |    Solution                 | Reduce CA             | Eliminate CA     | Existing CA Support | Existing Client Support |
@@ -352,11 +353,11 @@ The frequency of CA interactions remains the same as with normal
 certificates ({{normal-certificates}}), but the interactions are with
 the vendor's service rather than the public CA.
 
-As currently specified in {{?RFC9345}}, the same name would be issued to all CPE
+As currently specified in {{?RFC9345}}, the same name would be issued to all CPEs
 making it impossible to identify whether the delegated credential is
 issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
 by enhancing {{?RFC9345}} to include a string that uniquely identifies the
-delegated credential (e.g., including hash of customer id or other unique identifier
+delegated credential (e.g., including a hash of a customer identifier or any other unique identifier
 in the FQDN to result in "HASH.cpe.example.com").
 
 
@@ -400,8 +401,8 @@ operated service to obtain a CA-signed ACME delegated certificate. It allows
 the CPE to request from a service managing the CPE, acting as a
 profiled ACME server, a certificate for a delegated identity,
 i.e., one belonging to the CPE. The CPE then uses the ACME protocol (with the
-extensions described in {{?RFC8739}}) to request issuance of a short-
-term, Automatically Renewed (STAR) certificate for the same delegated identity.
+extensions described in {{?RFC8739}}) to request issuance of a short-term,
+Automatically Renewed (STAR) certificate for the same delegated identity.
 The generated short-term certificate is automatically renewed by the public CA,
 is periodically fetched by the CPE.
 
@@ -483,7 +484,7 @@ This document has no IANA actions.
 
 --- back
 
-## Example of Delegated Certificate Issuance
+# Example of Delegated Certificate Issuance
 
    Let's consider that the encrypted DNS forwarder is hosted on a CPE and provisioned by a
    service (e.g., ACS) in the operator's network. Also, let's assume that each CPE is assigned

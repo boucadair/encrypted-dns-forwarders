@@ -357,7 +357,9 @@ making it impossible to identify whether the delegated credential is
 issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
 by enhancing {{?RFC9345}} to include a string that uniquely identifies the
 delegated credential (e.g., including hash of customer id or other unique identifier
-in the FQDN such as "HASH.cpe.example.com").  This document assumes such an
+in the FQDN such as "HASH.cpe.example.com").
+
+  > For the sake of simplifying the analysis, this document assumes such an
 enhancement to {{?RFC9345}} has been standardized and deployed.
 
 R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a

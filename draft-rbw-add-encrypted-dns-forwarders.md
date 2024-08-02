@@ -360,7 +360,7 @@ delegated credential (e.g., including hash of customer id or other unique identi
 in the FQDN such as "HASH.cpe.example.com").
 
   > For the sake of simplifying the analysis, this document assumes such an
-enhancement to {{?RFC9345}} has been standardized and deployed.
+> enhancement to {{?RFC9345}} has been standardized and deployed.
 
 R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
 vendor- or ISP-operated service.

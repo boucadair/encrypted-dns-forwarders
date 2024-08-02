@@ -357,7 +357,6 @@ As currently specified in {{?RFC9345}}, the same name would be issued to all CPE
 making it impossible to identify whether the delegated credential is
 issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
 by enhancing {{?RFC9345}} to include a string that uniquely identifies the
-
 delegated credential (e.g., including hash of customer id or other unique identifier
 in the FQDN such as "HASH.cpe.example.com").
 

@@ -26,13 +26,10 @@ Abstract
    operating DNS forwarders in CPEs while allowing to make use of
    encrypted DNS capabilities.
 
-   This document describes the problem and why some existing solutions
-   can't be used for these deployments.  For example, Star certificates
-   and name constraints extension suffer from the problem of deploying a
-   new feature to CAs, TLS clients, and servers.
-
-   The scope of this document is encrypted DNS servers deployed on
-   managed CPEs.
+   This document describes the problem and to what extent existing
+   solutions can or can't be used for these deployments.  For example,
+   Star certificates and name constraints extension suffer from the
+   problem of deploying a new feature to CAs, TLS clients, and servers.
 
 Discussion Venues
 
@@ -125,8 +122,12 @@ Table of Contents
    to sustain current offerings with local services.
 
    This document describes the problem encountered to host encrypted DNS
-   resolvers in managed CPEs.  It also discusses limitations of existing
-   solutions.
+   resolvers in managed CPEs.  It also identifies a set of requirements
+   and discusses to what extent existing solutions can (or can't) meet
+   these requirements.
+
+   The scope of this document is encrypted DNS servers deployed on
+   managed CPEs.
 
    The document does not focus on generic considerations related to
    deploying DNS proxies.  The reader may refer to [RFC5625] for such
@@ -314,8 +315,8 @@ Table of Contents
 7.  Analysis of Solutions to Requirements
 
    This section describes several solutions which can meet some of the
-   requirements.  This is first summarized in the table and detailed in
-   subsections.
+   requirements.  This is first summarized in Table 1 and detailed in
+   the following subsections.
 
    +==============+==========+===========+============+================+
    |     Solution |  Reduce  | Eliminate |  Existing  |    Existing    |
@@ -374,12 +375,13 @@ Table of Contents
    vendor's service rather than the public CA.
 
    As currently specified in [RFC9345], the same name would be issued to
-   all CPE making it impossible to identify whether the delegated
+   all CPEs making it impossible to identify whether the delegated
    credential is issued to the intended CPE or an "evil-twin" CPE.  This
    drawback can be corrected by enhancing [RFC9345] to include a string
-   that uniquely identifies the delegated credential (e.g., including
-   hash of customer id or other unique identifier in the FQDN such as
-   "HASH.cpe.example.com").
+   that uniquely identifies the
+
+   delegated credential (e.g., including hash of customer id or other
+   unique identifier in the FQDN such as "HASH.cpe.example.com").
 
       For the sake of simplifying the analysis, this document assumes
       such an enhancement to [RFC9345] has been standardized and
@@ -428,7 +430,7 @@ Table of Contents
    as a profiled ACME server, a certificate for a delegated identity,
    i.e., one belonging to the CPE.  The CPE then uses the ACME protocol
    (with the extensions described in [RFC8739]) to request issuance of a
-   short- term, Automatically Renewed (STAR) certificate for the same
+   short-term, Automatically Renewed (STAR) certificate for the same
    delegated identity.  The generated short-term certificate is
    automatically renewed by the public CA, is periodically fetched by
    the CPE.

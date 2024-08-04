@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-01T01:08:20.958891+00:00",
+  "timestamp": "2024-08-04T01:07:48.136981+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -698,24 +698,26 @@
       "id": "PR_kwDOMJRu5c52_gdE",
       "title": "Updates to draft to address comments",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/16",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tireddy2",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-07-31T12:55:17Z",
-      "updatedAt": "2024-07-31T17:53:11Z",
+      "updatedAt": "2024-08-01T10:05:41Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "2dd13eedf541919c5cda98f15c98dd9aec0347aa",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "tireddy2-patch-6",
       "headRefOid": "b96e346b8839a599a48bd670dd9b264b5571c071",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-08-01T10:05:41Z",
+      "mergedAt": "2024-08-01T10:05:41Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "2eff3ad8f369a89b8f8a3cd7b6463cc40c10cb3c"
+      },
       "comments": [],
       "reviews": [
         {
@@ -729,6 +731,161 @@
           "body": "",
           "createdAt": "2024-07-31T17:53:11Z",
           "updatedAt": "2024-07-31T17:53:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6D2zZ3",
+          "commit": {
+            "abbreviatedOid": "b96e346"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-01T09:16:33Z",
+          "updatedAt": "2024-08-01T09:16:33Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOMJRu5c53J0hW",
+      "title": "slightly expand discussion of delegated credentials and what client needs for support (by summarizing RFC9345)",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/17",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-01T17:59:34Z",
+      "updatedAt": "2024-08-02T18:34:30Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "13a8ad44622230d50d766281e841f3336c35c24d",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "deleg",
+      "headRefOid": "7d001e9fea49dd570f2416c6576e5fdcc1e181dc",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6EBuqG",
+          "commit": {
+            "abbreviatedOid": "3a446b2"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-02T08:49:16Z",
+          "updatedAt": "2024-08-02T08:49:16Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\nin the FQDN such as \"HASH.cpe.example.com\").\r\n\r\n  > For the sake of simplifying the analysis, this document assumes such an\r\n```",
+              "createdAt": "2024-08-02T08:49:16Z",
+              "updatedAt": "2024-08-02T08:49:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6EBvG8",
+          "commit": {
+            "abbreviatedOid": "3a446b2"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-02T08:49:59Z",
+          "updatedAt": "2024-08-02T08:49:59Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n> enhancement to {{?RFC9345}} has been standardized and deployed.\r\n```",
+              "createdAt": "2024-08-02T08:49:59Z",
+              "updatedAt": "2024-08-02T08:50:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6EBwUR",
+          "commit": {
+            "abbreviatedOid": "3a446b2"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "the assumption identifies a gap. That should be tagged as such; hence the proposed note formatting. Feel free to adjust. Thanks",
+          "createdAt": "2024-08-02T08:51:50Z",
+          "updatedAt": "2024-08-02T08:51:50Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6ED5fz",
+          "commit": {
+            "abbreviatedOid": "3a446b2"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-02T13:39:30Z",
+          "updatedAt": "2024-08-02T13:39:30Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "we may want to say \"enhancement to {{?RFC9345}} will be standardized and deployed.\"",
+              "createdAt": "2024-08-02T13:39:30Z",
+              "updatedAt": "2024-08-02T13:39:30Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOMJRu5c53OYZ4",
+      "title": "adjust the scope to highlight the analysis",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/18",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-02T08:17:58Z",
+      "updatedAt": "2024-08-02T13:38:12Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "2eff3ad8f369a89b8f8a3cd7b6463cc40c10cb3c",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "45c5a2ff68dacbaf32f46e012d9716f82feb6051",
+      "closedAt": "2024-08-02T13:38:12Z",
+      "mergedAt": "2024-08-02T13:38:12Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "13a8ad44622230d50d766281e841f3336c35c24d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6EC9wt",
+          "commit": {
+            "abbreviatedOid": "45c5a2f"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-02T11:22:10Z",
+          "updatedAt": "2024-08-02T11:22:10Z",
           "comments": []
         }
       ]

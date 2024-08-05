@@ -357,17 +357,21 @@ As currently specified in {{?RFC9345}}, the same name would be issued to all CPE
 making it impossible to identify whether the delegated credential is
 issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
 by enhancing {{?RFC9345}} to include a string that uniquely identifies the
-delegated credential (e.g., including a hash of a customer identifier or any other unique identifier
-in the FQDN to result in "HASH.cpe.example.com").
+delegated credential (e.g., including hash of customer id or other unique identifier
+in the FQDN such as "HASH.cpe.example.com").
 
+  > For the sake of simplifying the analysis, this document assumes such an
+> enhancement to {{?RFC9345}} has been standardized and deployed.
 
 R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
 vendor- or ISP-operated service.
 
 R-ELIMINATE-CA: no
 
-Delegated credentials have no existing support by CAs.  The only client supporting delegated
-credentials is Firefox.
+Delegated credentials have no existing support by CAs. Clients need to
+support {{Section 4.1.1 of ?RFC9345}} which requires sending an
+extension in their TLS 1.3 ClientHello.  The only client supporting
+delegated credentials is Firefox.
 
 R-SUPPORT-CA: no
 

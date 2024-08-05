@@ -486,12 +486,11 @@ Table of Contents
 
    Existing clients support self-signed certificates fairly well, but
    the user experience with clients is poor: some clients can't remember
-   to trust a certificate and (probably worst of all) clicking through
-   certificate warnings will become normalized.
+   to trust a certificate and clicking through certificate warnings will
+   become normalized.
 
    Modifying self-signed certificate handling for ".local" [RFC6761] or
-   ".internal" [I-D.davies-internal-tld] for unique names is worthy of
-   consideration.
+   ".internal" [I-D.davies-internal-tld] might be worth further study.
 
    R-SUPPORT-CA: n/a, this system does not use Certification Authories
    at all.

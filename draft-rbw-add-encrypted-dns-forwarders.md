@@ -332,8 +332,11 @@ This solution has the CPE requests a (cloud) server to obtain a certificate
 for the CPE from a public CA. This solution is deployed in production
 by Mozilla {{https-local-dom}}, McAfee, and Cujo.  Today, this is best
 practice.  However, it suffers from the dependency on both the public
-Certification Authority and the vendor's service, which are necessary
-for both initial deployment and for certificate renewal.
+Certification Authority and the vendor's service (necessary because the
+CPE cannot always obtain a publicly-accessible IPv4 address necessary
+to get an ACME-signed certificate itself), which are necessary
+for both initial deployment and for certificate renewal.  One standard for
+such a system is {{?PKIX-EST=RFC7030}}.
 
 R-REDUCE-CA: no
 
@@ -446,7 +449,7 @@ devices. The CA in the CPE would be limitied to signing only certificates belong
 that home network (using Sections {{<delegated}} or {{<name-constraints}}).
 This allows the CPE to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
-on the local network.
+on the local network.  One standard for such a system is {{?BRSKI=RFC8995}}.
 
 > This feature is beyond the scope of the ADD working group but is
 mentioned because it was suggested during an ADD meeting.

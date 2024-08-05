@@ -45,28 +45,28 @@ informative:
      title: "OpenWrt Project"
      author:
         org: OpenWrt
-        date: false
+     date: false
      target: https://openwrt.org/
 
   prpl:
      title: "Prpl Foundation"
      author:
         org: Prpl Foundation
-        date: false
+     date: false
      target: https://prplfoundation.org/
 
   prplwrt:
      title: "Prpl WRT"
      author:
         org: Prpl Foundation
-        date: false
+     date: false
      target: https://prplfoundation.org/project/prplwrt/
 
   TR-069:
      title: "CPE WAN Management Protocol"
      author:
         org: The Broadband Forum
-        date: December 2018
+     date: December 2018
      target: https://www.broadband-forum.org/technical/download/TR-069.pdf
 
   https-local-dom:

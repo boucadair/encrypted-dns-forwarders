@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 6 February 2025                                          Orange
+Expires: 7 February 2025                                          Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                           5 August 2024
+                                                           6 August 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 February 2025.
+   This Internet-Draft will expire on 7 February 2025.
 
 Copyright Notice
 
@@ -478,7 +478,8 @@ Table of Contents
    connection, which is usually a "click OK to continue" dialog box and
    is a trust on first use (TOFU) solution.  While it is possible the
    user verifies the certificate matches expectations, this seldom
-   occurs.
+   occurs.  The certificate warnings are normalized by users which
+   weakens security overall.
 
    R-REDUCE-CA: yes, public CA's are not used at all.
 

@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 6 February 2025                                          Orange
+Expires: 7 February 2025                                          Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                           5 August 2024
+                                                           6 August 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 February 2025.
+   This Internet-Draft will expire on 7 February 2025.
 
 Copyright Notice
 
@@ -478,7 +478,7 @@ Table of Contents
    7.3).  This allows the CPE to sign certificates for other devices
    within the network such as printers, IoT devices, NAS devices,
    laptops, or anything else needing to be a server on the local
-   network.  One standard for such a system is [BRSKI].
+   network.
 
       This feature is beyond the scope of the ADD working group but is
       mentioned because it was suggested during an ADD meeting.
@@ -537,11 +537,6 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc9463>.
 
 10.2.  Informative References
-
-   [BRSKI]    Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
-              and K. Watsen, "Bootstrapping Remote Secure Key
-              Infrastructure (BRSKI)", RFC 8995, DOI 10.17487/RFC8995,
-              May 2021, <https://www.rfc-editor.org/rfc/rfc8995>.
 
    [https-local-dom]
               Thomson, M., "HTTPS for Local Domains", April 2021,

@@ -449,7 +449,7 @@ devices. The CA in the CPE would be limitied to signing only certificates belong
 that home network (using Sections {{<delegated}} or {{<name-constraints}}).
 This allows the CPE to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
-on the local network.  One standard for such a system is {{?BRSKI=RFC8995}}.
+on the local network.
 
 > This feature is beyond the scope of the ADD working group but is
 mentioned because it was suggested during an ADD meeting.

@@ -444,7 +444,8 @@ Further, DNR and DDR in verified discovery mode expect to encounter certificates
 
 A self-signed certificate requires the client to authorize the connection, which is usually
 a "click OK to continue" dialog box and is a trust on first use (TOFU) solution.  While it is
-possible the user verifies the certificate matches expectations, this seldom occurs.
+possible the user verifies the certificate matches expectations, this seldom occurs. The
+certificate warnings are normalized by users which weakens security overall.
 
 R-REDUCE-CA: yes, public CA's are not used at all.
 

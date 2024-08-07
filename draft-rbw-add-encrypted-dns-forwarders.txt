@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 6 February 2025                                          Orange
+Expires: 8 February 2025                                          Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                           5 August 2024
+                                                           7 August 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 February 2025.
+   This Internet-Draft will expire on 8 February 2025.
 
 Copyright Notice
 
@@ -90,7 +90,8 @@ Table of Contents
      7.3.  Name Constraints
      7.4.  ACME Delegated Certificates
      7.5.  Raw Public Keys
-     7.6.  Local CA: Certification Authority Built Into CPE
+     7.6.  Self-signed Certificate
+     7.7.  Local CA: Certification Authority Built Into CPE
    8.  Security Considerations
    9.  IANA Considerations
    10. References
@@ -336,8 +337,11 @@ Table of Contents
    |    delegated |          |           |            |                |
    | certificates |          |           |            |                |
    +--------------+----------+-----------+------------+----------------+
-   |   Raw Public |   Yes    |    Yes    |    n/a     |     Some,      |
-   |         Keys |          |           |            |      (*)       |
+   |   Raw Public |   Yes    |    Yes    |    n/a     |   Some, (*)    |
+   |         Keys |          |           |            |                |
+   +--------------+----------+-----------+------------+----------------+
+   |  Self-Signed |   Yes    |    Yes    |    n/a     |   Yes, poor    |
+   |  Certificate |          |           |            |   experience   |
    +--------------+----------+-----------+------------+----------------+
    |        Local |    No    |     No    |    Yes     |      Yes       |
    |  Certificate |          |           |            |                |
@@ -468,7 +472,33 @@ Table of Contents
    verified discovery mode expect to encounter certificates and do not
    support RPK.
 
-7.6.  Local CA: Certification Authority Built Into CPE
+7.6.  Self-signed Certificate
+
+   A self-signed certificate requires the client to authorize the
+   connection, which is usually a "click OK to continue" dialog box and
+   is a trust on first use (TOFU) solution.  While it is possible the
+   user verifies the certificate matches expectations, this seldom
+   occurs.  The certificate warnings are normalized by users which
+   weakens security overall.
+
+   R-REDUCE-CA: yes, public CA's are not used at all.
+
+   R-ELIMINATE-CA: yes
+
+   Existing clients support self-signed certificates fairly well, but
+   the user experience with clients is poor: some clients can't remember
+   to trust a certificate and clicking through certificate warnings will
+   become normalized.
+
+   Modifying self-signed certificate handling for ".local" [RFC6761] or
+   ".internal" [I-D.davies-internal-tld] might be worth further study.
+
+   R-SUPPORT-CA: n/a, this system does not use Certification Authories
+   at all.
+
+   R-SUPPORT-CLIENT: Yes, but poor user experience.
+
+7.7.  Local CA: Certification Authority Built Into CPE
 
    The CPE would be a CA capable of signing certificates for other in-
    home devices.  The CA in the CPE would be limitied to signing only
@@ -541,6 +571,13 @@ Table of Contents
               <https://docs.google.com/document/
               d/170rFC91jqvpFrKIqG4K8Vox8AL4LeQXzfikBQXYPmzU>.
 
+   [I-D.davies-internal-tld]
+              Davies, K. and A. McConachie, "A Top-level Domain for
+              Private Use", Work in Progress, Internet-Draft, draft-
+              davies-internal-tld-00, 2 August 2024,
+              <https://datatracker.ietf.org/doc/html/draft-davies-
+              internal-tld-00>.
+
    [I-D.reddy-add-delegated-credentials]
               Reddy.K, T., Boucadair, M., Wing, D., and S. Jain,
               "Delegated Credentials to Host Encrypted DNS Forwarders on
@@ -581,6 +618,10 @@ Table of Contents
               M. Azinger, "IANA-Reserved IPv4 Prefix for Shared Address
               Space", BCP 153, RFC 6598, DOI 10.17487/RFC6598, April
               2012, <https://www.rfc-editor.org/rfc/rfc6598>.
+
+   [RFC6761]  Cheshire, S. and M. Krochmal, "Special-Use Domain Names",
+              RFC 6761, DOI 10.17487/RFC6761, February 2013,
+              <https://www.rfc-editor.org/rfc/rfc6761>.
 
    [RFC6762]  Cheshire, S. and M. Krochmal, "Multicast DNS", RFC 6762,
               DOI 10.17487/RFC6762, February 2013,

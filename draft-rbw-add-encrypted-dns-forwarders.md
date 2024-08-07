@@ -321,6 +321,7 @@ detailed in the following subsections.
 | Name constraints            | Yes                   |  No              |   No                |   No                    |
 | ACME delegated certificates | No                    |  No              |   Yes               |   Yes                   |
 | Raw Public Keys             | Yes                   |  Yes             |   n/a               |   Some, (*)             |
+| Self-Signed Certificate     | Yes                   |  Yes             |   n/a               |   Yes, poor experience  |
 | Local Certificate Authority | No                    |  No              |   Yes               |   Yes                   |
 {: #table1 title="Summary of Solution Analysis"}
 
@@ -438,6 +439,30 @@ R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.
 
 R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
 Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.
+
+## Self-signed Certificate
+
+A self-signed certificate requires the client to authorize the connection, which is usually
+a "click OK to continue" dialog box and is a trust on first use (TOFU) solution.  While it is
+possible the user verifies the certificate matches expectations, this seldom occurs. The
+certificate warnings are normalized by users which weakens security overall.
+
+R-REDUCE-CA: yes, public CA's are not used at all.
+
+R-ELIMINATE-CA: yes
+
+Existing clients support self-signed certificates fairly well, but the
+user experience with clients is poor: some clients can't remember to
+trust a certificate and clicking through certificate warnings will
+become normalized.
+
+Modifying self-signed certificate handling for ".local" {{?RFC6761}}
+or ".internal" {{?I-D.davies-internal-tld}} might be worth further
+study.
+
+R-SUPPORT-CA: n/a, this system does not use Certification Authories at all.
+
+R-SUPPORT-CLIENT: Yes, but poor user experience.
 
 ## Local CA: Certification Authority Built Into CPE
 

@@ -356,9 +356,11 @@ Table of Contents
    certificate for the CPE from a public CA.  This solution is deployed
    in production by Mozilla [https-local-dom], McAfee, and Cujo.  Today,
    this is best practice.  However, it suffers from the dependency on
-   both the public Certification Authority and the vendor's service,
+   both the public Certification Authority and the vendor's service
+   (necessary because the CPE cannot always obtain a publicly-accessible
+   IPv4 address necessary to get an ACME-signed certificate itself),
    which are necessary for both initial deployment and for certificate
-   renewal.
+   renewal.  One standard for such a system is [PKIX-EST].
 
    R-REDUCE-CA: no
 
@@ -587,6 +589,11 @@ Table of Contents
               delegated-credentials-03>.
 
    [openwrt]  OpenWrt, "OpenWrt Project", n.d., <https://openwrt.org/>.
+
+   [PKIX-EST] Pritikin, M., Ed., Yee, P., Ed., and D. Harkins, Ed.,
+              "Enrollment over Secure Transport", RFC 7030,
+              DOI 10.17487/RFC7030, October 2013,
+              <https://www.rfc-editor.org/rfc/rfc7030>.
 
    [prpl]     Prpl Foundation, "Prpl Foundation", n.d.,
               <https://prplfoundation.org/>.

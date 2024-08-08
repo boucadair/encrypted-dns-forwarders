@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-06T01:02:59.697802+00:00",
+  "timestamp": "2024-08-08T01:03:33.921638+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -910,52 +910,277 @@
       "id": "PR_kwDOMJRu5c53eSSN",
       "title": "add self-signed cert, and hint at softening .local / .internal certificate handling",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/19",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-05T17:06:04Z",
-      "updatedAt": "2024-08-05T18:02:28Z",
+      "updatedAt": "2024-08-07T11:57:06Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "3882b7a569a8b30b851ba24a80ecbb30a68a4145",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "self",
-      "headRefOid": "b81f2a9691db7cca685d9c831b9b034c59a4a558",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "666546126e444c663535d33c122df4e76b8d9430",
+      "closedAt": "2024-08-07T11:57:06Z",
+      "mergedAt": "2024-08-07T11:57:06Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "1488e6caa4e5b5134c20fdec8fc83e45525324bd"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6EVxQb",
+          "commit": {
+            "abbreviatedOid": "7457bfb"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T05:19:01Z",
+          "updatedAt": "2024-08-06T05:19:01Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "I don't think using self-signed certificate is a good idea. It will not work with IoT devices (without User Interface) supporting Encrypted DNS forwarders.  Most importantly, it trains users to ignore certificate errors and accept certificates which is a poor security practice. Self-signed certificates will only work with DDR in opportunistic mode and it not enabled by default on clients (e.g., windows). ",
+              "createdAt": "2024-08-06T05:19:01Z",
+              "updatedAt": "2024-08-06T05:19:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6EapvX",
+          "commit": {
+            "abbreviatedOid": "b81f2a9"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T15:04:35Z",
+          "updatedAt": "2024-08-06T15:04:35Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "@tireddy2, better recoding this as part of the analysis text.\r\n\r\nDan's text does not recommend this and I think is fair.",
+              "createdAt": "2024-08-06T15:04:35Z",
+              "updatedAt": "2024-08-06T15:04:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6Ecm_6",
+          "commit": {
+            "abbreviatedOid": "7457bfb"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T19:35:45Z",
+          "updatedAt": "2024-08-06T19:35:45Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "self-signed certificates are included as an example of an existing -- but bad -- practice.  \r\n\r\nHowever, I am unclear how an IoT device, lacking that same user interface, will work with a local CA (where that CA needs to be added to the IoT device's trust list), or work with delegated credentials (should it honor delegated credentials for cpe.danwing.example.com but not cpe.tiru.example.com and how would it know?).\r\n\r\nSaid another way: do we need a requirement that the solution work, somehow, without user interaction??  I don't know how to achieve that.  \r\n\r\nAnother point: several modern IoT devices have the ability to get their initial configuration from a smartphone (today, that is mostly just Wi-Fi password), because they lack a user interface. They could expand that capability -- if they cared -- to bootstrap trusting a local (home-installed) CA, do TOFU for DNR, or whatevs.  ",
+              "createdAt": "2024-08-06T19:35:45Z",
+              "updatedAt": "2024-08-06T19:35:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6Ec4sP",
+          "commit": {
+            "abbreviatedOid": "7457bfb"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T20:17:21Z",
+          "updatedAt": "2024-08-06T20:17:21Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "I added a sentence that users become accustomed to the warnings which is bad.\r\n\r\nBut I'd still like to know if there is need for IoT to get a Requirement, and how we should express that Requirement.",
+              "createdAt": "2024-08-06T20:17:21Z",
+              "updatedAt": "2024-08-06T20:17:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6EhopY",
+          "commit": {
+            "abbreviatedOid": "6665461"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-07T08:44:07Z",
+          "updatedAt": "2024-08-07T08:44:07Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "IoT may have specifics and may support other DNR variants such as draft-lenders-core-dnr. I tend to keep the discussion in a level that can help adoption of this draft.\r\n\r\nThe sentence you had about bad practice is good/sufficient for the analysis at this stage. IoT mention if any should be very short. Thanks.",
+              "createdAt": "2024-08-07T08:44:07Z",
+              "updatedAt": "2024-08-07T08:44:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6El4WD",
+          "commit": {
+            "abbreviatedOid": "6665461"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-07T11:56:00Z",
+          "updatedAt": "2024-08-07T11:56:01Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "Update looks good. ",
+              "createdAt": "2024-08-07T11:56:00Z",
+              "updatedAt": "2024-08-07T11:56:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6El4jA",
+          "commit": {
+            "abbreviatedOid": "6665461"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-07T11:56:09Z",
+          "updatedAt": "2024-08-07T11:56:09Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 20,
       "id": "PR_kwDOMJRu5c53gHZ7",
       "title": "cite EST and PKIX, and add brief explanation why vendor service is needed (that CPE cannot get IPv4 address to do ACME themselves)",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/20",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-05T22:24:15Z",
-      "updatedAt": "2024-08-05T22:24:16Z",
+      "updatedAt": "2024-08-07T11:57:19Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "3882b7a569a8b30b851ba24a80ecbb30a68a4145",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "citations",
-      "headRefOid": "ac60b815269053d7affcf1d9d5ddf20694d9aa95",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "9169d826c62160457207f2ed3a7494211575041c",
+      "closedAt": "2024-08-07T11:57:18Z",
+      "mergedAt": "2024-08-07T11:57:18Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "d4cd37984175ec1f7438bcd5d1f17ec354d5f617"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6EVyr5",
+          "commit": {
+            "abbreviatedOid": "ac60b81"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T05:24:59Z",
+          "updatedAt": "2024-08-06T05:24:59Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "BRSKI is restricted to IoT devices attached to certain network, please see our draft https://datatracker.ietf.org/doc/html/draft-reddy-add-iot-byod-bootstrap-00#section-5. ",
+              "createdAt": "2024-08-06T05:24:59Z",
+              "updatedAt": "2024-08-06T05:25:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6Eaqi7",
+          "commit": {
+            "abbreviatedOid": "ac60b81"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T15:05:52Z",
+          "updatedAt": "2024-08-06T15:05:53Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "I don't think BRSKI is deployed/supported.",
+              "createdAt": "2024-08-06T15:05:52Z",
+              "updatedAt": "2024-08-06T15:05:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6Eck3M",
+          "commit": {
+            "abbreviatedOid": "ac60b81"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-06T19:30:27Z",
+          "updatedAt": "2024-08-06T19:30:27Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "removed citation to BRSKI.",
+              "createdAt": "2024-08-06T19:30:27Z",
+              "updatedAt": "2024-08-06T19:30:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6EhpUS",
+          "commit": {
+            "abbreviatedOid": "9169d82"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-07T08:44:34Z",
+          "updatedAt": "2024-08-07T08:44:34Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6El5RQ",
+          "commit": {
+            "abbreviatedOid": "9169d82"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-07T11:56:41Z",
+          "updatedAt": "2024-08-07T11:56:41Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

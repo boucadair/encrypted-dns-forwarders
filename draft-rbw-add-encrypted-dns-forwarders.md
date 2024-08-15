@@ -274,18 +274,35 @@ refer to {{?RFC5625}} for such matters.
 
 # Requirements
 
+
+With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
+public Certification Authority can sign a certificate for each CPE.
+With a large CPE deployment, this can involve millions of signatures
+during deployment and certificate renewals.  Failure or outages of
+the certificate authority will contribute to significant outage for
+customer devices which creates a desire to operate one's own
+Certification Authority system rather than relying on a
+(public) Certification Authority.
+
    R-REDUCE-CA:
-   : Reduce the use of a Certification Authority for each CPE, compared
-to obtaining and renewing one certificate for each CPE from a (public)
-Certification Authority.
+   : Reduce the use of a public Certification Authority.
+
+Taking an additional step from the previous requirement, eliminating
+running one's own Certification Authority would avoid the complexities
+of certificate management.
 
    R-ELIMINATE-CA:
    : Eliminate using Certification Authorities for each CPE.
 
+The ability to immediately deploy using existing Certification
+Authorities is important to evaluate.
+
    R-SUPPORT-CA:
    : Existing support by Certification Authorities.
 
-   R-SUPPORT-CLIENT:
+The ability to immediately deploy on clients is important to evaluate.
+
+  R-SUPPORT-CLIENT:
    : Existing support client libraries or client software intances.
 
 

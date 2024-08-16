@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 16 February 2025                                         Orange
+Expires: 17 February 2025                                         Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                          15 August 2024
+                                                          16 August 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 February 2025.
+   This Internet-Draft will expire on 17 February 2025.
 
 Copyright Notice
 
@@ -285,31 +285,14 @@ Table of Contents
 
 5.  Requirements
 
-   With automated certificate enrollment and renewal [ACME], a public
-   Certification Authority can sign a certificate for each CPE.  With a
-   large CPE deployment, this can involve millions of signatures during
-   deployment and certificate renewals.  Failure or outages of the
-   certificate authority will contribute to significant outage for
-   customer devices which creates a desire to operate one's own
-   Certification Authority system rather than relying on a (public)
-   Certification Authority.
-
-   R-REDUCE-CA:  Reduce the use of a public Certification Authority.
-
-   Taking an additional step from the previous requirement, eliminating
-   running one's own Certification Authority would avoid the
-   complexities of certificate management.
+   R-REDUCE-CA:  Reduce the use of a Certification Authority for each
+      CPE, compared to obtaining and renewing one certificate for each
+      CPE from a (public) Certification Authority.
 
    R-ELIMINATE-CA:  Eliminate using Certification Authorities for each
       CPE.
 
-   The ability to immediately deploy using existing Certification
-   Authorities is important to evaluate.
-
    R-SUPPORT-CA:  Existing support by Certification Authorities.
-
-   The ability to immediately deploy on clients is important to
-   evaluate.
 
    R-SUPPORT-CLIENT:  Existing support client libraries or client
       software intances.
@@ -585,11 +568,6 @@ Table of Contents
 
 10.2.  Informative References
 
-   [ACME]     Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
-              Kasten, "Automatic Certificate Management Environment
-              (ACME)", RFC 8555, DOI 10.17487/RFC8555, March 2019,
-              <https://www.rfc-editor.org/rfc/rfc8555>.
-
    [https-local-dom]
               Thomson, M., "HTTPS for Local Domains", April 2021,
               <https://docs.google.com/document/
@@ -610,17 +588,17 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-reddy-add-
               delegated-credentials-03>.
 
-   [openwrt]  OpenWrt, "OpenWrt Project", n.d., <https://openwrt.org/>.
+   [openwrt]  OpenWrt, "OpenWrt Project", <https://openwrt.org/>.
 
    [PKIX-EST] Pritikin, M., Ed., Yee, P., Ed., and D. Harkins, Ed.,
               "Enrollment over Secure Transport", RFC 7030,
               DOI 10.17487/RFC7030, October 2013,
               <https://www.rfc-editor.org/rfc/rfc7030>.
 
-   [prpl]     Prpl Foundation, "Prpl Foundation", n.d.,
+   [prpl]     Prpl Foundation, "Prpl Foundation",
               <https://prplfoundation.org/>.
 
-   [prplwrt]  Prpl Foundation, "Prpl WRT", n.d.,
+   [prplwrt]  Prpl Foundation, "Prpl WRT",
               <https://prplfoundation.org/project/prplwrt/>.
 
    [RFC1918]  Rekhter, Y., Moskowitz, B., Karrenberg, D., de Groot, G.
@@ -723,9 +701,9 @@ Table of Contents
               RFC 9499, DOI 10.17487/RFC9499, March 2024,
               <https://www.rfc-editor.org/rfc/rfc9499>.
 
-   [TR-069]   The Broadband Forum, "CPE WAN Management Protocol", n.d.,
-              <https://www.broadband-forum.org/technical/download/TR-
-              069.pdf>.
+   [TR-069]   The Broadband Forum, "CPE WAN Management Protocol",
+              December 2018, <https://www.broadband-
+              forum.org/technical/download/TR-069.pdf>.
 
 Appendix A.  Example of Delegated Certificate Issuance
 

@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-15T01:00:57.335283+00:00",
+  "timestamp": "2024-08-18T01:07:44.251703+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1187,52 +1187,84 @@
       "id": "PR_kwDOMJRu5c54av6m",
       "title": "fix indentation for cleaner build",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/21",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-15T00:26:37Z",
-      "updatedAt": "2024-08-15T00:26:38Z",
+      "updatedAt": "2024-08-16T11:26:08Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "d4cd37984175ec1f7438bcd5d1f17ec354d5f617",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "cleanup_build",
       "headRefOid": "03afbd440dabe8c828e6cd7deda5542a18b7ba38",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-08-16T11:26:08Z",
+      "mergedAt": "2024-08-16T11:26:08Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "194fec881d2b62006ebed3f89c37f6a57286a4a8"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6FqgdB",
+          "commit": {
+            "abbreviatedOid": "03afbd4"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-16T11:26:02Z",
+          "updatedAt": "2024-08-16T11:26:02Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 22,
       "id": "PR_kwDOMJRu5c54az1G",
       "title": "add some text discussing each R- requirement",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/22",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-15T00:46:33Z",
-      "updatedAt": "2024-08-15T00:46:33Z",
+      "updatedAt": "2024-08-16T11:42:55Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "d4cd37984175ec1f7438bcd5d1f17ec354d5f617",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "detail_req",
       "headRefOid": "63fc3aae03b000b454287ac404b72d2116a73637",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-08-16T11:42:55Z",
+      "mergedAt": "2024-08-16T11:42:55Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "6b67770405eeca17c26aa8e10c55d9548ee1ddcf"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6Fqmdi",
+          "commit": {
+            "abbreviatedOid": "63fc3aa"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-16T11:42:49Z",
+          "updatedAt": "2024-08-16T11:42:49Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

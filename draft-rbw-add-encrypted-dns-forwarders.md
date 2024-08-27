@@ -117,10 +117,17 @@ offerings with local services.
    in managed CPEs. It also identifies a set of requirements and discusses to what extent existing solutions
    can (or can't) meet these requirements.
 
-The scope of this document is encrypted DNS servers deployed on managed CPEs.
 
-The document does not focus on generic considerations related to deploying DNS proxies. The reader may
-refer to {{?RFC5625}} for such matters.
+# Scope
+
+This document describes the current state of the art for deploying
+encrypted DNS on customer premise equipment.  New mechanisms should be
+described in separate documents.
+
+The document does not focus on generic considerations related to
+deploying DNS proxies. The reader may refer to {{?RFC5625}} for such
+matters.
+
 
 # Conventions and Definitions
 
@@ -207,82 +214,31 @@ refer to {{?RFC5625}} for such matters.
 
    *  The leg between the CPE and an upstream DNS resolver.
 
-# Hosting Encrypted DNS Forwarder in Local Networks
+# Requirements
 
-   This section discusses some deployment challenges to host an
-   encrypted DNS forwarder within a local network.
-
-## Discovery of Designated Resolvers (DDR)
-
-   DDR requires proving possession of an IP address, as the DDR
-   certificate contains the server's IPv4 and IPv6 addresses and is
-   signed by a Certification Authority (CA).  DDR is constrained to public IP
-   addresses because (WebPKI) CAs will not sign
-   special-purpose IP addresses {{?RFC6890}}, most notably IPv4 private-use
-   {{?RFC1918}}, IPv4 shared address {{?RFC6598}}, or IPv6 Unique-Local
-   {{?RFC8190}} address space.
-
-   A tempting solution for enabling an encrypted DNS forwarder with DDR is to use the CPE's WAN
-   IP address for DDR and prove possession of that IP address.  However,
-   the CPE's WAN IPv4 address will not be a public IPv4 address if the
-   CPE is behind another layer of NAT (either Carrier Grade NAT (CGN) or
-   another on-premise NAT), reducing the success of this mechanism to
-   CPE's WAN IPv6 address.
-
-   Also, if the ISP renumbers the subscriber's
-   network suddenly (rather than slow IPv6 renumbering described in
-   {{?RFC4192}}), encrypted DNS service will be delayed until that new
-   certificate is acquired.
-
-##  Discovery of Network-designated Resolvers (DNR)
-
-   DNR requires proving possession of a domain name as the encrypted
-   resolver's certificate contains the FQDN. For example, the entity (e.g., ISP or
-   network administrator) managing the CPE would assign a unique FQDN to
-   the CPE. There are two mechanisms for the CPE to obtain the
-   certificate for the FQDN: using one of its WAN IP addresses or
-   requesting its signed certificate from an Internet-facing server used
-   for remote CPE management (e.g., the Auto Configuration Server (ACS)
-   in the CPE WAN Management Protocol {{TR-069}}).
-
-   If the CPE's WAN IP address is used, the CPE needs a public IPv4 or a global unicast IPv6
-   address together with DNS A or AAAA records pointing to that CPE's
-   WAN address to prove possession of the DNS name to obtain a (WebPKI)
-   CA-signed certificate. That is, the CPE fulfills the DNS or HTTP
-   challenge discussed in Automatic Certificate Management Environment (ACME) {{?RFC8555}}.  However, a CPE's WAN address
-   will not be a public IPv4 address if the CPE is behind another layer
-   of NAT (either a CGN or another on-premise NAT), reducing the success
-   of this mechanism to a CPE's WAN IPv6 address. If the ISP renumbers the subscriber's
-   network, the DNS record will also need to expire and changed to
-   reflect the new IP address.
-
-## Certificate Issuance Issues
-
-  The following lists some limitations for certificate issuance:
+With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
+public Certification Authority can sign a certificate for each CPE.
+This causes a few issues:
 
    *  In case of large scale of CPEs (e.g., millions of devices),
       issuing certificate request for a large number of subdomains could
       be treated as an attack by the certificate authorities to
-      overwhelm it.
+      overwhelm it.  This can be resolved with contracts and
+      payment but all of these problems are barriers to moving to
+      another certificate authority.
 
-   *  Dependency on the CA to issue a large number of certificates.
+   *  Dependency on the CA to issue a large number of certificates,
+      which causes CA availability to impact service availability.
 
-   *  If the CPE uses one of its WAN IP addresses to obtain the
-      certificate for the FQDN, the Internet-facing HTTP server or a DNS
-      authoritative server on the CPE to complete the HTTP or DNS
-      challenge can be subjected to DDoS attacks.
+   * If the CPE uses one of its WAN IP addresses to obtain the
+      certificate for the FQDN, the Internet-facing HTTP server or a
+      DNS authoritative server on the CPE to complete the HTTP or DNS
+      challenge can be subjected to attacks. To avoid this exposure,
+      and to accomodate environments where the CPE cannot obtain a
+      public IP address (e.g., CGN), a vendor-operated service would
+      need to obtain the signed certificate on the CPE's behalf.
 
-# Requirements
-
-
-With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
-public Certification Authority can sign a certificate for each CPE.
-With a large CPE deployment, this can involve millions of signatures
-during deployment and certificate renewals.  Failure or outages of
-the certificate authority will contribute to significant outage for
-customer devices which creates a desire to operate one's own
-Certification Authority system rather than relying on a
-(public) Certification Authority.
+For these reasons, it is desirable to reduce the need for a public CA.
 
    R-REDUCE-CA:
    : Reduce the use of a public Certification Authority.
@@ -308,20 +264,18 @@ The ability to immediately deploy on clients is important to evaluate.
 
 # Non-Requirements
 
-NR-REVOKE:
-: Provide mechanism to revoke certificates. End users are
-extremely unlikely to contact the device vendor or their ISP if a CPE
-device is replaced (stolen, upgraded, etc.).  Rather, the user will replace
-the CPE and configure their client devices (laptops, smartphones, IoT
-devices, etc.) to authorize the new CPE.
-:  As part of that configuration, the
-client device might refuse to authorize the previous CPE.
-:  While this
-does leave the client devices open to attack by the previous (stolen)
-CPE, the attacker would also need to have access to the victim's
-physical network or broadcast a strong enough Wi-Fi signal to the
-victim's clients.
+End users are extremely unlikely to contact the device vendor or their
+ISP if a CPE device is replaced (stolen, upgraded, etc.).  Rather, the
+user will replace the CPE and configure their client devices (laptops,
+smartphones, IoT devices, etc.) to authorize the new CPE.  As part of
+that configuration, the client device can refuse to authorize the
+previous CPE.  While this does leave the client devices open to attack
+by the previous (stolen) CPE, the attacker would also need to have
+access to the victim's physical network or broadcast a strong enough
+Wi-Fi signal to the victim's clients.
 
+NR-REVOKE:
+: Do not provide certificate revocation.
 
 
 # Analysis of Solutions to Requirements
@@ -509,6 +463,60 @@ across the ecosystem of client operating systems would be a daunting task.
 R-SUPPORT-CA: yes
 
 R-SUPPORT-CLIENT: yes
+
+
+
+# Deploying Encrypted DNS Forwarder in Local Networks
+
+   This section discusses some deployment challenges to host an
+   encrypted DNS forwarder within a local network.
+
+## Discovery of Designated Resolvers (DDR)
+
+   DDR requires proving possession of an IP address, as the DDR
+   certificate contains the server's IPv4 and IPv6 addresses and is
+   signed by a Certification Authority (CA).  DDR is constrained to public IP
+   addresses because (WebPKI) CAs will not sign
+   special-purpose IP addresses {{?RFC6890}}, most notably IPv4 private-use
+   {{?RFC1918}}, IPv4 shared address {{?RFC6598}}, or IPv6 Unique-Local
+   {{?RFC8190}} address space.
+
+   A tempting solution for enabling an encrypted DNS forwarder with DDR is to use the CPE's WAN
+   IP address for DDR and prove possession of that IP address.  However,
+   the CPE's WAN IPv4 address will not be a public IPv4 address if the
+   CPE is behind another layer of NAT (either Carrier Grade NAT (CGN) or
+   another on-premise NAT), reducing the success of this mechanism to
+   CPE's WAN IPv6 address.
+
+   Also, if the ISP renumbers the subscriber's
+   network suddenly (rather than slow IPv6 renumbering described in
+   {{?RFC4192}}), encrypted DNS service will be delayed until that new
+   certificate is acquired.
+
+##  Discovery of Network-designated Resolvers (DNR)
+
+   DNR requires proving possession of a domain name as the encrypted
+   resolver's certificate contains the FQDN. For example, the entity (e.g., ISP or
+   network administrator) managing the CPE would assign a unique FQDN to
+   the CPE. There are two mechanisms for the CPE to obtain the
+   certificate for the FQDN: using one of its WAN IP addresses or
+   requesting its signed certificate from an Internet-facing server used
+   for remote CPE management (e.g., the Auto Configuration Server (ACS)
+   in the CPE WAN Management Protocol {{TR-069}}).
+
+   If the CPE's WAN IP address is used, the CPE needs a public IPv4 or a global unicast IPv6
+   address together with DNS A or AAAA records pointing to that CPE's
+   WAN address to prove possession of the DNS name to obtain a (WebPKI)
+   CA-signed certificate. That is, the CPE fulfills the DNS or HTTP
+   challenge discussed in Automatic Certificate Management Environment (ACME) {{?RFC8555}}.  However, a CPE's WAN address
+   will not be a public IPv4 address if the CPE is behind another layer
+   of NAT (either a CGN or another on-premise NAT), reducing the success
+   of this mechanism to a CPE's WAN IPv6 address. If the ISP renumbers the subscriber's
+   network, the DNS record will also need to expire and changed to
+   reflect the new IP address.
+
+
+
 
 # Security Considerations
 

@@ -117,10 +117,17 @@ offerings with local services.
    in managed CPEs. It also identifies a set of requirements and discusses to what extent existing solutions
    can (or can't) meet these requirements.
 
-The scope of this document is encrypted DNS servers deployed on managed CPEs.
 
-The document does not focus on generic considerations related to deploying DNS proxies. The reader may
-refer to {{?RFC5625}} for such matters.
+# Scope
+
+This document describes the current state of the art for deploying
+encrypted DNS on customer premise equipment.  New mechanisms should be
+described in separate documents.
+
+The document does not focus on generic considerations related to
+deploying DNS proxies. The reader may refer to {{?RFC5625}} for such
+matters.
+
 
 # Conventions and Definitions
 

@@ -69,18 +69,17 @@ Table of Contents
    1.  Introduction
    2.  Scope
    3.  Requirements
-   4.  Non-Requirements
-   5.  Analysis of Solutions to Requirements
-     5.1.  Normal Certificates
-     5.2.  Delegated Credentials
-     5.3.  Name Constraints
-     5.4.  ACME Delegated Certificates
-     5.5.  Raw Public Keys
-     5.6.  Self-signed Certificate
-     5.7.  Local CA: Certification Authority Built Into CPE
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Informative References
+   4.  Analysis of Solutions to Requirements
+     4.1.  Normal Certificates
+     4.2.  Delegated Credentials
+     4.3.  Name Constraints
+     4.4.  ACME Delegated Certificates
+     4.5.  Raw Public Keys
+     4.6.  Self-signed Certificate
+     4.7.  Local CA: Certification Authority Built Into CPE
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  Informative References
    Appendix A.  Example of Delegated Certificate Issuance
    Acknowledgments
    Authors' Addresses
@@ -163,58 +162,62 @@ Table of Contents
    R-SUPPORT-CLIENT:  Existing support client libraries or client
       software intances.
 
-4.  Non-Requirements
-
    End users are extremely unlikely to contact the device vendor or
    their ISP if a CPE device is replaced (stolen, upgraded, etc.).
    Rather, the user will replace the CPE and configure their client
    devices (laptops, smartphones, IoT devices, etc.) to authorize the
    new CPE.  As part of that configuration, the client device can refuse
-   to authorize the previous CPE.  While this does leave the client
-   devices open to attack by the previous (stolen) CPE, the attacker
-   would also need to have access to the victim's physical network or
-   broadcast a strong enough Wi-Fi signal to the victim's clients.
+   to authorize the previous CPE (e.g., encourage the user to remove
+   authorization for the previous certificate).  Even without ability to
+   revoke a certificate, the attacker in possession of the associated
+   private key would also need to get on-path via access to the victim's
+   physical network or broadcast a strong enough Wi-Fi signal to the
+   victim's clients.
 
-   NR-REVOKE:  Do not provide certificate revocation.
+   R-REVOKE-AUTH:  Provide a mechanism for the end user to disable
+      access to a previously- authorized encrypted service, to
+      accomodate a lost/stolen/sold device.  This might be via
+      certificate revocation (via a Certificate Authority) or via some
+      other means.
 
-5.  Analysis of Solutions to Requirements
+4.  Analysis of Solutions to Requirements
 
    This section describes several solutions which can meet some of the
    requirements.  This is first summarized in Table 1 and detailed in
    the following subsections.
 
-   +==============+==========+===========+============+================+
-   |     Solution |  Reduce  | Eliminate |  Existing  |    Existing    |
-   |              |    CA    |     CA    | CA Support |     Client     |
-   |              |          |           |            |    Support     |
-   +==============+==========+===========+============+================+
-   |       Normal |    No    |     No    |    Yes     |      Yes       |
-   | certificates |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |    Delegated |   Yes,   |     No    |     No     |    No, (*)     |
-   |  credentials | somewhat |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |         Name |   Yes    |     No    |     No     |       No       |
-   |  constraints |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |         ACME |    No    |     No    |    Yes     |      Yes       |
-   |    delegated |          |           |            |                |
-   | certificates |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |   Raw Public |   Yes    |    Yes    |    n/a     |   Some, (*)    |
-   |         Keys |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |  Self-Signed |   Yes    |    Yes    |    n/a     |   Yes, poor    |
-   |  Certificate |          |           |            |   experience   |
-   +--------------+----------+-----------+------------+----------------+
-   |        Local |    No    |     No    |    Yes     |      Yes       |
-   |  Certificate |          |           |            |                |
-   |    Authority |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
+   +==============+========+===========+==========+============+======+
+   |     Solution | Reduce | Eliminate | Existing |  Existing  |Revoke|
+   |              |   CA   |     CA    |    CA    |   Client   | Auth |
+   |              |        |           | Support  |  Support   |      |
+   +==============+========+===========+==========+============+======+
+   |       Normal |   No   |     No    |   Yes    |    Yes     | Some |
+   | certificates |        |           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |    Delegated |  Yes,  |     No    |    No    |  No, (*)   | Some |
+   |  credentials |somewhat|           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |         Name |  Yes   |     No    |    No    |     No     | Some |
+   |  constraints |        |           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |         ACME |   No   |     No    |   Yes    |    Yes     | Some |
+   |    delegated |        |           |          |            |      |
+   | certificates |        |           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |   Raw Public |  Yes   |    Yes    |   n/a    | Some, (*)  | Yes  |
+   |         Keys |        |           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |  Self-Signed |  Yes   |    Yes    |   n/a    | Yes, poor  | Yes  |
+   |  Certificate |        |           |          | experience |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |        Local |   No   |     No    |   Yes    |    Yes     | Yes  |
+   |  Certificate |        |           |          |            |      |
+   |    Authority |        |           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
 
-                   Table 1: Summary of Solution Analysis
+                  Table 1: Summary of Solution Analysis
 
-5.1.  Normal Certificates
+4.1.  Normal Certificates
 
    This solution has the CPE requests a (cloud) server to obtain a
    certificate for the CPE from a public CA.  This solution is deployed
@@ -224,7 +227,7 @@ Table of Contents
    (necessary because the CPE cannot always obtain a publicly-accessible
    IPv4 address necessary to get an ACME-signed certificate itself),
    which are necessary for both initial deployment and for certificate
-   renewal.  One standard for such a system is [PKIX-EST].
+   renewal.
 
    R-REDUCE-CA: no
 
@@ -236,12 +239,16 @@ Table of Contents
 
    R-SUPPORT-CLIENT: yes
 
-5.2.  Delegated Credentials
+   R-REVOKE-AUTH:  Somewhat, if client retrieves CRL frequently and if
+      CRL is updated frequently, and user has mechanism to declare the
+      certificate as invalid.
+
+4.2.  Delegated Credentials
 
    Delegated credentials [RFC9345] allows the entity operating the CPE
    (e.g., vendor or ISP) to sign a 7-day validity for the CPE's public
    key.  The frequency of CA interactions remains the same as with
-   normal certificates (Section 5.1), but the interactions are with the
+   normal certificates (Section 4.1), but the interactions are with the
    vendor's service rather than the public CA.
 
    As currently specified in [RFC9345], the same name would be issued to
@@ -270,7 +277,11 @@ Table of Contents
 
    R-SUPPORT-CLIENT: no, only supported by Firefox
 
-5.3.  Name Constraints
+   R-REVOKE-AUTH:  Somewhat, if client retrieves CRL frequently and if
+      CRL is updated frequently, and user has mechanism to declare the
+      certificate as invalid.
+
+4.3.  Name Constraints
 
    Name constraints (Section 4.2.1.10 of [RFC5280]) allows the entity
    operating the CPE (e.g., vendor or ISP) to obtain a certificate from
@@ -291,7 +302,11 @@ Table of Contents
 
    R-SUPPORT-CLIENT: no
 
-5.4.  ACME Delegated Certificates
+   R-REVOKE-AUTH:  Somewhat, if client retrieves CRL frequently and if
+      CRL is updated frequently, and user has mechanism to declare the
+      certificate as invalid.
+
+4.4.  ACME Delegated Certificates
 
    ACME Delegated Certificates [RFC9115] allows the CPE to use a vendor-
    operated service to obtain a CA-signed ACME delegated certificate.
@@ -315,7 +330,11 @@ Table of Contents
 
    R-SUPPORT-CLIENT: yes
 
-5.5.  Raw Public Keys
+   R-REVOKE-AUTH:  Somewhat, if client retrieves CRL frequently and if
+      CRL is updated frequently, and user has mechanism to declare the
+      certificate as invalid.
+
+4.5.  Raw Public Keys
 
    Raw public keys (RPK) [RFC7250] can be authenticated out-of-band or
    using trust on first use (TOFU).  For a small network, this can be
@@ -338,7 +357,10 @@ Table of Contents
       verified discovery mode expect to encounter certificates and do
       not support RPK.
 
-5.6.  Self-signed Certificate
+   R-REVOKE-AUTH:  Yes, user can remove the raw public key from list of
+      authorized public keys.
+
+4.6.  Self-signed Certificate
 
    A self-signed certificate requires the client to authorize the
    connection, which is usually a "click OK to continue" dialog box and
@@ -364,12 +386,15 @@ Table of Contents
 
    R-SUPPORT-CLIENT: Yes, but poor user experience.
 
-5.7.  Local CA: Certification Authority Built Into CPE
+   R-REVOKE-AUTH:  Yes, user can remove the certificate from list of
+      authorized certificates.
+
+4.7.  Local CA: Certification Authority Built Into CPE
 
    The CPE would be a CA capable of signing certificates for other in-
    home devices.  The CA in the CPE would be limitied to signing only
-   certificates belonging to that home network (using Sections 5.2 or
-   5.3).  This allows the CPE to sign certificates for other devices
+   certificates belonging to that home network (using Sections 4.2 or
+   4.3).  This allows the CPE to sign certificates for other devices
    within the network such as printers, IoT devices, NAS devices,
    laptops, or anything else needing to be a server on the local
    network.
@@ -392,15 +417,18 @@ Table of Contents
 
    R-SUPPORT-CLIENT: yes
 
-6.  Security Considerations
+   R-REVOKE-AUTH:  Yes, user can update CRL on local certificate
+      authority, and clients can retrieve the updated CRL.
+
+5.  Security Considerations
 
    TBD.
 
-7.  IANA Considerations
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  Informative References
+7.  Informative References
 
    [ACME]     Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
               Kasten, "Automatic Certificate Management Environment
@@ -426,11 +454,6 @@ Table of Contents
               delegated-credentials-03, 1 December 2023,
               <https://datatracker.ietf.org/doc/html/draft-reddy-add-
               delegated-credentials-03>.
-
-   [PKIX-EST] Pritikin, M., Ed., Yee, P., Ed., and D. Harkins, Ed.,
-              "Enrollment over Secure Transport", RFC 7030,
-              DOI 10.17487/RFC7030, October 2013,
-              <https://www.rfc-editor.org/rfc/rfc7030>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key

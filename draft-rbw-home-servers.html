@@ -1449,8 +1449,14 @@ in the FQDN such as "HASH.cpe.example.com").<a href="#section-5.2-2" class="pilc
 enhancement to <span>[<a href="#RFC9345" class="cite xref">RFC9345</a>]</span> has been standardized and deployed.<a href="#section-5.2-3.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.2-4">R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
-vendor- or ISP-operated service.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.2-4">
+          <dt id="section-5.2-4.1">R-REDUCE-CA:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.2-4.2">
+            <p id="section-5.2-4.2.1">yes, somewhat by moving CA signing from public CA to a
+vendor- or ISP-operated service.<a href="#section-5.2-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
 <p id="section-5.2-5">R-ELIMINATE-CA: no<a href="#section-5.2-5" class="pilcrow">¶</a></p>
 <p id="section-5.2-6">Delegated credentials have no existing support by CAs. Clients need to
 support <span><a href="https://rfc-editor.org/rfc/rfc9345#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC9345" class="cite xref">RFC9345</a>]</span> which requires sending an
@@ -1471,8 +1477,14 @@ public Certification Authority for a subdomain (dNSName) which is then
 used to sign certificates for each CPE.  For example, the network "example.net"
 could obtain a name constrained certificate for ".cpe.example.net" and then
 issue its own certificates such as "customer-123.cpe.example.net".<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-number of interactions with the CPE operator's CA.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.3-2">
+          <dt id="section-5.3-2.1">R-REDUCE-CA:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.3-2.2">
+            <p id="section-5.3-2.2.1">yes, it reduces interaction with public CAs but has same
+number of interactions with the CPE operator's CA.<a href="#section-5.3-2.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
 <p id="section-5.3-3">R-ELIMINATE-CA: no<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 <p id="section-5.3-4">Name constraints have no existing support by CAs or by clients.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
 <p id="section-5.3-5">R-SUPPORT-CA: no<a href="#section-5.3-5" class="pilcrow">¶</a></p>
@@ -1513,9 +1525,19 @@ keys and dealing with certificate renewal.<a href="#section-5.5-1" class="pilcro
 <p id="section-5.5-4">RPKs have been supported by OpenSSL and wolfSSL since 2023
 and by GnuTLS since 2019. However, RPKs are not supported
 by browsers or by curl.<a href="#section-5.5-4" class="pilcrow">¶</a></p>
-<p id="section-5.5-5">R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.<a href="#section-5.5-5" class="pilcrow">¶</a></p>
-<p id="section-5.5-6">R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
-Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.<a href="#section-5.5-6" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.5-5">
+          <dt id="section-5.5-5.1">R-SUPPORT-CA:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.5-5.2">
+            <p id="section-5.5-5.2.1">n/a, this system does not use Certification Authorities at all.<a href="#section-5.5-5.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-5.5-5.3">R-SUPPORT-CLIENT:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.5-5.4">
+            <p id="section-5.5-5.4.1">Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
+Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.<a href="#section-5.5-5.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
 </section>
 </div>
 <div id="self-signed-certificate">
@@ -1536,7 +1558,13 @@ become normalized.<a href="#section-5.6-4" class="pilcrow">¶</a></p>
 <p id="section-5.6-5">Modifying self-signed certificate handling for ".local" <span>[<a href="#RFC6761" class="cite xref">RFC6761</a>]</span>
 or ".internal" <span>[<a href="#I-D.davies-internal-tld" class="cite xref">I-D.davies-internal-tld</a>]</span> might be worth further
 study.<a href="#section-5.6-5" class="pilcrow">¶</a></p>
-<p id="section-5.6-6">R-SUPPORT-CA: n/a, this system does not use Certification Authories at all.<a href="#section-5.6-6" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.6-6">
+          <dt id="section-5.6-6.1">R-SUPPORT-CA:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.6-6.2">
+            <p id="section-5.6-6.2.1">n/a, this system does not use Certification Authories at all.<a href="#section-5.6-6.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
 <p id="section-5.6-7">R-SUPPORT-CLIENT: Yes, but poor user experience.<a href="#section-5.6-7" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1557,10 +1585,16 @@ on the local network.<a href="#section-5.7-1" class="pilcrow">¶</a></p>
 mentioned because it was suggested during an ADD meeting.<a href="#section-5.7-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.7-3">R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+<span class="break"></span><dl class="dlParallel" id="section-5.7-3">
+          <dt id="section-5.7-3.1">R-REDUCE-CA:</dt>
+          <dd style="margin-left: 1.5em" id="section-5.7-3.2">
+            <p id="section-5.7-3.2.1">yes, it reduces interaction with public CAs but has same
 number of interactions with the CPE operator's CA for the
 CPE itself.  For other devices within the home network (e.g., printers), it
-eliminates interaction with the vendor's CA.<a href="#section-5.7-3" class="pilcrow">¶</a></p>
+eliminates interaction with the vendor's CA.<a href="#section-5.7-3.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
 <p id="section-5.7-4">R-ELIMINATE-CA: no<a href="#section-5.7-4" class="pilcrow">¶</a></p>
 <p id="section-5.7-5">While technically the industry could build such a system, building such a system
 across the ecosystem of client operating systems would be a daunting task.<a href="#section-5.7-5" class="pilcrow">¶</a></p>

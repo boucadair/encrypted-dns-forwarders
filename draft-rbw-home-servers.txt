@@ -256,8 +256,8 @@ Table of Contents
       such an enhancement to [RFC9345] has been standardized and
       deployed.
 
-   R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
-   vendor- or ISP-operated service.
+   R-REDUCE-CA:  yes, somewhat by moving CA signing from public CA to a
+      vendor- or ISP-operated service.
 
    R-ELIMINATE-CA: no
 
@@ -280,8 +280,8 @@ Table of Contents
    ".cpe.example.net" and then issue its own certificates such as
    "customer-123.cpe.example.net".
 
-   R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-   number of interactions with the CPE operator's CA.
+   R-REDUCE-CA:  yes, it reduces interaction with public CAs but has
+      same number of interactions with the CPE operator's CA.
 
    R-ELIMINATE-CA: no
 
@@ -330,13 +330,13 @@ Table of Contents
    GnuTLS since 2019.  However, RPKs are not supported by browsers or by
    curl.
 
-   R-SUPPORT-CA: n/a, this system does not use Certification Authorities
-   at all.
+   R-SUPPORT-CA:  n/a, this system does not use Certification
+      Authorities at all.
 
-   R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients
-   (browsers and curl) do not support RPK.  Further, DNR and DDR in
-   verified discovery mode expect to encounter certificates and do not
-   support RPK.
+   R-SUPPORT-CLIENT:  Some; all major libraries support RPK, but clients
+      (browsers and curl) do not support RPK.  Further, DNR and DDR in
+      verified discovery mode expect to encounter certificates and do
+      not support RPK.
 
 5.6.  Self-signed Certificate
 
@@ -359,8 +359,8 @@ Table of Contents
    Modifying self-signed certificate handling for ".local" [RFC6761] or
    ".internal" [I-D.davies-internal-tld] might be worth further study.
 
-   R-SUPPORT-CA: n/a, this system does not use Certification Authories
-   at all.
+   R-SUPPORT-CA:  n/a, this system does not use Certification Authories
+      at all.
 
    R-SUPPORT-CLIENT: Yes, but poor user experience.
 
@@ -377,10 +377,10 @@ Table of Contents
       This feature is beyond the scope of the ADD working group but is
       mentioned because it was suggested during an ADD meeting.
 
-   R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-   number of interactions with the CPE operator's CA for the CPE itself.
-   For other devices within the home network (e.g., printers), it
-   eliminates interaction with the vendor's CA.
+   R-REDUCE-CA:  yes, it reduces interaction with public CAs but has
+      same number of interactions with the CPE operator's CA for the CPE
+      itself.  For other devices within the home network (e.g.,
+      printers), it eliminates interaction with the vendor's CA.
 
    R-ELIMINATE-CA: no
 

@@ -212,9 +212,10 @@ delegated credential (e.g., including hash of customer id or other unique identi
 in the FQDN such as "HASH.cpe.example.com").
 
   > For the sake of simplifying the analysis, this document assumes such an
-> enhancement to {{?RFC9345}} has been standardized and deployed.
+  > enhancement to {{?RFC9345}} has been standardized and deployed.
 
-R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
+R-REDUCE-CA:
+  : yes, somewhat by moving CA signing from public CA to a
 vendor- or ISP-operated service.
 
 R-ELIMINATE-CA: no
@@ -238,7 +239,8 @@ used to sign certificates for each CPE.  For example, the network "example.net"
 could obtain a name constrained certificate for ".cpe.example.net" and then
 issue its own certificates such as "customer-123.cpe.example.net".
 
-R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+R-REDUCE-CA:
+  : yes, it reduces interaction with public CAs but has same
 number of interactions with the CPE operator's CA.
 
 R-ELIMINATE-CA: no
@@ -285,9 +287,11 @@ RPKs have been supported by OpenSSL and wolfSSL since 2023
 and by GnuTLS since 2019. However, RPKs are not supported
 by browsers or by curl.
 
-R-SUPPORT-CA: n/a, this system does not use Certification Authorities at all.
+R-SUPPORT-CA:
+  : n/a, this system does not use Certification Authorities at all.
 
-R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
+R-SUPPORT-CLIENT:
+  : Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
 Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.
 
 ## Self-signed Certificate
@@ -310,9 +314,11 @@ Modifying self-signed certificate handling for ".local" {{?RFC6761}}
 or ".internal" {{?I-D.davies-internal-tld}} might be worth further
 study.
 
-R-SUPPORT-CA: n/a, this system does not use Certification Authories at all.
+R-SUPPORT-CA:
+  : n/a, this system does not use Certification Authories at all.
 
 R-SUPPORT-CLIENT: Yes, but poor user experience.
+
 
 ## Local CA: Certification Authority Built Into CPE
 
@@ -326,7 +332,8 @@ on the local network.
 > This feature is beyond the scope of the ADD working group but is
 mentioned because it was suggested during an ADD meeting.
 
-R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
+R-REDUCE-CA:
+  : yes, it reduces interaction with public CAs but has same
 number of interactions with the CPE operator's CA for the
 CPE itself.  For other devices within the home network (e.g., printers), it
 eliminates interaction with the vendor's CA.

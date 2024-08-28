@@ -307,8 +307,7 @@ practice.  However, it suffers from the dependency on both the public
 Certification Authority and the vendor's service (necessary because the
 CPE cannot always obtain a publicly-accessible IPv4 address necessary
 to get an ACME-signed certificate itself), which are necessary
-for both initial deployment and for certificate renewal.  One standard for
-such a system is {{?PKIX-EST=RFC7030}}.
+for both initial deployment and for certificate renewal.
 
 R-REDUCE-CA: no
 

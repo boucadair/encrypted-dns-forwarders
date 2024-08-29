@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-27T01:05:15.992727+00:00",
+  "timestamp": "2024-08-29T01:06:25.662007+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1265,6 +1265,90 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOMJRu5c55lold",
+      "title": "be more specific on scope",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/23",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-27T14:55:31Z",
+      "updatedAt": "2024-08-27T19:28:59Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "6b67770405eeca17c26aa8e10c55d9548ee1ddcf",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "scope",
+      "headRefOid": "7045a12360567c55f983e2296210809adea81855",
+      "closedAt": "2024-08-27T19:28:59Z",
+      "mergedAt": "2024-08-27T19:28:59Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "e76f6df092ca9fa1f327d873dae3876920308c7c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 24,
+      "id": "PR_kwDOMJRu5c55nQ1U",
+      "title": "move Requirements earlier, and collapse the previous section Certific\u2026",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/24",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026ate Issuance Issues into Requirements as the justification for R-REDUCE-CA, reformat Non-Requirement section",
+      "createdAt": "2024-08-27T18:58:16Z",
+      "updatedAt": "2024-08-27T19:28:37Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "6b67770405eeca17c26aa8e10c55d9548ee1ddcf",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "move_text",
+      "headRefOid": "d43549c937d1645b3b8864ef95582ece1bde45ab",
+      "closedAt": "2024-08-27T19:28:37Z",
+      "mergedAt": "2024-08-27T19:28:37Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "27ec5eabbe30419b6622995ccba25f8f9aa03c91"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOMJRu5c55wCQ3",
+      "title": "remove reference to RFC7030",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/25",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-28T19:48:54Z",
+      "updatedAt": "2024-08-28T20:47:17Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "e3e1bfa85f623cd33254e04da9df4695d0651c81",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "remove_rfc7030",
+      "headRefOid": "1189ae4700d299fca3ab959ef0d210ceb4cfd504",
+      "closedAt": "2024-08-28T20:47:17Z",
+      "mergedAt": "2024-08-28T20:47:17Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "1058f4402fa9fb7ff75795073baf1ea3cd101719"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }

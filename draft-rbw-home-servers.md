@@ -447,6 +447,10 @@ This draft is the result of discussions at IETF119 and IETF120 in the
 ADD working group.  Thanks to all the participants at the microphone,
 hallways, and mailing list.
 
+Thanks for suggestion from Glenn Deen to adjust focus to three device
+classes and focus on all home servers suffering the same
+authentication problem.
+
    Acknowledgements from {{?I-D.reddy-add-delegated-credentials}}:
    : Thanks to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz,
    and Michael Richardson for the discussion and comments.

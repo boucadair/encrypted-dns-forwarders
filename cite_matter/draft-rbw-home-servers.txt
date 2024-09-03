@@ -456,8 +456,9 @@ Table of Contents
 
 7.1.  Normative References
 
-   [Matter]   "Connectivity Standards Alliance", September 2024,
-              <https://csa-iot.org>.
+   [Matter]   Connectivity Standards Alliance, "Matter: The Foundation
+              for Connected Things", Version 1.2, October 2023,
+              <https://csa-iot.org/all-solutions/matter/>.
 
 7.2.  Informative References
 

@@ -40,6 +40,10 @@ author:
     email: danwing@gmail.com
 
 normative:
+  Matter:
+    title: "Connectivity Standards Alliance"
+    date: September 2024
+    target: https://csa-iot.org
 
 informative:
   https-local-dom:
@@ -173,6 +177,7 @@ detailed in the following subsections.
 | Raw Public Keys             | Yes                   |  Yes             |   n/a               |   Some, (*)             |   Yes       |
 | Self-Signed Certificate     | Yes                   |  Yes             |   n/a               |   Yes, poor experience  |   Yes       |
 | Local Certificate Authority | No                    |  No              |   Yes               |   Yes                   |   Yes       |
+| Matter                      | Yes                   |  No              |   Yes               |   Yes                   |   Yes       |
 {: #table1 title="Summary of Solution Analysis"}
 
 
@@ -377,11 +382,33 @@ across the ecosystem of client operating systems would be a daunting task.
 
 R-SUPPORT-CA: yes
 
-R-SUPPORT-CLIENT: yes
+R-SUPPORT-CLIENT:
+  : yes, if the clients add the home's Certification Authority to its trust list.
 
 R-REVOKE-AUTH:
   : Yes, user can update CRL on local certificate authority, and clients
     can retrieve the updated CRL.
+
+
+## Matter
+
+Home devices could be enrolled in {{Matter}} and client devices could
+be configured to trust Matter certificates.
+
+R-REDUCE-CA:
+  : yes, it reduces interaction with public CAs but has same
+number of interactions with the device vendor's CA to issue the
+Matter Device Attestation Certificate (DAC) to each device.
+
+R-ELIMINATE-CA: no
+
+R-SUPPORT-CA: yes
+
+R-SUPPORT-CLIENT:
+  : yes, if the clients add the Matter Product Attestation Intermediates (PAI) to its trust list.
+
+R-REVOKE-AUTH: Yes
+
 
 
 # Security Considerations

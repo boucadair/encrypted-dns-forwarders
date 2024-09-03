@@ -41,9 +41,13 @@ author:
 
 normative:
   Matter:
-    title: "Connectivity Standards Alliance"
-    date: September 2024
-    target: https://csa-iot.org
+    title: "Matter: The Foundation for Connected Things"
+    seriesinfo:
+      Version: 1.2
+    author:
+      org: Connectivity Standards Alliance
+    date: 23 October 2023
+    target: https://csa-iot.org/all-solutions/matter/
 
 informative:
   https-local-dom:

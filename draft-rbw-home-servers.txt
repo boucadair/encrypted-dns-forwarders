@@ -5,10 +5,10 @@
 network                                                         T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 1 March 2025                                             Orange
+Expires: 8 March 2025                                             Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                          28 August 2024
+                                                        4 September 2024
 
 
  Identifying and Authenticating Home Servers: Requirements and Solution
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 March 2025.
+   This Internet-Draft will expire on 8 March 2025.
 
 Copyright Notice
 
@@ -546,6 +546,10 @@ Acknowledgments
    This draft is the result of discussions at IETF119 and IETF120 in the
    ADD working group.  Thanks to all the participants at the microphone,
    hallways, and mailing list.
+
+   Thanks for suggestion from Glenn Deen to adjust focus to three device
+   classes and focus on all home servers suffering the same
+   authentication problem.
 
    Acknowledgements from [I-D.reddy-add-delegated-credentials]:  Thanks
       to Neil Cook, Martin Thomson, Tommy Pauly, Benjamin Schwartz, and

@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-03T01:05:53.538175+00:00",
+  "timestamp": "2024-09-05T01:06:43.930799+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1347,6 +1347,100 @@
       "mergeCommit": {
         "oid": "1058f4402fa9fb7ff75795073baf1ea3cd101719"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 26,
+      "id": "PR_kwDOMJRu5c56SZQW",
+      "title": "generalize: exchange 'CPE' with 'device' all over, and related changes",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/26",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-03T16:33:29Z",
+      "updatedAt": "2024-09-03T16:33:29Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "1058f4402fa9fb7ff75795073baf1ea3cd101719",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "reduce_cpe",
+      "headRefOid": "46a235fc556890fd31bb064d18600cb8b8e5c435",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOMJRu5c56Ucbl",
+      "title": "acknowledge Glenn",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/27",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-03T22:25:38Z",
+      "updatedAt": "2024-09-04T01:00:34Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "1058f4402fa9fb7ff75795073baf1ea3cd101719",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "ack_glenn",
+      "headRefOid": "6ab08e594f246c61b41e7e2578048c682c15d68e",
+      "closedAt": "2024-09-04T01:00:34Z",
+      "mergedAt": "2024-09-04T01:00:34Z",
+      "mergedBy": "tireddy2",
+      "mergeCommit": {
+        "oid": "ab16607c79cd2b7927d17e214c71c82a6e438f32"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6H0uOs",
+          "commit": {
+            "abbreviatedOid": "6ab08e5"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-04T01:00:28Z",
+          "updatedAt": "2024-09-04T01:00:28Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOMJRu5c56UoRS",
+      "title": "add citation and brief explanation of Matter",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/28",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-03T23:05:48Z",
+      "updatedAt": "2024-09-03T23:16:49Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "1058f4402fa9fb7ff75795073baf1ea3cd101719",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "cite_matter",
+      "headRefOid": "6579f293ef613be2e84adf325fb3b4e1e95548f8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }

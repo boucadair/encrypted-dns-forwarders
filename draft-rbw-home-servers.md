@@ -387,7 +387,7 @@ across the ecosystem of client operating systems would be a daunting task.
 R-SUPPORT-CA: yes
 
 R-SUPPORT-CLIENT:
-  : yes, if the clients add the home's Certification Authority to its trust list.
+  : yes, if the clients add the home's CA to their trust list.
 
 R-REVOKE-AUTH:
   : Yes, user can update CRL on local certificate authority, and clients
@@ -409,7 +409,7 @@ R-ELIMINATE-CA: no
 R-SUPPORT-CA: yes
 
 R-SUPPORT-CLIENT:
-  : yes, if the clients add the Matter Product Attestation Intermediates (PAI) to its trust list.
+  : yes, if the clients add the Matter Product Attestation Intermediates (PAIs) to their trust list.
 
 R-REVOKE-AUTH: Yes
 

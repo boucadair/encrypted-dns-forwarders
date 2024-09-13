@@ -343,9 +343,9 @@ Table of Contents
 7.2.  Delegated Credentials
 
    Delegated credentials [RFC9345] allows the entity operating the CPE
-   (e.g., vendor or ISP) to sign a 7-day validity for the CPE's public
-   key.  The frequency of CA interactions remains the same as with
-   normal certificates (Section 7.1), but the interactions are with the
+   (e.g., vendor or ISP) to sign the CPE's public key.  The frequency of
+   CA interactions for renewals can remain the same as with normal
+   certificates (Section 7.1), but the interactions are with the
    vendor's service rather than the public CA.
 
    As currently specified in [RFC9345], the same name would be issued to

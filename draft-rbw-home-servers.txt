@@ -82,9 +82,12 @@ Table of Contents
      4.5.  Raw Public Keys (RPK)
      4.6.  Self-signed Certificate
      4.7.  Local CA: Certification Authority Built Into Device
+     4.8.  Matter
    5.  Security Considerations
    6.  IANA Considerations
-   7.  Informative References
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Appendix A.  Example of Delegated Certificate Issuance
    Acknowledgments
    Authors' Addresses
@@ -231,6 +234,8 @@ Table of Contents
    |        Local |   No   |     No    |   Yes    |    Yes     | Yes  |
    |  Certificate |        |           |          |            |      |
    |    Authority |        |           |          |            |      |
+   +--------------+--------+-----------+----------+------------+------+
+   |       Matter |  Yes   |     No    |   Yes    |    Yes     | Yes  |
    +--------------+--------+-----------+----------+------------+------+
 
                   Table 1: Summary of Solution Analysis
@@ -439,10 +444,29 @@ Table of Contents
 
    R-SUPPORT-CA: yes
 
-   R-SUPPORT-CLIENT: yes
+   R-SUPPORT-CLIENT:  yes, if the clients add the home's CA to their
+      trust list.
 
    R-REVOKE-AUTH:  Yes, user can update CRL on local certificate
       authority device, and clients can retrieve the updated CRL.
+
+4.8.  Matter
+
+   Home devices could be enrolled in [Matter] and client devices could
+   be configured to trust Matter certificates.
+
+   R-REDUCE-CA:  yes, it reduces interaction with public CAs but has
+      same number of interactions with the device vendor's CA to issue
+      the Matter Device Attestation Certificate (DAC) to each device.
+
+   R-ELIMINATE-CA: no
+
+   R-SUPPORT-CA: yes
+
+   R-SUPPORT-CLIENT:  yes, if the clients add the Matter Product
+      Attestation Intermediates (PAIs) to their trust list.
+
+   R-REVOKE-AUTH: Yes
 
 5.  Security Considerations
 
@@ -452,7 +476,15 @@ Table of Contents
 
    This document has no IANA actions.
 
-7.  Informative References
+7.  References
+
+7.1.  Normative References
+
+   [Matter]   Connectivity Standards Alliance, "Matter: The Foundation
+              for Connected Things", Version 1.2, October 2023,
+              <https://csa-iot.org/all-solutions/matter/>.
+
+7.2.  Informative References
 
    [ACME]     Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
               Kasten, "Automatic Certificate Management Environment

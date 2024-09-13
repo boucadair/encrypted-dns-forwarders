@@ -63,9 +63,13 @@ solutions.
 
    This document describes the problem encountered to host servers in
    a home network and how to connect to those servers using an
-   encrypted transport protocol such as TLS or DTLS.  It also identifies a set
+   encrypted transport protocol such as TLS {{?RFC8446}} or DTLS {{?RFC9147}}.  It also identifies a set
    of requirements and discusses to what extent existing solutions can
    (or can't) meet these requirements.
+
+   This documnt uses "local equipment" to refer to an equipment that is
+   deployed in a local network (e.g., LAN). A local equipment can be
+   a Customer Premises Equipment (CPE), an IoT device, an Set-top box (STB), etc.
 
 
 # Scope
@@ -76,38 +80,37 @@ in separate documents.
 
 There are three types of equipment:
 
-* legacy local equipment which lacks memory, CPU, or sufficient
+1. Legacy local equipment which lacks memory, CPU, or sufficient
   security to reasonably support an encrypted transport protocol and
-  associated key management.  An example is a 10 year old router with
+  associated key management.  An example is a 10-year old router with
   built-in 802.11n Wi-Fi.  This type of equipment is out of scope.
 
-* high functioning local equipment that provides sufficient hardware
+2. High functioning local equipment that provides sufficient hardware
   and software capability to support an encrypted transport protocol
   and associated key management.  An example is a printer, NAS, or
   higher-end consumer router.  This is the primary scope of this
   document.
 
-* high functioning virtualized equipment, where some functions are
+3. High functioning virtualized equipment, where some functions are
   provided via local or remote software.  An example is virtualized
   CPE (vCPE). This is a secondary scope of this document.
 
 # Requirements
 
-This section discusses each requirement.
+This section identifies a set of requirements and discusses each of them.
 
-## Reduce use of public Certification Authority
+## Reduce Use of Public Certification Authority
 
 With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
-public Certification Authority can sign a certificate for local
+public Certification Authority (CA) can sign a certificate for local
 equipment such as a printer, NAS, or router.  However, this causes a
 few issues:
 
-   * In case of large scale of local equipment (e.g., millions of
-      devices), issuing certificate request for a large number of
-      subdomains could be treated as an attack by the certificate
-      authorities to overwhelm it.  This can be resolved with
-      contracts and payment but this reduces agility and reduces
-      choice.
+   * In case of large scale deployment of local equipment (e.g., millions of
+      devices), issuing certificate requests for a large number of
+      subdomains could be treated as an attack by the CAs to overwhelm it.
+      This can be resolved with
+      contracts/fees but this reduces agility and choice flexibility.
 
    *  Dependency on the CA to issue a large number of certificates,
       which causes CA availability to impact service availability.
@@ -121,25 +124,25 @@ few issues:
      (Carrier Grade NAT, CGN) is another barrier.
 
 Deployed systems have used a vendor-operated service for
-certificate acquisition and renewal to avoid those problems
+certificate acquisition and renewal to avoid the problems
 enumerated above.
 
    R-REDUCE-CA:
-   : Reduce the use of a public Certification Authority.
+   : Reduce the use of a public Certification Authorities.
 
-## Eliminate use of public Certification Authority
+## Eliminate Use of Public Certification Authority
 
 Taking an additional step from the previous requirement, eliminating
-the vendor operation of a Certification Authority avoids the
+the vendor operation of a CA avoids the
 complexities of certificate management.
 
    R-ELIMINATE-CA:
    : Eliminate using Certification Authorities for each device.
 
-## Existing support by Certification Authorities
+## Existing Support by Certification Authorities
 
-The ability to immediately deploy using existing Certification
-Authorities is important to evaluate.
+The ability to immediately deploy using existing CA is important
+to evaluate.
 
    R-SUPPORT-CA:
    : Existing support by Certification Authorities.
@@ -154,25 +157,22 @@ The ability to immediately deploy on clients is important to evaluate.
 
 ## Revoke Authorization
 
-End users are extremely unlikely to contact the device vendor if a
+End-users are extremely unlikely to contact the device vendor if a
 device is replaced (stolen, upgraded, etc.).  Rather, the
-user will replace the device and configure their clients (laptops,
+users will replace the device and configure their clients (laptops,
 smartphones, IoT devices, etc.) to authorize the new device.  As part of
 that configuration, the client can encourage removing authorization
 for the replaced device. In situations where there is normally only
-one device (one NAS, one printer, one home router), this can
-be straight forward.
+one device (one NAS, one printer, one home router, etc.), this revocation can
+be straightforward.
 
   R-REVOKE-AUTH:
-  : Provide a mechanism for the end user to disable access to a previously-
+  : Provide a mechanism for an end-user to disable access to a previously-
   authorized encrypted service, to accomodate a lost/stolen/sold device.
-
-
 
 # Analysis of Solutions to Requirements
 
-
-This section describes several solutions which can meet some of the requirements.  This is first summarized in {{table1}} and
+This section describes several solutions which can meet a subset of the requirements.  This is first summarized in {{table1}} and
 detailed in the following subsections.
 
 
@@ -316,7 +316,7 @@ R-REVOKE-AUTH:
     invalid.
 
 
-## Raw Public Keys
+## Raw Public Keys (RPK)
 
 Raw public keys (RPK) {{?RFC7250}} can be authenticated out-of-band or using trust on first use (TOFU).
 For a small network, this can be more appealing than a local or remote Certification Authority signing

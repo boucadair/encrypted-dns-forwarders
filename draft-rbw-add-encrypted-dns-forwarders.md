@@ -322,7 +322,8 @@ R-SUPPORT-CLIENT: yes
 ## Delegated Credentials {#delegated}
 
 Delegated credentials {{?RFC9345}} allows the entity operating the CPE
-(e.g., vendor or ISP) to sign a 7-day validity for the CPE's public key.
+(e.g., vendor or ISP) to sign the CPE's public key and recommends
+a short 7-day validity for that signature.
 The frequency of CA interactions remains the same as with normal
 certificates ({{normal-certificates}}), but the interactions are with
 the vendor's service rather than the public CA.

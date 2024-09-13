@@ -1035,7 +1035,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Reddy, et al.</td>
-<td class="center">Expires 7 March 2025</td>
+<td class="center">Expires 17 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-rbw-home-servers-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-03" class="published">3 September 2024</time>
+<time datetime="2024-09-13" class="published">13 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-07">7 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-03-17">17 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1109,7 +1109,7 @@ solutions.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1148,13 +1148,13 @@ solutions.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-requirements" class="internal xref">Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-reduce-use-of-public-certif" class="internal xref">Reduce use of public Certification Authority</a></p>
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-reduce-use-of-public-certif" class="internal xref">Reduce Use of Public Certification Authority</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-eliminate-use-of-public-cer" class="internal xref">Eliminate use of public Certification Authority</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-eliminate-use-of-public-cer" class="internal xref">Eliminate Use of Public Certification Authority</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-existing-support-by-certifi" class="internal xref">Existing support by Certification Authorities</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-existing-support-by-certifi" class="internal xref">Existing Support by Certification Authorities</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-client-support" class="internal xref">Client Support</a></p>
@@ -1180,7 +1180,7 @@ solutions.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-acme-delegated-certificates" class="internal xref">ACME Delegated Certificates</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
-                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-raw-public-keys" class="internal xref">Raw Public Keys</a></p>
+                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-raw-public-keys-rpk" class="internal xref">Raw Public Keys (RPK)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-self-signed-certificate" class="internal xref">Self-signed Certificate</a></p>
@@ -1219,9 +1219,12 @@ solutions.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-1-1">This document describes the problem encountered to host servers in
    a home network and how to connect to those servers using an
-   encrypted transport protocol such as TLS or DTLS.  It also identifies a set
+   encrypted transport protocol such as TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> or DTLS <span>[<a href="#RFC9147" class="cite xref">RFC9147</a>]</span>.  It also identifies a set
    of requirements and discusses to what extent existing solutions can
    (or can't) meet these requirements.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">This documnt uses "local equipment" to refer to an equipment that is
+   deployed in a local network (e.g., LAN). A local equipment can be
+   a Customer Premises Equipment (CPE), an IoT device, an Set-top box (STB), etc.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="scope">
@@ -1233,26 +1236,26 @@ solutions.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 encrypted servers within the home.  New mechanisms should be described
 in separate documents.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">There are three types of equipment:<a href="#section-2-2" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-2-3.1">
-          <p id="section-2-3.1.1">legacy local equipment which lacks memory, CPU, or sufficient
-security to reasonably support an encrypted transport protocol and
-associated key management.  An example is a 10 year old router with
-built-in 802.11n Wi-Fi.  This type of equipment is out of scope.<a href="#section-2-3.1.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-2-3">
+<li id="section-2-3.1">
+          <p id="section-2-3.1.1">Legacy local equipment which lacks memory, CPU, or sufficient
+  security to reasonably support an encrypted transport protocol and
+  associated key management.  An example is a 10-year old router with
+  built-in 802.11n Wi-Fi.  This type of equipment is out of scope.<a href="#section-2-3.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-2-3.2">
-          <p id="section-2-3.2.1">high functioning local equipment that provides sufficient hardware
-and software capability to support an encrypted transport protocol
-and associated key management.  An example is a printer, NAS, or
-higher-end consumer router.  This is the primary scope of this
-document.<a href="#section-2-3.2.1" class="pilcrow">¶</a></p>
+        <li id="section-2-3.2">
+          <p id="section-2-3.2.1">High functioning local equipment that provides sufficient hardware
+  and software capability to support an encrypted transport protocol
+  and associated key management.  An example is a printer, NAS, or
+  higher-end consumer router.  This is the primary scope of this
+  document.<a href="#section-2-3.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-2-3.3">
-          <p id="section-2-3.3.1">high functioning virtualized equipment, where some functions are
-provided via local or remote software.  An example is virtualized
-CPE (vCPE). This is a secondary scope of this document.<a href="#section-2-3.3.1" class="pilcrow">¶</a></p>
+        <li id="section-2-3.3">
+          <p id="section-2-3.3.1">High functioning virtualized equipment, where some functions are
+  provided via local or remote software.  An example is virtualized
+  CPE (vCPE). This is a secondary scope of this document.<a href="#section-2-3.3.1" class="pilcrow">¶</a></p>
 </li>
-      </ul>
+      </ol>
 </section>
 </div>
 <div id="requirements">
@@ -1260,24 +1263,23 @@ CPE (vCPE). This is a secondary scope of this document.<a href="#section-2-3.3.1
       <h2 id="name-requirements">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
-<p id="section-3-1">This section discusses each requirement.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">This section identifies a set of requirements and discusses each of them.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <div id="reduce-use-of-public-certification-authority">
 <section id="section-3.1">
         <h3 id="name-reduce-use-of-public-certif">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-reduce-use-of-public-certif" class="section-name selfRef">Reduce use of public Certification Authority</a>
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-reduce-use-of-public-certif" class="section-name selfRef">Reduce Use of Public Certification Authority</a>
         </h3>
 <p id="section-3.1-1">With automated certificate enrollment and renewal <span>[<a href="#ACME" class="cite xref">ACME</a>]</span>, a
-public Certification Authority can sign a certificate for local
+public Certification Authority (CA) can sign a certificate for local
 equipment such as a printer, NAS, or router.  However, this causes a
 few issues:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.1-2.1">
-            <p id="section-3.1-2.1.1">In case of large scale of local equipment (e.g., millions of
- devices), issuing certificate request for a large number of
- subdomains could be treated as an attack by the certificate
- authorities to overwhelm it.  This can be resolved with
- contracts and payment but this reduces agility and reduces
- choice.<a href="#section-3.1-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-3.1-2.1.1">In case of large scale deployment of local equipment (e.g., millions of
+ devices), issuing certificate requests for a large number of
+ subdomains could be treated as an attack by the CAs to overwhelm it.
+ This can be resolved with
+ contracts/fees but this reduces agility and choice flexibility.<a href="#section-3.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.1-2.2">
             <p id="section-3.1-2.2.1">Dependency on the CA to issue a large number of certificates,
@@ -1294,12 +1296,12 @@ Internet during the HTTP challenge. An ISP-operated NAT
 </li>
         </ul>
 <p id="section-3.1-3">Deployed systems have used a vendor-operated service for
-certificate acquisition and renewal to avoid those problems
+certificate acquisition and renewal to avoid the problems
 enumerated above.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.1-4">
           <dt id="section-3.1-4.1">R-REDUCE-CA:</dt>
           <dd style="margin-left: 1.5em" id="section-3.1-4.2">
-            <p id="section-3.1-4.2.1">Reduce the use of a public Certification Authority.<a href="#section-3.1-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.1-4.2.1">Reduce the use of a public Certification Authorities.<a href="#section-3.1-4.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1308,10 +1310,10 @@ enumerated above.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
 <div id="eliminate-use-of-public-certification-authority">
 <section id="section-3.2">
         <h3 id="name-eliminate-use-of-public-cer">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-eliminate-use-of-public-cer" class="section-name selfRef">Eliminate use of public Certification Authority</a>
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-eliminate-use-of-public-cer" class="section-name selfRef">Eliminate Use of Public Certification Authority</a>
         </h3>
 <p id="section-3.2-1">Taking an additional step from the previous requirement, eliminating
-the vendor operation of a Certification Authority avoids the
+the vendor operation of a CA avoids the
 complexities of certificate management.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.2-2">
           <dt id="section-3.2-2.1">R-ELIMINATE-CA:</dt>
@@ -1325,10 +1327,10 @@ complexities of certificate management.<a href="#section-3.2-1" class="pilcrow">
 <div id="existing-support-by-certification-authorities">
 <section id="section-3.3">
         <h3 id="name-existing-support-by-certifi">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-existing-support-by-certifi" class="section-name selfRef">Existing support by Certification Authorities</a>
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-existing-support-by-certifi" class="section-name selfRef">Existing Support by Certification Authorities</a>
         </h3>
-<p id="section-3.3-1">The ability to immediately deploy using existing Certification
-Authorities is important to evaluate.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">The ability to immediately deploy using existing CA is important
+to evaluate.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.3-2">
           <dt id="section-3.3-2.1">R-SUPPORT-CA:</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-2.2">
@@ -1358,18 +1360,18 @@ Authorities is important to evaluate.<a href="#section-3.3-1" class="pilcrow">¶
         <h3 id="name-revoke-authorization">
 <a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-revoke-authorization" class="section-name selfRef">Revoke Authorization</a>
         </h3>
-<p id="section-3.5-1">End users are extremely unlikely to contact the device vendor if a
+<p id="section-3.5-1">End-users are extremely unlikely to contact the device vendor if a
 device is replaced (stolen, upgraded, etc.).  Rather, the
-user will replace the device and configure their clients (laptops,
+users will replace the device and configure their clients (laptops,
 smartphones, IoT devices, etc.) to authorize the new device.  As part of
 that configuration, the client can encourage removing authorization
 for the replaced device. In situations where there is normally only
-one device (one NAS, one printer, one home router), this can
-be straight forward.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+one device (one NAS, one printer, one home router, etc.), this revocation can
+be straightforward.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.5-2">
           <dt id="section-3.5-2.1">R-REVOKE-AUTH:</dt>
           <dd style="margin-left: 1.5em" id="section-3.5-2.2">
-            <p id="section-3.5-2.2.1">Provide a mechanism for the end user to disable access to a previously-
+            <p id="section-3.5-2.2.1">Provide a mechanism for an end-user to disable access to a previously-
   authorized encrypted service, to accomodate a lost/stolen/sold device.<a href="#section-3.5-2.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
@@ -1383,7 +1385,7 @@ be straight forward.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
       <h2 id="name-analysis-of-solutions-to-re">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-analysis-of-solutions-to-re" class="section-name selfRef">Analysis of Solutions to Requirements</a>
       </h2>
-<p id="section-4-1">This section describes several solutions which can meet some of the requirements.  This is first summarized in <a href="#table1" class="auto internal xref">Table 1</a> and
+<p id="section-4-1">This section describes several solutions which can meet a subset of the requirements.  This is first summarized in <a href="#table1" class="auto internal xref">Table 1</a> and
 detailed in the following subsections.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <span id="name-summary-of-solution-analysi"></span><div id="table1">
 <table class="center" id="table-1">
@@ -1608,10 +1610,10 @@ invalid.<a href="#section-4.4-7.2.1" class="pilcrow">¶</a></p>
 </dl>
 </section>
 </div>
-<div id="raw-public-keys">
+<div id="raw-public-keys-rpk">
 <section id="section-4.5">
-        <h3 id="name-raw-public-keys">
-<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-raw-public-keys" class="section-name selfRef">Raw Public Keys</a>
+        <h3 id="name-raw-public-keys-rpk">
+<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-raw-public-keys-rpk" class="section-name selfRef">Raw Public Keys (RPK)</a>
         </h3>
 <p id="section-4.5-1">Raw public keys (RPK) <span>[<a href="#RFC7250" class="cite xref">RFC7250</a>]</span> can be authenticated out-of-band or using trust on first use (TOFU).
 For a small network, this can be more appealing than a local or remote Certification Authority signing
@@ -1770,6 +1772,10 @@ can retrieve the updated CRL.<a href="#section-4.7-8.2.1" class="pilcrow">¶</a>
       <dd>
 <span class="refAuthor">Wouters, P., Ed.</span>, <span class="refAuthor">Tschofenig, H., Ed.</span>, <span class="refAuthor">Gilmore, J.</span>, <span class="refAuthor">Weiler, S.</span>, and <span class="refAuthor">T. Kivinen</span>, <span class="refTitle">"Using Raw Public Keys in Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">RFC 7250</span>, <span class="seriesInfo">DOI 10.17487/RFC7250</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7250">https://www.rfc-editor.org/rfc/rfc7250</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8446">[RFC8446]</dt>
+      <dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8555">[RFC8555]</dt>
       <dd>
 <span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Hoffman-Andrews, J.</span>, <span class="refAuthor">McCarney, D.</span>, and <span class="refAuthor">J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8555">https://www.rfc-editor.org/rfc/rfc8555</a>&gt;</span>. </dd>
@@ -1781,6 +1787,10 @@ can retrieve the updated CRL.<a href="#section-4.7-8.2.1" class="pilcrow">¶</a>
 <dt id="RFC9115">[RFC9115]</dt>
       <dd>
 <span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">López, D.</span>, <span class="refAuthor">Pastor Perales, A.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"An Automatic Certificate Management Environment (ACME) Profile for Generating Delegated Certificates"</span>, <span class="seriesInfo">RFC 9115</span>, <span class="seriesInfo">DOI 10.17487/RFC9115</span>, <time datetime="2021-09" class="refDate">September 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9115">https://www.rfc-editor.org/rfc/rfc9115</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9147">[RFC9147]</dt>
+      <dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refAuthor">Tschofenig, H.</span>, and <span class="refAuthor">N. Modadugu</span>, <span class="refTitle">"The Datagram Transport Layer Security (DTLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 9147</span>, <span class="seriesInfo">DOI 10.17487/RFC9147</span>, <time datetime="2022-04" class="refDate">April 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9147">https://www.rfc-editor.org/rfc/rfc9147</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9345">[RFC9345]</dt>
     <dd>

@@ -172,7 +172,7 @@ detailed in the following subsections.
 | ACME delegated certificates | No                    |  No              |   Yes               |   Yes                   |   Some      |
 | Raw Public Keys             | Yes                   |  Yes             |   n/a               |   Some, (*)             |   Yes       |
 | Self-Signed Certificate     | Yes                   |  Yes             |   n/a               |   Yes, poor experience  |   Yes       |
-| Local Certificate Authority | No                    |  No              |   Yes               |   Yes                   |   Yes       |
+| Local Certification Authority | No                    |  No              |   Yes               |   Yes                   |   Yes       |
 {: #table1 title="Summary of Solution Analysis"}
 
 
@@ -352,7 +352,7 @@ R-REVOKE-AUTH:
   : Yes, user can remove the certificate from list of authorized certificates.
 
 
-## Local CA: Certification Authority Built Into CPE
+## Local Certification Authority
 
 The CPE would be a CA capable of signing certificates for other in-home
 devices. The CA in the CPE would be limitied to signing only certificates belonging to
@@ -363,6 +363,8 @@ on the local network.
 
 > This feature is beyond the scope of the ADD working group but is
 mentioned because it was suggested during an ADD meeting.
+
+An example of such a system is {{?I-D.sweet-iot-acme}}.
 
 R-REDUCE-CA:
   : yes, it reduces interaction with public CAs but has same

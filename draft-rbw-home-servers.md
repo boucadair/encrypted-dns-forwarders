@@ -63,9 +63,13 @@ solutions.
 
    This document describes the problem encountered to host servers in
    a home network and how to connect to those servers using an
-   encrypted transport protocol such as TLS or DTLS.  It also identifies a set
+   encrypted transport protocol such as TLS {{?RFC8446}} or DTLS {{?RFC9147}}.  It also identifies a set
    of requirements and discusses to what extent existing solutions can
    (or can't) meet these requirements.
+
+   This documnt uses "local equipment" to refer to an equipment that is
+   deployed in a local network (e.g., LAN). A local equipment can be
+   a Customer Premises Equipment (CPE), an IoT device, an Set-top box (STB), etc.
 
 
 # Scope
@@ -76,61 +80,74 @@ in separate documents.
 
 There are three types of equipment:
 
-* legacy local equipment which lacks memory, CPU, or sufficient
+1. Legacy local equipment which lacks memory, CPU, or sufficient
   security to reasonably support an encrypted transport protocol and
-  associated key management.  An example is a 10 year old router with
+  associated key management.  An example is a 10-year old router with
   built-in 802.11n Wi-Fi.  This type of equipment is out of scope.
 
-* high functioning local equipment that provides sufficient hardware
+2. High functioning local equipment that provides sufficient hardware
   and software capability to support an encrypted transport protocol
   and associated key management.  An example is a printer, NAS, or
-  higher-end consumer router.
+  higher-end consumer router.  This is the primary scope of this
+  document.
 
-* high functioning virtualized equipment, where some functions are
+3. High functioning virtualized equipment, where some functions are
   provided via local or remote software.  An example is virtualized
-  CPE (vCPE).
+  CPE (vCPE). This is a secondary scope of this document.
 
 # Requirements
 
-With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
-public Certification Authority can sign a certificate for each CPE.
-This causes a few issues:
+This section identifies a set of requirements and discusses each of them.
 
-   *  In case of large scale of CPEs (e.g., millions of devices),
-      issuing certificate request for a large number of subdomains could
-      be treated as an attack by the certificate authorities to
-      overwhelm it.  This can be resolved with contracts and
-      payment but all of these problems are barriers to moving to
-      another certificate authority.
+## Reduce Use of Public Certification Authority
+
+With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
+public Certification Authority (CA) can sign a certificate for local
+equipment such as a printer, NAS, or router.  However, this causes a
+few issues:
+
+   * In case of large scale deployment of local equipment (e.g., millions of
+      devices), issuing certificate requests for a large number of
+      subdomains could be treated as an attack by the CAs to overwhelm it.
+      This can be resolved with
+      contracts/fees but this reduces agility and choice flexibility.
 
    *  Dependency on the CA to issue a large number of certificates,
       which causes CA availability to impact service availability.
 
-   * If the CPE uses one of its WAN IP addresses to obtain the
-      certificate for the FQDN, the Internet-facing HTTP server or a
-      DNS authoritative server on the CPE to complete the HTTP or DNS
-      challenge can be subjected to attacks. To avoid this exposure,
-      and to accomodate environments where the CPE cannot obtain a
-      public IP address (e.g., CGN), a vendor-operated service would
-      need to obtain the signed certificate on the CPE's behalf.
+   * ACME-based challenges require a public WAN IP address for
+     HTTP challenge or control of DNS zone, which is difficult
+     or impossible for devices behind a NAT (e.g., printer). Even
+     considering the home router this remains difficult as it
+     needs to (temporarily) expose an HTTP server to the
+     Internet during the HTTP challenge. An ISP-operated NAT
+     (Carrier Grade NAT, CGN) is another barrier.
 
-For these reasons, it is desirable to reduce the need for a public CA.
+Deployed systems have used a vendor-operated service for
+certificate acquisition and renewal to avoid the problems
+enumerated above.
 
    R-REDUCE-CA:
-   : Reduce the use of a public Certification Authority.
+   : Reduce the use of a public Certification Authorities.
+
+## Eliminate Use of Public Certification Authority
 
 Taking an additional step from the previous requirement, eliminating
-running one's own Certification Authority would avoid the complexities
-of certificate management.
+the vendor operation of a CA avoids the
+complexities of certificate management.
 
    R-ELIMINATE-CA:
-   : Eliminate using Certification Authorities for each CPE.
+   : Eliminate using Certification Authorities for each device.
 
-The ability to immediately deploy using existing Certification
-Authorities is important to evaluate.
+## Existing Support by Certification Authorities
+
+The ability to immediately deploy using existing CA is important
+to evaluate.
 
    R-SUPPORT-CA:
    : Existing support by Certification Authorities.
+
+## Client Support
 
 The ability to immediately deploy on clients is important to evaluate.
 
@@ -138,29 +155,24 @@ The ability to immediately deploy on clients is important to evaluate.
    : Existing support client libraries or client software intances.
 
 
-End users are extremely unlikely to contact the device vendor or their
-ISP if a CPE device is replaced (stolen, upgraded, etc.).  Rather, the
-user will replace the CPE and configure their client devices (laptops,
-smartphones, IoT devices, etc.) to authorize the new CPE.  As part of
-that configuration, the client device can refuse to authorize the
-previous CPE (e.g., encourage the user to remove authorization
-for the previous certificate).  Even without ability to revoke a
-certificate, the attacker in possession of the associated private key
-would also need to get on-path via access to the victim's physical
-network or broadcast a strong enough Wi-Fi signal to the victim's clients.
+## Revoke Authorization
+
+End-users are extremely unlikely to contact the device vendor if a
+device is replaced (stolen, upgraded, etc.).  Rather, the
+users will replace the device and configure their clients (laptops,
+smartphones, IoT devices, etc.) to authorize the new device.  As part of
+that configuration, the client can encourage removing authorization
+for the replaced device. In situations where there is normally only
+one device (one NAS, one printer, one home router, etc.), this revocation can
+be straightforward.
 
   R-REVOKE-AUTH:
-  : Provide a mechanism for the end user to disable access to a previously-
+  : Provide a mechanism for an end-user to disable access to a previously-
   authorized encrypted service, to accomodate a lost/stolen/sold device.
-  This might be via certificate revocation (via a Certificate Authority) or
-  via some other means.
-
-
 
 # Analysis of Solutions to Requirements
 
-
-This section describes several solutions which can meet some of the requirements.  This is first summarized in {{table1}} and
+This section describes several solutions which can meet a subset of the requirements.  This is first summarized in {{table1}} and
 detailed in the following subsections.
 
 
@@ -179,12 +191,12 @@ detailed in the following subsections.
 
 ## Normal Certificates {#normal-certificates}
 
-This solution has the CPE requests a (cloud) server to obtain a certificate
-for the CPE from a public CA. This solution is deployed in production
+This solution has the device send a request to a (cloud) server to obtain a certificate
+for the device from a public CA. This solution is deployed in production
 by Mozilla {{https-local-dom}}, McAfee, and Cujo.  Today, this is best
 practice.  However, it suffers from the dependency on both the public
 Certification Authority and the vendor's service (necessary because the
-CPE cannot always obtain a publicly-accessible IPv4 address necessary
+device cannot always obtain a publicly-accessible IPv4 address necessary
 to get an ACME-signed certificate itself), which are necessary
 for both initial deployment and for certificate renewal.
 
@@ -206,25 +218,27 @@ R-REVOKE-AUTH:
 
 ## Delegated Credentials {#delegated}
 
-Delegated credentials {{?RFC9345}} allows the entity operating the CPE
-(e.g., vendor or ISP) to sign a 7-day validity for the CPE's public key.
-The frequency of CA interactions remains the same as with normal
-certificates ({{normal-certificates}}), but the interactions are with
-the vendor's service rather than the public CA.
+Delegated credentials {{?RFC9345}} allows the entity operating the
+device (e.g., vendor or ISP) to sign a 7-day validity for the device's
+public key (Short-Term Automatically Renewed (STAR)).  The frequency of CA interactions remains the same as with
+normal certificates ({{normal-certificates}}).  For each device, the
+interactions are with the vendor's service rather than with the public
+CA.
 
-As currently specified in {{?RFC9345}}, the same name would be issued to all CPEs
-making it impossible to identify whether the delegated credential is
-issued to the intended CPE or an "evil-twin" CPE. This drawback can be corrected
-by enhancing {{?RFC9345}} to include a string that uniquely identifies the
-delegated credential (e.g., including hash of customer id or other unique identifier
-in the FQDN such as "HASH.cpe.example.com").
+As currently specified in {{?RFC9345}}, the same name would be issued
+to all devices making it impossible to identify whether the delegated
+credential is issued to the intended device or an "evil-twin"
+device. This drawback can be corrected by enhancing {{?RFC9345}} to
+include a string that uniquely identifies the delegated credential
+(e.g., including hash of customer id or other unique identifier in the
+FQDN to result in "printer.\<HASH\>.example.com" or "nas.\<CUSTOMER-ID\>.example.net").
 
   > For the sake of simplifying the analysis, this document assumes such an
   > enhancement to {{?RFC9345}} has been standardized and deployed.
 
 R-REDUCE-CA:
   : yes, somewhat by moving CA signing from public CA to a
-vendor- or ISP-operated service.
+    vendor- or ISP-operated service.
 
 R-ELIMINATE-CA: no
 
@@ -246,15 +260,19 @@ R-REVOKE-AUTH:
 ## Name Constraints {#name-constraints}
 
 Name constraints ({{Section 4.2.1.10 of ?RFC5280}}) allows the entity
-operating the CPE (e.g., vendor or ISP) to obtain a certificate from a
-public Certification Authority for a subdomain (dNSName) which is then
-used to sign certificates for each CPE.  For example, the network "example.net"
-could obtain a name constrained certificate for ".cpe.example.net" and then
-issue its own certificates such as "customer-123.cpe.example.net".
+operating the device (e.g., vendor or ISP) to obtain a certificate
+from a public Certification Authority for a subdomain (dNSName) which
+is then used to sign certificates for each device.  For example, the
+network "example.net" could obtain a name constrained certificate for
+".customer.example.net" and then issue one certificate for each customer
+such as "123.customer.example.net", yielding "printer.123.customer.example.net"
+and "nas.123.customer.example.net" and "dns.123.customer.example.net".
+For each device, the interactions are with the vendor's service rather
+than with the public CA.
 
 R-REDUCE-CA:
   : yes, it reduces interaction with public CAs but has same
-number of interactions with the CPE operator's CA.
+    number of interactions with the CPE operator's CA.
 
 R-ELIMINATE-CA: no
 
@@ -272,15 +290,15 @@ R-REVOKE-AUTH:
 
 ## ACME Delegated Certificates
 
-ACME Delegated Certificates {{?RFC9115}} allows the CPE to use a vendor-
+ACME Delegated Certificates {{?RFC9115}} allows the device to use a vendor-
 operated service to obtain a CA-signed ACME delegated certificate. It allows
-the CPE to request from a service managing the CPE, acting as a
-profiled ACME server, a certificate for a delegated identity,
-i.e., one belonging to the CPE. The CPE then uses the ACME protocol (with the
+the device to request from a service managing the device -- acting as a
+profiled ACME server -- a certificate for a delegated identity,
+i.e., one belonging to the device. The device then uses the ACME protocol (with the
 extensions described in {{?RFC8739}}) to request issuance of a short-term,
 Automatically Renewed (STAR) certificate for the same delegated identity.
 The generated short-term certificate is automatically renewed by the public CA,
-is periodically fetched by the CPE.
+is periodically fetched by the device.
 
 R-REDUCE-CA: No
 
@@ -298,7 +316,7 @@ R-REVOKE-AUTH:
     invalid.
 
 
-## Raw Public Keys
+## Raw Public Keys (RPK)
 
 Raw public keys (RPK) {{?RFC7250}} can be authenticated out-of-band or using trust on first use (TOFU).
 For a small network, this can be more appealing than a local or remote Certification Authority signing
@@ -352,12 +370,12 @@ R-REVOKE-AUTH:
   : Yes, user can remove the certificate from list of authorized certificates.
 
 
-## Local CA: Certification Authority Built Into CPE
+## Local CA: Certification Authority Built Into Device
 
-The CPE would be a CA capable of signing certificates for other in-home
-devices. The CA in the CPE would be limitied to signing only certificates belonging to
+One device within a home network would be a CA capable of signing certificates for other in-home
+devices. The CA in that device would be limitied to signing only certificates belonging to
 that home network (using Sections {{<delegated}} or {{<name-constraints}}).
-This allows the CPE to sign certificates for other devices within the network such as
+This allows that device to sign certificates for other devices within the network such as
 printers, IoT devices, NAS devices, laptops, or anything else needing to be a server
 on the local network.
 
@@ -366,8 +384,8 @@ mentioned because it was suggested during an ADD meeting.
 
 R-REDUCE-CA:
   : yes, it reduces interaction with public CAs but has same
-number of interactions with the CPE operator's CA for the
-CPE itself.  For other devices within the home network (e.g., printers), it
+number of interactions with the device operator's CA for the
+device itself.  For other devices within the home network (e.g., printers), it
 eliminates interaction with the vendor's CA.
 
 R-ELIMINATE-CA: no
@@ -380,7 +398,7 @@ R-SUPPORT-CA: yes
 R-SUPPORT-CLIENT: yes
 
 R-REVOKE-AUTH:
-  : Yes, user can update CRL on local certificate authority, and clients
+  : Yes, user can update CRL on local certificate authority device, and clients
     can retrieve the updated CRL.
 
 

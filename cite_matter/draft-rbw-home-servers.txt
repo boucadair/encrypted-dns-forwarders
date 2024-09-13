@@ -5,10 +5,10 @@
 network                                                         T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 7 March 2025                                             Orange
+Expires: 17 March 2025                                            Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                        3 September 2024
+                                                       13 September 2024
 
 
  Identifying and Authenticating Home Servers: Requirements and Solution
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 March 2025.
+   This Internet-Draft will expire on 17 March 2025.
 
 Copyright Notice
 
@@ -420,8 +420,8 @@ Table of Contents
 
    R-SUPPORT-CA: yes
 
-   R-SUPPORT-CLIENT:  yes, if the clients add the home's Certification
-      Authority to its trust list.
+   R-SUPPORT-CLIENT:  yes, if the clients add the home's CA to their
+      trust list.
 
    R-REVOKE-AUTH:  Yes, user can update CRL on local certificate
       authority, and clients can retrieve the updated CRL.
@@ -440,7 +440,7 @@ Table of Contents
    R-SUPPORT-CA: yes
 
    R-SUPPORT-CLIENT:  yes, if the clients add the Matter Product
-      Attestation Intermediates (PAI) to its trust list.
+      Attestation Intermediates (PAIs) to their trust list.
 
    R-REVOKE-AUTH: Yes
 

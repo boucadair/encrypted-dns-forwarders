@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-12T01:07:13.057624+00:00",
+  "timestamp": "2024-09-15T01:14:55.091102+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1355,26 +1355,142 @@
       "id": "PR_kwDOMJRu5c56SZQW",
       "title": "generalize: exchange 'CPE' with 'device' all over, and related changes",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/26",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-09-03T16:33:29Z",
-      "updatedAt": "2024-09-03T16:33:29Z",
+      "updatedAt": "2024-09-13T17:52:44Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "1058f4402fa9fb7ff75795073baf1ea3cd101719",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "reduce_cpe",
-      "headRefOid": "46a235fc556890fd31bb064d18600cb8b8e5c435",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "32f312a3b96cc46f9e649a335e35359eb8043d99",
+      "closedAt": "2024-09-13T17:52:43Z",
+      "mergedAt": "2024-09-13T17:52:43Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "30c9b30d813d331d68c30a71ea43e9d85243fff6"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6JRXd3",
+          "commit": {
+            "abbreviatedOid": "46a235f"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T12:44:44Z",
+          "updatedAt": "2024-09-13T12:44:44Z",
+          "comments": [
+            {
+              "originalPosition": 156,
+              "body": "I don't see any mention of the term STAR in RFC9345. You seem to have confused with https://www.rfc-editor.org/rfc/rfc9115.html",
+              "createdAt": "2024-09-13T12:44:44Z",
+              "updatedAt": "2024-09-13T12:46:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6JRXyN",
+          "commit": {
+            "abbreviatedOid": "46a235f"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T12:45:25Z",
+          "updatedAt": "2024-09-13T12:45:25Z",
+          "comments": [
+            {
+              "originalPosition": 159,
+              "body": "In case of RFC 9345, there is no additional interaction with the CA. You seem to referring to STAR defined in ACME. ",
+              "createdAt": "2024-09-13T12:45:25Z",
+              "updatedAt": "2024-09-13T12:45:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6JRZZk",
+          "commit": {
+            "abbreviatedOid": "46a235f"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Most of the changes look good. ",
+          "createdAt": "2024-09-13T12:48:20Z",
+          "updatedAt": "2024-09-13T12:48:20Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6JT_9Z",
+          "commit": {
+            "abbreviatedOid": "8c71b29"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T17:46:55Z",
+          "updatedAt": "2024-09-13T17:46:56Z",
+          "comments": [
+            {
+              "originalPosition": 156,
+              "body": "I agree STAR is not mentioned in RFC9345.  However, RFC9345 says this in its Section 3,\r\n\r\n> To limit exposure in case of the compromise of a delegated credential's private key, delegated credentials have a maximum validity period. In the absence of an application profile standard specifying otherwise, the **maximum validity period is set to 7 days**. \r\n\r\nwhich meets all the meaning of STAR!  \r\n\r\nI will soften the language explaining RFC9345's recommended validity period.",
+              "createdAt": "2024-09-13T17:46:55Z",
+              "updatedAt": "2024-09-13T17:46:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6JUAoN",
+          "commit": {
+            "abbreviatedOid": "8c71b29"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T17:48:25Z",
+          "updatedAt": "2024-09-13T17:48:25Z",
+          "comments": [
+            {
+              "originalPosition": 159,
+              "body": "RFC9345 recommends 7-day, but I guess you are expecting a system with a longer lifetime -- if so, we need to say so in this I-D.  How many days would you like?",
+              "createdAt": "2024-09-13T17:48:25Z",
+              "updatedAt": "2024-09-13T17:48:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMJRu5c6JUCKJ",
+          "commit": {
+            "abbreviatedOid": "6efcda1"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T17:52:26Z",
+          "updatedAt": "2024-09-13T17:52:36Z",
+          "comments": [
+            {
+              "originalPosition": 159,
+              "body": "I came up with even softer language.  Now reads:\r\n\r\n> Delegated credentials {{?RFC9345}} allows the entity operating the CPE (e.g., vendor or ISP) to sign the CPE's public key. The frequency of CA interactions for renewals can remain the same as with normal certificates ({{normal-certificates}}), but the interactions are with the vendor's service rather than the public CA.\r\n\r\n",
+              "createdAt": "2024-09-13T17:52:26Z",
+              "updatedAt": "2024-09-13T17:52:36Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 27,
@@ -1423,20 +1539,117 @@
       "id": "PR_kwDOMJRu5c56UoRS",
       "title": "add citation and brief explanation of Matter",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/28",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-09-03T23:05:48Z",
-      "updatedAt": "2024-09-03T23:16:49Z",
+      "updatedAt": "2024-09-13T17:52:59Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "1058f4402fa9fb7ff75795073baf1ea3cd101719",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "cite_matter",
-      "headRefOid": "6579f293ef613be2e84adf325fb3b4e1e95548f8",
+      "headRefOid": "3dee5d5a140a56082a32c65c9cff7e4aa054250c",
+      "closedAt": "2024-09-13T17:52:59Z",
+      "mergedAt": "2024-09-13T17:52:59Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "7ba0ddfd1a5aad4e8b3134704d170837043192e2"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6JRzTh",
+          "commit": {
+            "abbreviatedOid": "6579f29"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-09-13T13:28:50Z",
+          "updatedAt": "2024-09-13T13:29:14Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "```suggestion\r\n  : yes, if the clients add the home's CA to their trust list.\r\n```",
+              "createdAt": "2024-09-13T13:28:50Z",
+              "updatedAt": "2024-09-13T13:29:14Z"
+            },
+            {
+              "originalPosition": 51,
+              "body": "```suggestion\r\n  : yes, if the clients add the Matter Product Attestation Intermediates (PAIs) to their trust list.\r\n```",
+              "createdAt": "2024-09-13T13:29:05Z",
+              "updatedAt": "2024-09-13T13:29:14Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOMJRu5c57cAUk",
+      "title": "Some edits to better define the concept of \"local equipment\" and some\u2026",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/29",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026 other nits",
+      "createdAt": "2024-09-13T13:42:01Z",
+      "updatedAt": "2024-09-13T17:36:16Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "reduce_cpe",
+      "baseRefOid": "46a235fc556890fd31bb064d18600cb8b8e5c435",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "boucadair-patch-5",
+      "headRefOid": "b71d65d3cf76059d9685d361e2f5fe647e3e9bcb",
+      "closedAt": "2024-09-13T17:36:15Z",
+      "mergedAt": "2024-09-13T17:36:15Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "8c71b29fae597635ee3a6799d5175f18c8d2665e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6JT7x1",
+          "commit": {
+            "abbreviatedOid": "b71d65d"
+          },
+          "author": "danwing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T17:36:08Z",
+          "updatedAt": "2024-09-13T17:36:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOMJRu5c57dmQB",
+      "title": "add reference to draft-sweet-iot-acme",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/30",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-13T17:43:16Z",
+      "updatedAt": "2024-09-13T17:53:54Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "7ba0ddfd1a5aad4e8b3134704d170837043192e2",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "iot_acme",
+      "headRefOid": "8af5b9319addd501443e2df0fa2752c5e561c89e",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,

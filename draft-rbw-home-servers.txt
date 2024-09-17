@@ -5,10 +5,10 @@
 network                                                         T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 17 March 2025                                            Orange
+Expires: 21 March 2025                                            Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                       13 September 2024
+                                                       17 September 2024
 
 
  Identifying and Authenticating Home Servers: Requirements and Solution
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 March 2025.
+   This Internet-Draft will expire on 21 March 2025.
 
 Copyright Notice
 
@@ -81,7 +81,7 @@ Table of Contents
      4.4.  ACME Delegated Certificates
      4.5.  Raw Public Keys (RPK)
      4.6.  Self-signed Certificate
-     4.7.  Local CA: Certification Authority Built Into Device
+     4.7.  Local Certification Authority
      4.8.  Matter
    5.  Security Considerations
    6.  IANA Considerations
@@ -207,38 +207,38 @@ Table of Contents
    the requirements.  This is first summarized in Table 1 and detailed
    in the following subsections.
 
-   +==============+========+===========+==========+============+======+
-   |     Solution | Reduce | Eliminate | Existing |  Existing  |Revoke|
-   |              |   CA   |     CA    |    CA    |   Client   | Auth |
-   |              |        |           | Support  |  Support   |      |
-   +==============+========+===========+==========+============+======+
-   |       Normal |   No   |     No    |   Yes    |    Yes     | Some |
-   | certificates |        |           |          |            |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |    Delegated |  Yes,  |     No    |    No    |  No, (*)   | Some |
-   |  credentials |somewhat|           |          |            |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |         Name |  Yes   |     No    |    No    |     No     | Some |
-   |  constraints |        |           |          |            |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |         ACME |   No   |     No    |   Yes    |    Yes     | Some |
-   |    delegated |        |           |          |            |      |
-   | certificates |        |           |          |            |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |   Raw Public |  Yes   |    Yes    |   n/a    | Some, (*)  | Yes  |
-   |         Keys |        |           |          |            |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |  Self-Signed |  Yes   |    Yes    |   n/a    | Yes, poor  | Yes  |
-   |  Certificate |        |           |          | experience |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |        Local |   No   |     No    |   Yes    |    Yes     | Yes  |
-   |  Certificate |        |           |          |            |      |
-   |    Authority |        |           |          |            |      |
-   +--------------+--------+-----------+----------+------------+------+
-   |       Matter |  Yes   |     No    |   Yes    |    Yes     | Yes  |
-   +--------------+--------+-----------+----------+------------+------+
+   +===============+========+===========+==========+============+======+
+   |      Solution | Reduce | Eliminate | Existing |  Existing  |Revoke|
+   |               |   CA   |     CA    |    CA    |   Client   | Auth |
+   |               |        |           | Support  |  Support   |      |
+   +===============+========+===========+==========+============+======+
+   |        Normal |   No   |     No    |   Yes    |    Yes     | Some |
+   |  certificates |        |           |          |            |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |     Delegated |  Yes,  |     No    |    No    |  No, (*)   | Some |
+   |   credentials |somewhat|           |          |            |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |          Name |  Yes   |     No    |    No    |     No     | Some |
+   |   constraints |        |           |          |            |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |          ACME |   No   |     No    |   Yes    |    Yes     | Some |
+   |     delegated |        |           |          |            |      |
+   |  certificates |        |           |          |            |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |    Raw Public |  Yes   |    Yes    |   n/a    | Some, (*)  | Yes  |
+   |          Keys |        |           |          |            |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |   Self-Signed |  Yes   |    Yes    |   n/a    | Yes, poor  | Yes  |
+   |   Certificate |        |           |          | experience |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |         Local |   No   |     No    |   Yes    |    Yes     | Yes  |
+   | Certification |        |           |          |            |      |
+   |     Authority |        |           |          |            |      |
+   +---------------+--------+-----------+----------+------------+------+
+   |        Matter |  Yes   |     No    |   Yes    |    Yes     | Yes  |
+   +---------------+--------+-----------+----------+------------+------+
 
-                  Table 1: Summary of Solution Analysis
+                   Table 1: Summary of Solution Analysis
 
 4.1.  Normal Certificates
 
@@ -418,7 +418,7 @@ Table of Contents
    R-REVOKE-AUTH:  Yes, user can remove the certificate from list of
       authorized certificates.
 
-4.7.  Local CA: Certification Authority Built Into Device
+4.7.  Local Certification Authority
 
    One device within a home network would be a CA capable of signing
    certificates for other in-home devices.  The CA in that device would
@@ -430,6 +430,8 @@ Table of Contents
 
       This feature is beyond the scope of the ADD working group but is
       mentioned because it was suggested during an ADD meeting.
+
+   An example of such a system is [I-D.sweet-iot-acme].
 
    R-REDUCE-CA:  yes, it reduces interaction with public CAs but has
       same number of interactions with the device operator's CA for the
@@ -510,6 +512,12 @@ Table of Contents
               delegated-credentials-03, 1 December 2023,
               <https://datatracker.ietf.org/doc/html/draft-reddy-add-
               delegated-credentials-03>.
+
+   [I-D.sweet-iot-acme]
+              Sweet, M., "ACME-Based Provisioning of IoT Devices", Work
+              in Progress, Internet-Draft, draft-sweet-iot-acme-06, 9
+              August 2024, <https://datatracker.ietf.org/doc/html/draft-
+              sweet-iot-acme-06>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key

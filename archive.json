@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-15T01:14:55.091102+00:00",
+  "timestamp": "2024-09-17T00:56:42.023131+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1636,26 +1636,42 @@
       "id": "PR_kwDOMJRu5c57dmQB",
       "title": "add reference to draft-sweet-iot-acme",
       "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/30",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-09-13T17:43:16Z",
-      "updatedAt": "2024-09-13T17:53:54Z",
+      "updatedAt": "2024-09-17T00:18:34Z",
       "baseRepository": "boucadair/encrypted-dns-forwarders",
       "baseRefName": "main",
       "baseRefOid": "7ba0ddfd1a5aad4e8b3134704d170837043192e2",
       "headRepository": "boucadair/encrypted-dns-forwarders",
       "headRefName": "iot_acme",
       "headRefOid": "8af5b9319addd501443e2df0fa2752c5e561c89e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-09-17T00:18:34Z",
+      "mergedAt": "2024-09-17T00:18:34Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "4ccc87b12bb4d6d803841696e4d90651395a2948"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMJRu5c6Jbz0e",
+          "commit": {
+            "abbreviatedOid": "8af5b93"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-16T05:38:09Z",
+          "updatedAt": "2024-09-16T05:38:09Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

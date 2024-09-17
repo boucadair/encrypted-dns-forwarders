@@ -109,7 +109,7 @@ This section identifies a set of requirements and discusses each of them.
 
 ## Reduce Use of Public Certification Authority
 
-With automated certificate enrollment and renewal {{?ACME=RFC8555}}, a
+With automated certificate enrollment and renewal {{!ACME=RFC8555}}, a
 public Certification Authority (CA) can sign a certificate for local
 equipment such as a printer, NAS, or router.  However, this causes a
 few issues:
@@ -227,23 +227,23 @@ R-REVOKE-AUTH:
 
 ## Delegated Credentials {#delegated}
 
-Delegated credentials {{?RFC9345}} allows the entity operating the
+Delegated credentials {{!RFC9345}} allows the entity operating the
 device (e.g., vendor or ISP) to sign a 7-day validity for the device's
 public key (Short-Term Automatically Renewed (STAR)).  The frequency of CA interactions remains the same as with
 normal certificates ({{normal-certificates}}).  For each device, the
 interactions are with the vendor's service rather than with the public
 CA.
 
-As currently specified in {{?RFC9345}}, the same name would be issued
+As currently specified in {{!RFC9345}}, the same name would be issued
 to all devices making it impossible to identify whether the delegated
 credential is issued to the intended device or an "evil-twin"
-device. This drawback can be corrected by enhancing {{?RFC9345}} to
+device. This drawback can be corrected by enhancing {{!RFC9345}} to
 include a string that uniquely identifies the delegated credential
 (e.g., including hash of customer id or other unique identifier in the
 FQDN to result in "printer.\<HASH\>.example.com" or "nas.\<CUSTOMER-ID\>.example.net").
 
   > For the sake of simplifying the analysis, this document assumes such an
-  > enhancement to {{?RFC9345}} has been standardized and deployed.
+  > enhancement to {{!RFC9345}} has been standardized and deployed.
 
 R-REDUCE-CA:
   : yes, somewhat by moving CA signing from public CA to a
@@ -252,7 +252,7 @@ R-REDUCE-CA:
 R-ELIMINATE-CA: no
 
 Delegated credentials have no existing support by CAs. Clients need to
-support {{Section 4.1.1 of ?RFC9345}} which requires sending an
+support {{Section 4.1.1 of !RFC9345}} which requires sending an
 extension in their TLS 1.3 ClientHello.  The only client supporting
 delegated credentials is Firefox.
 
@@ -268,7 +268,7 @@ R-REVOKE-AUTH:
 
 ## Name Constraints {#name-constraints}
 
-Name constraints ({{Section 4.2.1.10 of ?RFC5280}}) allows the entity
+Name constraints ({{Section 4.2.1.10 of !RFC5280}}) allows the entity
 operating the device (e.g., vendor or ISP) to obtain a certificate
 from a public Certification Authority for a subdomain (dNSName) which
 is then used to sign certificates for each device.  For example, the
@@ -299,7 +299,7 @@ R-REVOKE-AUTH:
 
 ## ACME Delegated Certificates
 
-ACME Delegated Certificates {{?RFC9115}} allows the device to use a vendor-
+ACME Delegated Certificates {{!RFC9115}} allows the device to use a vendor-
 operated service to obtain a CA-signed ACME delegated certificate. It allows
 the device to request from a service managing the device -- acting as a
 profiled ACME server -- a certificate for a delegated identity,
@@ -327,7 +327,7 @@ R-REVOKE-AUTH:
 
 ## Raw Public Keys (RPK)
 
-Raw public keys (RPK) {{?RFC7250}} can be authenticated out-of-band or using trust on first use (TOFU).
+Raw public keys (RPK) {{!RFC7250}} can be authenticated out-of-band or using trust on first use (TOFU).
 For a small network, this can be more appealing than a local or remote Certification Authority signing
 keys and dealing with certificate renewal.
 
@@ -344,7 +344,7 @@ R-SUPPORT-CA:
 
 R-SUPPORT-CLIENT:
   : Some; all major libraries support RPK, but clients (browsers and curl) do not support RPK.
-Further, DNR and DDR in verified discovery mode expect to encounter certificates and do not support RPK.
+Further, Discovery of Network-designated Resolvers (DNR) {{?RFC9463}}) and Discovery of Designated Resolvers (DDR) {{?RFC9462}} in verified discovery mode expect to encounter certificates and do not support RPK.
 
 R-REVOKE-AUTH:
   : Yes, user can remove the raw public key from list of authorized public keys.

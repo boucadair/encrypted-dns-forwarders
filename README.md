@@ -7,6 +7,14 @@ This is the working area for the individual Internet-Draft, "Hosting Encrypted D
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-rbw-add-encrypted-dns-forwarders)
 * [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbw-add-encrypted-dns-forwarders.diff)
 
+# Identifying and Authenticating Home Servers: Requirements and Solution Analysis
+
+This is the working area for the individual Internet-Draft, "Identifying and Authenticating Home Servers: Requirements and Solution Analysis".
+
+* [Editor's Copy](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbw-home-servers.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-rbw-home-servers)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-rbw-home-servers)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/encrypted-dns-forwarders/#go.draft-rbw-home-servers.diff)
 
 ## Contributing
 

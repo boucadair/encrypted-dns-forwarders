@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-17T00:56:42.023131+00:00",
+  "timestamp": "2024-09-19T01:08:53.914362+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1672,6 +1672,62 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 31,
+      "id": "PR_kwDOMJRu5c57tKX4",
+      "title": "Update README with generalized I-D pointers",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/31",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-17T05:40:01Z",
+      "updatedAt": "2024-09-17T05:40:10Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "4ccc87b12bb4d6d803841696e4d90651395a2948",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "boucadair-patch-6",
+      "headRefOid": "03bc3f5840a360c58ae2c686cc5229caaf7f497c",
+      "closedAt": "2024-09-17T05:40:10Z",
+      "mergedAt": "2024-09-17T05:40:10Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9478ed9c36696f0f66fe714004e0e0e96a211728"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 32,
+      "id": "PR_kwDOMJRu5c57tNYa",
+      "title": "some minor fixes",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/32",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-17T05:48:47Z",
+      "updatedAt": "2024-09-17T17:52:39Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "9478ed9c36696f0f66fe714004e0e0e96a211728",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "minor-fixes",
+      "headRefOid": "16c650bf151d19a4f2b02c1521bde32dbf25c773",
+      "closedAt": "2024-09-17T17:52:39Z",
+      "mergedAt": "2024-09-17T17:52:39Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "74a925576ee02134c6e926b479c31f0840f1d819"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }

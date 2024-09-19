@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 21 March 2025                                            Orange
+Expires: 23 March 2025                                            Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                       17 September 2024
+                                                       19 September 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 March 2025.
+   This Internet-Draft will expire on 23 March 2025.
 
 Copyright Notice
 

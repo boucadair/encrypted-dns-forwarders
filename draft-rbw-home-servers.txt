@@ -5,10 +5,10 @@
 network                                                         T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 21 March 2025                                            Orange
+Expires: 23 March 2025                                            Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                       17 September 2024
+                                                       19 September 2024
 
 
  Identifying and Authenticating Home Servers: Requirements and Solution
@@ -22,16 +22,17 @@ Abstract
    requirements to improve this situation and analyzes existing
    solutions.
 
-Discussion Venues
+About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   Discussion of this document takes place on the Adaptive DNS Discovery
-   Working Group mailing list (add@ietf.org), which is archived at
-   https://mailarchive.ietf.org/arch/browse/add/.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-rbw-home-servers/.
 
-   Source for this draft and an issue tracker can be found at
-   https://github.com/boucadair/encrypted-dns-forwarders.
+   Discussion of this document takes place on the ADD Working Group
+   mailing list (mailto:add@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/add/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/add/.
 
 Status of This Memo
 
@@ -48,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 March 2025.
+   This Internet-Draft will expire on 23 March 2025.
 
 Copyright Notice
 

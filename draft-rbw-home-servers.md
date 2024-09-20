@@ -469,7 +469,7 @@ This document has no IANA actions.
    The CPE generates a public and private key-pair, builds a certificate signing
    request (CSR), and sends the CSR to a service in the operator
    managing the CPE.  Upon receipt of the CSR, the operator's service
-   can utilize certificate management protocols like ACME {{?RFC8555}} to automate
+   can utilize certificate management protocols like ACME {{?ACME}} to automate
    certificate management functions such as domain validation procedure,
    certificate issuance, and certificate revocation.
 

@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-15T01:11:52.379067+00:00",
+  "timestamp": "2024-10-17T01:10:59.559415+00:00",
   "repo": "boucadair/encrypted-dns-forwarders",
   "labels": [
     {
@@ -1726,6 +1726,32 @@
       "mergeCommit": {
         "oid": "74a925576ee02134c6e926b479c31f0840f1d819"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 33,
+      "id": "PR_kwDOMJRu5c5-5PA4",
+      "title": "ADD-focused draft, per Glenn's email",
+      "url": "https://github.com/boucadair/encrypted-dns-forwarders/pull/33",
+      "state": "OPEN",
+      "author": "danwing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-16T22:30:01Z",
+      "updatedAt": "2024-10-16T23:18:11Z",
+      "baseRepository": "boucadair/encrypted-dns-forwarders",
+      "baseRefName": "main",
+      "baseRefOid": "efaa31d7d8e7e8337af19a8bae28be7de813f773",
+      "headRepository": "boucadair/encrypted-dns-forwarders",
+      "headRefName": "add_focused",
+      "headRefOid": "3aaf22e9e9d39569d0d3e940e9c5213e543e8bba",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }

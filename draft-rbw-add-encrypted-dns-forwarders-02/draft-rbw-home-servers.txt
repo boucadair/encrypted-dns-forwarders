@@ -5,10 +5,10 @@
 network                                                         T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 23 March 2025                                            Orange
+Expires: 8 May 2025                                               Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                       19 September 2024
+                                                         4 November 2024
 
 
  Identifying and Authenticating Home Servers: Requirements and Solution
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 March 2025.
+   This Internet-Draft will expire on 8 May 2025.
 
 Copyright Notice
 
@@ -526,9 +526,9 @@ Table of Contents
    [I-D.davies-internal-tld]
               Davies, K. and A. McConachie, "A Top-level Domain for
               Private Use", Work in Progress, Internet-Draft, draft-
-              davies-internal-tld-00, 2 August 2024,
+              davies-internal-tld-01, 18 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-davies-
-              internal-tld-00>.
+              internal-tld-01>.
 
    [I-D.reddy-add-delegated-credentials]
               Reddy.K, T., Boucadair, M., Wing, D., and S. Jain,
@@ -551,11 +551,6 @@ Table of Contents
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8446>.
-
-   [RFC8555]  Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
-              Kasten, "Automatic Certificate Management Environment
-              (ACME)", RFC 8555, DOI 10.17487/RFC8555, March 2019,
-              <https://www.rfc-editor.org/rfc/rfc8555>.
 
    [RFC8739]  Sheffer, Y., Lopez, D., Gonzalez de Dios, O., Pastor
               Perales, A., and T. Fossati, "Support for Short-Term,
@@ -595,7 +590,7 @@ Appendix A.  Example of Delegated Certificate Issuance
    The CPE generates a public and private key-pair, builds a certificate
    signing request (CSR), and sends the CSR to a service in the operator
    managing the CPE.  Upon receipt of the CSR, the operator's service
-   can utilize certificate management protocols like ACME [RFC8555] to
+   can utilize certificate management protocols like ACME [ACME] to
    automate certificate management functions such as domain validation
    procedure, certificate issuance, and certificate revocation.
 

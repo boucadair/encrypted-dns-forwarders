@@ -5,10 +5,10 @@
 Adaptive DNS Discovery                                          T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 23 March 2025                                            Orange
+Expires: 8 May 2025                                               Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                       19 September 2024
+                                                         4 November 2024
 
 
                 Hosting Encrypted DNS Forwarders on CPEs
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 March 2025.
+   This Internet-Draft will expire on 8 May 2025.
 
 Copyright Notice
 
@@ -79,24 +79,14 @@ Table of Contents
    2.  Scope
    3.  Conventions and Definitions
    4.  Proxied DNS In Local Networks
-   5.  Requirements
-   6.  Non-Requirements
-   7.  Analysis of Solutions to Requirements
-     7.1.  Normal Certificates
-     7.2.  Delegated Credentials
-     7.3.  Name Constraints
-     7.4.  ACME Delegated Certificates
-     7.5.  Raw Public Keys
-     7.6.  Self-signed Certificate
-     7.7.  Local CA: Certification Authority Built Into CPE
-   8.  Deploying Encrypted DNS Forwarder in Local Networks
-     8.1.  Discovery of Designated Resolvers (DDR)
-     8.2.  Discovery of Network-designated Resolvers (DNR)
-   9.  Security Considerations
-   10. IANA Considerations
-   11. References
-     11.1.  Normative References
-     11.2.  Informative References
+   5.  Deploying Encrypted DNS Forwarder in Local Networks
+     5.1.  Discovery of Designated Resolvers (DDR)
+     5.2.  Discovery of Network-designated Resolvers (DNR)
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Appendix A.  Example of Delegated Certificate Issuance
    Acknowledgments
    Authors' Addresses
@@ -136,6 +126,11 @@ Table of Contents
    The document does not focus on generic considerations related to
    deploying DNS proxies.  The reader may refer to [RFC5625] for such
    matters.
+
+   The mechanism for the client to authenticate the local encrypted DNS
+   server is out of scope of this draft (see [I-D.rbw-home-servers]).
+   This draft details how such an authenticated local encrypted DNS
+   server would be used.
 
 3.  Conventions and Definitions
 
@@ -220,288 +215,12 @@ Table of Contents
 
    *  The leg between the CPE and an upstream DNS resolver.
 
-5.  Requirements
-
-   With automated certificate enrollment and renewal [ACME], a public
-   Certification Authority can sign a certificate for each CPE.  This
-   causes a few issues:
-
-   *  In case of large scale of CPEs (e.g., millions of devices),
-      issuing certificate request for a large number of subdomains could
-      be treated as an attack by the certificate authorities to
-      overwhelm it.  This can be resolved with contracts and payment but
-      all of these problems are barriers to moving to another
-      certificate authority.
-
-   *  Dependency on the CA to issue a large number of certificates,
-      which causes CA availability to impact service availability.
-
-   *  If the CPE uses one of its WAN IP addresses to obtain the
-      certificate for the FQDN, the Internet-facing HTTP server or a DNS
-      authoritative server on the CPE to complete the HTTP or DNS
-      challenge can be subjected to attacks.  To avoid this exposure,
-      and to accomodate environments where the CPE cannot obtain a
-      public IP address (e.g., CGN), a vendor-operated service would
-      need to obtain the signed certificate on the CPE's behalf.
-
-   For these reasons, it is desirable to reduce the need for a public
-   CA.
-
-   R-REDUCE-CA:  Reduce the use of a public Certification Authority.
-
-   Taking an additional step from the previous requirement, eliminating
-   running one's own Certification Authority would avoid the
-   complexities of certificate management.
-
-   R-ELIMINATE-CA:  Eliminate using Certification Authorities for each
-      CPE.
-
-   The ability to immediately deploy using existing Certification
-   Authorities is important to evaluate.
-
-   R-SUPPORT-CA:  Existing support by Certification Authorities.
-
-   The ability to immediately deploy on clients is important to
-   evaluate.
-
-   R-SUPPORT-CLIENT:  Existing support client libraries or client
-      software intances.
-
-6.  Non-Requirements
-
-   End users are extremely unlikely to contact the device vendor or
-   their ISP if a CPE device is replaced (stolen, upgraded, etc.).
-   Rather, the user will replace the CPE and configure their client
-   devices (laptops, smartphones, IoT devices, etc.) to authorize the
-   new CPE.  As part of that configuration, the client device can refuse
-   to authorize the previous CPE.  While this does leave the client
-   devices open to attack by the previous (stolen) CPE, the attacker
-   would also need to have access to the victim's physical network or
-   broadcast a strong enough Wi-Fi signal to the victim's clients.
-
-   NR-REVOKE:  Do not provide certificate revocation.
-
-7.  Analysis of Solutions to Requirements
-
-   This section describes several solutions which can meet some of the
-   requirements.  This is first summarized in Table 1 and detailed in
-   the following subsections.
-
-   +==============+==========+===========+============+================+
-   |     Solution |  Reduce  | Eliminate |  Existing  |    Existing    |
-   |              |    CA    |     CA    | CA Support |     Client     |
-   |              |          |           |            |    Support     |
-   +==============+==========+===========+============+================+
-   |       Normal |    No    |     No    |    Yes     |      Yes       |
-   | certificates |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |    Delegated |   Yes,   |     No    |     No     |    No, (*)     |
-   |  credentials | somewhat |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |         Name |   Yes    |     No    |     No     |       No       |
-   |  constraints |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |         ACME |    No    |     No    |    Yes     |      Yes       |
-   |    delegated |          |           |            |                |
-   | certificates |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |   Raw Public |   Yes    |    Yes    |    n/a     |   Some, (*)    |
-   |         Keys |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-   |  Self-Signed |   Yes    |    Yes    |    n/a     |   Yes, poor    |
-   |  Certificate |          |           |            |   experience   |
-   +--------------+----------+-----------+------------+----------------+
-   |        Local |    No    |     No    |    Yes     |      Yes       |
-   |  Certificate |          |           |            |                |
-   |    Authority |          |           |            |                |
-   +--------------+----------+-----------+------------+----------------+
-
-                   Table 1: Summary of Solution Analysis
-
-7.1.  Normal Certificates
-
-   This solution has the CPE requests a (cloud) server to obtain a
-   certificate for the CPE from a public CA.  This solution is deployed
-   in production by Mozilla [https-local-dom], McAfee, and Cujo.  Today,
-   this is best practice.  However, it suffers from the dependency on
-   both the public Certification Authority and the vendor's service
-   (necessary because the CPE cannot always obtain a publicly-accessible
-   IPv4 address necessary to get an ACME-signed certificate itself),
-   which are necessary for both initial deployment and for certificate
-   renewal.
-
-   R-REDUCE-CA: no
-
-   R-ELIMINATE-CA: no
-
-   Both CAs and clients already support the normal mode of operation.
-
-   R-SUPPORT-CA: yes
-
-   R-SUPPORT-CLIENT: yes
-
-7.2.  Delegated Credentials
-
-   Delegated credentials [RFC9345] allows the entity operating the CPE
-   (e.g., vendor or ISP) to sign the CPE's public key.  The frequency of
-   CA interactions for renewals can remain the same as with normal
-   certificates (Section 7.1), but the interactions are with the
-   vendor's service rather than the public CA.
-
-   As currently specified in [RFC9345], the same name would be issued to
-   all CPEs making it impossible to identify whether the delegated
-   credential is issued to the intended CPE or an "evil-twin" CPE.  This
-   drawback can be corrected by enhancing [RFC9345] to include a string
-   that uniquely identifies the delegated credential (e.g., including
-   hash of customer id or other unique identifier in the FQDN such as
-   "HASH.cpe.example.com").
-
-      For the sake of simplifying the analysis, this document assumes
-      such an enhancement to [RFC9345] has been standardized and
-      deployed.
-
-   R-REDUCE-CA: yes, somewhat by moving CA signing from public CA to a
-   vendor- or ISP-operated service.
-
-   R-ELIMINATE-CA: no
-
-   Delegated credentials have no existing support by CAs.  Clients need
-   to support Section 4.1.1 of [RFC9345] which requires sending an
-   extension in their TLS 1.3 ClientHello.  The only client supporting
-   delegated credentials is Firefox.
-
-   R-SUPPORT-CA: no
-
-   R-SUPPORT-CLIENT: no, only supported by Firefox
-
-7.3.  Name Constraints
-
-   Name constraints (Section 4.2.1.10 of [RFC5280]) allows the entity
-   operating the CPE (e.g., vendor or ISP) to obtain a certificate from
-   a public Certification Authority for a subdomain (dNSName) which is
-   then used to sign certificates for each CPE.  For example, the
-   network "example.net" could obtain a name constrained certificate for
-   ".cpe.example.net" and then issue its own certificates such as
-   "customer-123.cpe.example.net".
-
-   R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-   number of interactions with the CPE operator's CA.
-
-   R-ELIMINATE-CA: no
-
-   Name constraints have no existing support by CAs or by clients.
-
-   R-SUPPORT-CA: no
-
-   R-SUPPORT-CLIENT: no
-
-7.4.  ACME Delegated Certificates
-
-   ACME Delegated Certificates [RFC9115] allows the CPE to use a vendor-
-   operated service to obtain a CA-signed ACME delegated certificate.
-   It allows the CPE to request from a service managing the CPE, acting
-   as a profiled ACME server, a certificate for a delegated identity,
-   i.e., one belonging to the CPE.  The CPE then uses the ACME protocol
-   (with the extensions described in [RFC8739]) to request issuance of a
-   short-term, Automatically Renewed (STAR) certificate for the same
-   delegated identity.  The generated short-term certificate is
-   automatically renewed by the public CA, is periodically fetched by
-   the CPE.
-
-   R-REDUCE-CA: No
-
-   R-ELIMINATE-CA: No
-
-   ACME delegated certificates do not require changes to client
-   authentication libraries or operation.
-
-   R-SUPPORT-CA: Unknown
-
-   R-SUPPORT-CLIENT: yes
-
-7.5.  Raw Public Keys
-
-   Raw public keys (RPK) [RFC7250] can be authenticated out-of-band or
-   using trust on first use (TOFU).  For a small network, this can be
-   more appealing than a local or remote Certification Authority signing
-   keys and dealing with certificate renewal.
-
-   R-REDUCE-CA: yes
-
-   R-ELIMINATE-CA: yes
-
-   RPKs have been supported by OpenSSL and wolfSSL since 2023 and by
-   GnuTLS since 2019.  However, RPKs are not supported by browsers or by
-   curl.
-
-   R-SUPPORT-CA: n/a, this system does not use Certification Authorities
-   at all.
-
-   R-SUPPORT-CLIENT: Some; all major libraries support RPK, but clients
-   (browsers and curl) do not support RPK.  Further, DNR and DDR in
-   verified discovery mode expect to encounter certificates and do not
-   support RPK.
-
-7.6.  Self-signed Certificate
-
-   A self-signed certificate requires the client to authorize the
-   connection, which is usually a "click OK to continue" dialog box and
-   is a trust on first use (TOFU) solution.  While it is possible the
-   user verifies the certificate matches expectations, this seldom
-   occurs.  The certificate warnings are normalized by users which
-   weakens security overall.
-
-   R-REDUCE-CA: yes, public CA's are not used at all.
-
-   R-ELIMINATE-CA: yes
-
-   Existing clients support self-signed certificates fairly well, but
-   the user experience with clients is poor: some clients can't remember
-   to trust a certificate and clicking through certificate warnings will
-   become normalized.
-
-   Modifying self-signed certificate handling for ".local" [RFC6761] or
-   ".internal" [I-D.davies-internal-tld] might be worth further study.
-
-   R-SUPPORT-CA: n/a, this system does not use Certification Authories
-   at all.
-
-   R-SUPPORT-CLIENT: Yes, but poor user experience.
-
-7.7.  Local CA: Certification Authority Built Into CPE
-
-   The CPE would be a CA capable of signing certificates for other in-
-   home devices.  The CA in the CPE would be limitied to signing only
-   certificates belonging to that home network (using Sections 7.2 or
-   7.3).  This allows the CPE to sign certificates for other devices
-   within the network such as printers, IoT devices, NAS devices,
-   laptops, or anything else needing to be a server on the local
-   network.
-
-      This feature is beyond the scope of the ADD working group but is
-      mentioned because it was suggested during an ADD meeting.
-
-   R-REDUCE-CA: yes, it reduces interaction with public CAs but has same
-   number of interactions with the CPE operator's CA for the CPE itself.
-   For other devices within the home network (e.g., printers), it
-   eliminates interaction with the vendor's CA.
-
-   R-ELIMINATE-CA: no
-
-   While technically the industry could build such a system, building
-   such a system across the ecosystem of client operating systems would
-   be a daunting task.
-
-   R-SUPPORT-CA: yes
-
-   R-SUPPORT-CLIENT: yes
-
-8.  Deploying Encrypted DNS Forwarder in Local Networks
+5.  Deploying Encrypted DNS Forwarder in Local Networks
 
    This section discusses some deployment challenges to host an
    encrypted DNS forwarder within a local network.
 
-8.1.  Discovery of Designated Resolvers (DDR)
+5.1.  Discovery of Designated Resolvers (DDR)
 
    DDR requires proving possession of an IP address, as the DDR
    certificate contains the server's IPv4 and IPv6 addresses and is
@@ -522,7 +241,7 @@ Table of Contents
    than slow IPv6 renumbering described in [RFC4192]), encrypted DNS
    service will be delayed until that new certificate is acquired.
 
-8.2.  Discovery of Network-designated Resolvers (DNR)
+5.2.  Discovery of Network-designated Resolvers (DNR)
 
    DNR requires proving possession of a domain name as the encrypted
    resolver's certificate contains the FQDN.  For example, the entity
@@ -546,7 +265,7 @@ Table of Contents
    If the ISP renumbers the subscriber's network, the DNS record will
    also need to expire and changed to reflect the new IP address.
 
-9.  Security Considerations
+6.  Security Considerations
 
    DNR-related security considerations are discussed in Section 7 of
    [RFC9463].  Likewise, DDR-related security considerations are
@@ -565,13 +284,13 @@ Table of Contents
    identify the entity hosting the encrypted DNS server using the ADN
    assigned to it.
 
-10.  IANA Considerations
+7.  IANA Considerations
 
    This document has no IANA actions.
 
-11.  References
+8.  References
 
-11.1.  Normative References
+8.1.  Normative References
 
    [RFC9462]  Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
               Jensen, "Discovery of Designated Resolvers", RFC 9462,
@@ -584,24 +303,15 @@ Table of Contents
               RFC 9463, DOI 10.17487/RFC9463, November 2023,
               <https://www.rfc-editor.org/rfc/rfc9463>.
 
-11.2.  Informative References
+8.2.  Informative References
 
-   [ACME]     Barnes, R., Hoffman-Andrews, J., McCarney, D., and J.
-              Kasten, "Automatic Certificate Management Environment
-              (ACME)", RFC 8555, DOI 10.17487/RFC8555, March 2019,
-              <https://www.rfc-editor.org/rfc/rfc8555>.
-
-   [https-local-dom]
-              Thomson, M., "HTTPS for Local Domains", April 2021,
-              <https://docs.google.com/document/
-              d/170rFC91jqvpFrKIqG4K8Vox8AL4LeQXzfikBQXYPmzU>.
-
-   [I-D.davies-internal-tld]
-              Davies, K. and A. McConachie, "A Top-level Domain for
-              Private Use", Work in Progress, Internet-Draft, draft-
-              davies-internal-tld-00, 2 August 2024,
-              <https://datatracker.ietf.org/doc/html/draft-davies-
-              internal-tld-00>.
+   [I-D.rbw-home-servers]
+              Reddy.K, T., Boucadair, M., and D. Wing, "Identifying and
+              Authenticating Home Servers: Requirements and Solution
+              Analysis", Work in Progress, Internet-Draft, draft-rbw-
+              home-servers-00, 19 September 2024,
+              <https://datatracker.ietf.org/doc/html/draft-rbw-home-
+              servers-00>.
 
    [I-D.reddy-add-delegated-credentials]
               Reddy.K, T., Boucadair, M., Wing, D., and S. Jain,
@@ -629,12 +339,6 @@ Table of Contents
               DOI 10.17487/RFC4192, September 2005,
               <https://www.rfc-editor.org/rfc/rfc4192>.
 
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <https://www.rfc-editor.org/rfc/rfc5280>.
-
    [RFC5625]  Bellis, R., "DNS Proxy Implementation Guidelines",
               BCP 152, RFC 5625, DOI 10.17487/RFC5625, August 2009,
               <https://www.rfc-editor.org/rfc/rfc5625>.
@@ -644,10 +348,6 @@ Table of Contents
               Space", BCP 153, RFC 6598, DOI 10.17487/RFC6598, April
               2012, <https://www.rfc-editor.org/rfc/rfc6598>.
 
-   [RFC6761]  Cheshire, S. and M. Krochmal, "Special-Use Domain Names",
-              RFC 6761, DOI 10.17487/RFC6761, February 2013,
-              <https://www.rfc-editor.org/rfc/rfc6761>.
-
    [RFC6762]  Cheshire, S. and M. Krochmal, "Multicast DNS", RFC 6762,
               DOI 10.17487/RFC6762, February 2013,
               <https://www.rfc-editor.org/rfc/rfc6762>.
@@ -656,12 +356,6 @@ Table of Contents
               "Special-Purpose IP Address Registries", BCP 153,
               RFC 6890, DOI 10.17487/RFC6890, April 2013,
               <https://www.rfc-editor.org/rfc/rfc6890>.
-
-   [RFC7250]  Wouters, P., Ed., Tschofenig, H., Ed., Gilmore, J.,
-              Weiler, S., and T. Kivinen, "Using Raw Public Keys in
-              Transport Layer Security (TLS) and Datagram Transport
-              Layer Security (DTLS)", RFC 7250, DOI 10.17487/RFC7250,
-              June 2014, <https://www.rfc-editor.org/rfc/rfc7250>.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
@@ -692,28 +386,10 @@ Table of Contents
               IPv4-as-a-Service", RFC 8585, DOI 10.17487/RFC8585, May
               2019, <https://www.rfc-editor.org/rfc/rfc8585>.
 
-   [RFC8739]  Sheffer, Y., Lopez, D., Gonzalez de Dios, O., Pastor
-              Perales, A., and T. Fossati, "Support for Short-Term,
-              Automatically Renewed (STAR) Certificates in the Automated
-              Certificate Management Environment (ACME)", RFC 8739,
-              DOI 10.17487/RFC8739, March 2020,
-              <https://www.rfc-editor.org/rfc/rfc8739>.
-
-   [RFC9115]  Sheffer, Y., López, D., Pastor Perales, A., and T.
-              Fossati, "An Automatic Certificate Management Environment
-              (ACME) Profile for Generating Delegated Certificates",
-              RFC 9115, DOI 10.17487/RFC9115, September 2021,
-              <https://www.rfc-editor.org/rfc/rfc9115>.
-
    [RFC9250]  Huitema, C., Dickinson, S., and A. Mankin, "DNS over
               Dedicated QUIC Connections", RFC 9250,
               DOI 10.17487/RFC9250, May 2022,
               <https://www.rfc-editor.org/rfc/rfc9250>.
-
-   [RFC9345]  Barnes, R., Iyengar, S., Sullivan, N., and E. Rescorla,
-              "Delegated Credentials for TLS and DTLS", RFC 9345,
-              DOI 10.17487/RFC9345, July 2023,
-              <https://www.rfc-editor.org/rfc/rfc9345>.
 
    [RFC9499]  Hoffman, P. and K. Fujiwara, "DNS Terminology", BCP 219,
               RFC 9499, DOI 10.17487/RFC9499, March 2024,

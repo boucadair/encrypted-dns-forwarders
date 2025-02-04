@@ -5,10 +5,10 @@
 network                                                         T. Reddy
 Internet-Draft                                                     Nokia
 Intended status: Informational                              M. Boucadair
-Expires: 20 April 2025                                            Orange
+Expires: 8 August 2025                                            Orange
                                                                  D. Wing
                                                     Cloud Software Group
-                                                         17 October 2024
+                                                         4 February 2025
 
 
  Identifying and Authenticating Home Servers: Requirements and Solution
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 April 2025.
+   This Internet-Draft will expire on 8 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -524,11 +524,11 @@ Table of Contents
               d/170rFC91jqvpFrKIqG4K8Vox8AL4LeQXzfikBQXYPmzU>.
 
    [I-D.davies-internal-tld]
-              Davies, K. and A. McConachie, "A Top-level Domain for
-              Private Use", Work in Progress, Internet-Draft, draft-
-              davies-internal-tld-00, 2 August 2024,
+              Davies, K., McConachie, A., and W. A. Kumari, "A Top-level
+              Domain for Private Use", Work in Progress, Internet-Draft,
+              draft-davies-internal-tld-02, 2 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-davies-
-              internal-tld-00>.
+              internal-tld-02>.
 
    [I-D.reddy-add-delegated-credentials]
               Reddy.K, T., Boucadair, M., Wing, D., and S. Jain,
